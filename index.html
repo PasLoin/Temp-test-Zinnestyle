@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ZinnekeTiles — style épuré</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
+  <style>
+    html, body { margin: 0; height: 100%; background: #f2efe9; }
+    #map { position: absolute; inset: 0; }
+    .maplibregl-ctrl-attrib { font-size: 10px; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const BASE = 'https://pasloin.github.io/ZinnekeTiles/';
+const GROUPS = ['landuse', 'green', 'water', 'buildings', 'addresses', 'roads', 'pedestrian', 'cycleway'];
+const PATTERN_PIXEL_RATIO = 2;
+
+const protocol = new pmtiles.Protocol();
+maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
+
+function filterStyle(style) {
+  const keep = new Set(['background']);
+  for (const group of style.metadata['brussels:legend'] || []) {
+    if (!GROUPS.includes(group.id)) continue;
+    for (const id of group.layers || []) keep.add(id);
+    for (const item of group.items || []) for (const id of item.layers || []) keep.add(id);
+  }
+  style.layers = style.layers.filter(l => keep.has(l.id) && l.type !== 'fill-extrusion');
+  const used = new Set(style.layers.map(l => l.source).filter(Boolean));
+  style.sources = Object.fromEntries(
+    Object.entries(style.sources)
+      .filter(([name]) => used.has(name))
+      .map(([name, src]) => [name, { ...src, url: 'pmtiles://' + new URL(src.url, BASE).href }])
+  );
+  return style;
+}
+
+async function rasterize(svgText, size) {
+  const url = URL.createObjectURL(new Blob([svgText], { type: 'image/svg+xml;charset=utf-8' }));
+  try {
+    const img = new Image();
+    await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; img.src = url; });
+    const px = Math.round(size * PATTERN_PIXEL_RATIO);
+    const canvas = document.createElement('canvas');
+    canvas.width = px;
+    canvas.height = px;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, px, px);
+    return ctx.getImageData(0, 0, px, px);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+async function loadPatterns(map, patterns) {
+  await Promise.all(Object.entries(patterns || {}).map(async ([name, cfg]) => {
+    try {
+      let svg = await (await fetch(new URL(cfg.file, BASE).href)).text();
+      for (const [from, to] of Object.entries(cfg.replace || {})) svg = svg.split(from).join(to);
+      const data = await rasterize(svg, cfg.size || 32);
+      if (!map.hasImage(name)) map.addImage(name, data, { pixelRatio: PATTERN_PIXEL_RATIO });
+    } catch (err) {
+      console.warn('Motif indisponible :', name, err);
+    }
+  }));
+  map.triggerRepaint();
+}
+
+fetch(BASE + 'style.json')
+  .then(r => r.json())
+  .then(raw => {
+    const style = filterStyle(raw);
+    const meta = style.metadata['brussels:map'] || {};
+    const map = new maplibregl.Map({
+      container: 'map',
+      style,
+      center: meta.center || [4.3517, 50.8503],
+      zoom: meta.zoom || 13,
+      hash: true,
+      minZoom: 10,
+      maxZoom: 19,
+    });
+    map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+    map.addControl(new maplibregl.ScaleControl({ maxWidth: 100, unit: 'metric' }), 'bottom-left');
+    map.on('load', () => loadPatterns(map, style.metadata['brussels:patterns']));
+    window.map = map;
+  })
+  .catch(err => console.error('Impossible de charger le style :', err));
+</script>
+</body>
+</html>

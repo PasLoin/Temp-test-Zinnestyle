@@ -1,0 +1,103 @@
+name: Styles aléatoires quotidiens
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+    inputs:
+      seed:
+        description: Graine (vide = timestamp Unix du lancement)
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: random-style
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      VARIANTS: typologie chaos
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/checkout@v7
+        with:
+          repository: PasLoin/ZinnekeTiles
+          path: zinneketiles
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /build_map.py
+            /map.config.yaml
+            /scripts/
+            /tests/validate-style.mjs
+            /www/
+            !/www/roofs.glb
+            !/www/poi.pmtiles.gz
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - run: pip install pyyaml
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "26"
+
+      - name: Générer les variantes
+        env:
+          SEED: ${{ inputs.seed }}
+        run: |
+          seed="${SEED:-$(date +%s)}"
+          echo "SEED=$seed" >> "$GITHUB_ENV"
+          python3 random_style.py --zinneke zinneketiles --out-dir variants --seed "$seed"
+
+      - name: Compiler avec build_map.py
+        working-directory: zinneketiles
+        run: python3 build_map.py --only style --variants ../variants --style-out "$RUNNER_TEMP/build/style.json"
+
+      - name: Valider avec validate-style.mjs
+        working-directory: zinneketiles
+        run: |
+          for v in $VARIANTS; do
+            node tests/validate-style.mjs --www www --style "$RUNNER_TEMP/build/style.$v.json"
+          done
+
+      - name: Valider contre la spécification MapLibre
+        working-directory: zinneketiles
+        run: |
+          npm install --no-save @maplibre/maplibre-gl-style-spec
+          for v in $VARIANTS; do
+            npx gl-style-validate "$RUNNER_TEMP/build/style.$v.json"
+          done
+
+      - name: Valider contre les métadonnées PMTiles
+        working-directory: zinneketiles
+        run: |
+          python3 scripts/extract_pmtiles_metadata.py --out-dir "$RUNNER_TEMP/pmtiles-metadata" www/*.pmtiles
+          for v in $VARIANTS; do
+            python3 scripts/validate_style_pmtiles.py --style "$RUNNER_TEMP/build/style.$v.json" --metadata-dir "$RUNNER_TEMP/pmtiles-metadata"
+          done
+
+      - name: Commiter les styles
+        run: |
+          for v in $VARIANTS; do cp "$RUNNER_TEMP/build/style.$v.json" .; done
+          cp "$RUNNER_TEMP/build/styles.json" .
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q --ignore-unmatch style.random.json variants/random.yaml
+          git add variants styles.json style.*.json
+          if git diff --cached --quiet; then
+            echo "Aucun changement."
+            exit 0
+          fi
+          git commit -m "style: $SEED"
+          git push

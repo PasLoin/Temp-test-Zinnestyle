@@ -423,6 +423,35 @@ def chaos_variant(bm, config, seed, www):
 GENERATORS = {"typologie": typologie_variant, "chaos": chaos_variant}
 
 
+def load_zinneke():
+    from types import SimpleNamespace
+
+    from zinneke.config import with_default_subtypes
+    from zinneke.layers.indoor import INDOOR_DEFAULTS
+    from zinneke.layers.roads import ROAD_DEFAULTS, ROAD_ORDER
+    from zinneke.palette import PALETTE_DEFAULTS
+    from zinneke.patterns import DEFAULT_PATTERNS
+    from zinneke.variants import (
+        base_appear_at,
+        known_subtypes,
+        variant_errors,
+        variant_layer_names,
+    )
+
+    return SimpleNamespace(
+        with_default_subtypes=with_default_subtypes,
+        INDOOR_DEFAULTS=INDOOR_DEFAULTS,
+        ROAD_DEFAULTS=ROAD_DEFAULTS,
+        ROAD_ORDER=ROAD_ORDER,
+        PALETTE_DEFAULTS=PALETTE_DEFAULTS,
+        DEFAULT_PATTERNS=DEFAULT_PATTERNS,
+        base_appear_at=base_appear_at,
+        known_subtypes=known_subtypes,
+        variant_errors=variant_errors,
+        variant_layer_names=variant_layer_names,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--zinneke", required=True)
@@ -431,7 +460,7 @@ def main():
     args = parser.parse_args()
     zinneke = Path(args.zinneke).resolve()
     sys.path.insert(0, str(zinneke))
-    import build_map as bm
+    bm = load_zinneke()
 
     seed = args.seed or str(int(time.time()))
     config = yaml.safe_load((zinneke / "map.config.yaml").read_text(encoding="utf-8"))

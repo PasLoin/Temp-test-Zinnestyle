@@ -40,8 +40,6 @@ jobs:
             /scripts/
             /tests/validate-style.mjs
             /www/
-            !/www/roofs.glb
-            !/www/poi.pmtiles.gz
 
       - uses: actions/setup-python@v7
         with:
@@ -64,6 +62,15 @@ jobs:
       - name: Compiler avec build_map.py
         working-directory: zinneketiles
         run: python3 build_map.py --only style --variants ../variants --style-out "$RUNNER_TEMP/build/style.json"
+
+      - name: Récupérer les PMTiles publiés
+        working-directory: zinneketiles
+        run: |
+          args=()
+          for v in $VARIANTS; do
+            args+=(--style "$RUNNER_TEMP/build/style.$v.json")
+          done
+          python3 scripts/fetch_published_tiles.py --strict "${args[@]}"
 
       - name: Valider avec validate-style.mjs
         working-directory: zinneketiles

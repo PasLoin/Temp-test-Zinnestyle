@@ -1,787 +1,761 @@
 variant:
-  label: Chaos · 1794556615
+  label: Chaos · 1794556775
 map:
-  background: '#b21acf'
-  font: '#a73cb7'
+  background: '#19d123'
+  font: '#11a953'
   center:
-  - 4.41553
-  - 50.8459
-  zoom: 13.83
+  - 4.30366
+  - 50.76047
+  zoom: 12.0
 palette:
   water:
-    tunnel_core: '#41d0d0'
+    tunnel_core: '#efb120'
   buildings:
-    roof: '#b110ba'
+    roof: '#f262c8'
   leisure:
-    outline: '#5cc94f'
+    outline: '#9a4f44'
   roads:
-    bridge_casing: '#94710a'
-    busway_center: '#f2eb0d'
-    tunnel_area: '#582804'
-    tunnel_area_outline: '#d962b8'
-    bridge_area: '#167cbe'
-    bridge_area_outline: '#5e875c'
-    label: '#bc07c3'
-    label_halo: rgba(177,165,27,0.86)
-    oneway: '#4c98ed'
-    oneway_halo: rgba(251,122,71,0.74)
+    bridge_casing: '#822839'
+    busway_center: '#ce69bd'
+    tunnel_area: '#b15044'
+    tunnel_area_outline: '#8c1af2'
+    bridge_area: '#45580f'
+    bridge_area_outline: '#6715c1'
+    label: '#9dfb9b'
+    label_halo: rgba(96,10,209,0.71)
+    oneway: '#168086'
+    oneway_halo: rgba(53,145,4,0.61)
   pedestrian:
-    no_access: '#309a5b'
+    no_access: '#b6dea7'
   cycleway:
-    oneway: '#5b2aff'
+    oneway: '#45339b'
   railway:
-    bridge_casing: '#b05ec4'
+    bridge_casing: '#ce691b'
   public_transport:
-    casing: '#16205a'
-    label: '#a54500'
-    label_halo: rgba(40,29,125,0.62)
+    casing: '#f936eb'
+    label: '#744ffe'
+    label_halo: rgba(187,46,83,0.17)
   addresses:
-    halo: rgba(50,9,31,0.75)
+    halo: rgba(63,20,88,0.51)
   poi:
-    stroke: '#aad710'
-    label_halo: rgba(210,82,21,0.89)
+    stroke: '#4520c4'
+    label_halo: rgba(24,113,115,0.43)
 patterns:
   grave_yard_christian:
+    size: 58
+    replace:
+      '#88b78e': '#ff6e00'
+  grave_yard_generic:
+    size: 19
+    replace:
+      '#88b78e': '#f39e7d'
+  grave_yard_jewish:
+    size: 51
+    replace:
+      '#88b78e': '#d060b4'
+  grave_yard_muslim:
+    size: 13
+    replace:
+      '#88b78e': '#365d3a'
+  green-hatch:
+    size: 41
+    replace:
+      '#bd4a72': '#705761'
+  military-hatch:
     size: 48
     replace:
-      '#88b78e': '#5bc768'
-  grave_yard_generic:
-    size: 53
-    replace:
-      '#88b78e': '#f74dd0'
-  grave_yard_jewish:
-    size: 45
-    replace:
-      '#88b78e': '#9d896c'
-  grave_yard_muslim:
-    size: 30
-    replace:
-      '#88b78e': '#fa272a'
-  green-hatch:
-    size: 12
-    replace:
-      '#bd4a72': '#cd8b04'
-  military-hatch:
-    size: 20
-    replace:
-      '#bd4a72': '#df7d06'
+      '#bd4a72': '#fe18ac'
   chaos-1:
-    file: assets/icons/brothel.svg
-    size: 36
+    file: assets/icons/trade.svg
+    size: 48
   chaos-2:
-    file: assets/icons/sport-markings-soccer.svg
-    size: 35
-    replace:
-      '#fff': '#2a6ad9'
+    file: assets/icons/cuisine-sandwich.svg
+    size: 41
   chaos-3:
-    file: assets/icons/artwork-mosaic.svg
-    size: 31
+    file: assets/icons/brothel.svg
+    size: 14
+  chaos-4:
+    file: assets/icons/vacant.svg
+    size: 32
 layers:
   addresses:
-    color: '#9d61cb'
-    opacity: 0.94
+    color: '#545804'
+    opacity: 0.58
     visible: true
     appear_at: 17
-    labels_at: 18
-  boundaries:
-    color: '#019955'
-    opacity: 0.44
-    visible: true
-    appear_at: 13
-    labels_at: 18
-  buildings:
-    color: '#ced06b'
-    opacity: 0.9
-    visible: true
-    appear_at: 15
     labels_at: 17
-    border_color: '#de86d1'
-    extrusion_3d: true
-    osm_colour: false
-    materials:
-      bluestone: '#d55795'
-      brick: '#ce9d47'
-      cement_block: '#584273'
-      concrete: '#9a2636'
-      glass: '#3224c0'
-      limestone: '#29c027'
-      metal: '#cfa0f5'
-      plaster: '#557197'
-      sandstone: '#ac1a78'
-      stone: '#b1221d'
-      wood: '#bffcc5'
-  cycleway:
-    color: '#d7f988'
-    opacity: 0.44
+  boundaries:
+    color: '#7b20cd'
+    opacity: 0.58
     visible: true
     appear_at: 14
     labels_at: 16
+  buildings:
+    color: '#41e41d'
+    opacity: 0.46
+    visible: true
+    appear_at: 16
+    labels_at: 18
+    border_color: '#876cd5'
+    extrusion_3d: false
+    osm_colour: true
+    materials:
+      bluestone: '#6f339e'
+      brick: '#f4c319'
+      cement_block: '#4678c2'
+      concrete: '#ce9073'
+      glass: '#6f1b21'
+      limestone: '#913597'
+      metal: '#b9e339'
+      plaster: '#cdd321'
+      sandstone: '#0b509f'
+      stone: '#9d15f4'
+      wood: '#7fb681'
+  cycleway:
+    color: '#995e23'
+    opacity: 0.76
+    visible: false
+    appear_at: 13
+    labels_at: 13
   green:
-    color: '#27d665'
-    opacity: 0.68
+    color: '#14cb09'
+    opacity: 0.59
     visible: true
     appear_at: 12
     labels_at: 16
     subtypes:
       flowerbed:
-        color: '#ad9dde'
-        opacity: 0.72
-        color_private: '#216a30'
-        outline_color: '#6a7132'
+        color: '#f38d4c'
+        opacity: 0.91
+        color_private: '#d3332c'
       forest:
-        color: '#135916'
-        opacity: 0.36
-        color_private: '#d3e7ad'
-        outline_color: '#ece28d'
+        color: '#4bc845'
+        opacity: 0.93
+        color_private: '#a7359e'
       garden:
-        color: '#a01232'
-        opacity: 0.6
-        color_private: '#c62d56'
-        tunnel_color: '#89909e'
-        pattern_private: null
+        color: '#884ea5'
+        opacity: 0.57
+        color_private: '#517960'
+        pattern_private: grave_yard_generic
       grass:
-        color: '#ab750d'
-        opacity: 0.76
-        color_private: '#315050'
-        tunnel_color: '#9fd519'
-        pattern_private: chaos-1
+        color: '#9f2328'
+        opacity: 0.8
+        color_private: '#c3b186'
+        tunnel_color: '#c0a410'
       grassland:
-        color: '#b6e6d0'
-        opacity: 0.72
-        color_private: '#1c1cac'
-        outline_color: '#0ac3e1'
+        color: '#8b4c87'
+        opacity: 0.82
+        color_private: '#987f98'
       heath:
-        color: '#4d640a'
-        opacity: 0.31
-        outline_color: '#e162b8'
-        tunnel_color: '#921c62'
+        color: '#1d780c'
+        opacity: 0.21
+        pattern_private: grave_yard_christian
       meadow:
-        color: '#b540c6'
-        opacity: 0.51
-        color_private: '#7e12e8'
-        outline_color: '#d39b5d'
-        appear_at: 13
+        color: '#7977d0'
+        opacity: 0.5
+        color_private: '#9c0e90'
+        appear_at: 14
       park:
-        color: '#e967d3'
-        opacity: 0.55
-        color_private: '#19ada1'
-        pattern_private: grave_yard_christian
+        color: '#fa4325'
+        opacity: 0.84
+        color_private: '#50932b'
+        pattern_private: chaos-4
       scrub:
-        color: '#291b68'
-        opacity: 0.15
-        outline_color: '#5ede73'
-        tunnel_color: '#19bc6f'
-      shrubbery:
-        color: '#82a792'
-        opacity: 0.69
-        color_private: '#52b88c'
-        pattern_private: grave_yard_christian
-      wood:
-        color: '#21e9c7'
+        color: '#f1a0f1'
         opacity: 0.7
-        color_private: '#3818d0'
-        outline_color: '#d28e4e'
+        tunnel_color: '#2474e6'
+      shrubbery:
+        color: '#54b6fc'
+        opacity: 0.26
+        color_private: '#caba92'
         appear_at: 13
+        pattern_private: chaos-4
+      wood:
+        color: '#45f618'
+        opacity: 0.76
+        color_private: '#e5c0fa'
   landuse:
-    color: '#f775f1'
-    opacity: 0.6
+    color: '#df5145'
+    opacity: 0.85
     visible: true
     appear_at: 11
     labels_at: 14
     subtypes:
       allotments:
-        color: '#f3c8b9'
-        opacity: 0.17
-        appear_at: 10
-      brownfield:
-        color: '#0f2b71'
-        opacity: 0.6
-        color_private: '#623878'
-        outline_color: '#966963'
-        tunnel_color: '#97a11e'
-        pattern: chaos-2
-        pattern_at: 11
-      cemetery:
-        color: '#2e0042'
-        opacity: 0.69
-        tunnel_color: '#9397dd'
-        pattern: null
-        by_pattern:
-          christian: chaos-2
-          jewish: grave_yard_muslim
-          muslim: grave_yard_muslim
-      commercial:
-        color: '#a2a4e0'
-        opacity: 0.23
-        pattern: green-hatch
-        pattern_at: 10
-      construction:
-        color: '#302fcd'
-        opacity: 0.36
-        color_private: '#14c99d'
-        outline_color: '#fd925b'
-      depot:
-        color: '#a2fd4b'
-        opacity: 0.85
-        tunnel_color: '#a7a282'
-      education:
-        color: '#295937'
-        opacity: 0.85
-        color_private: '#df3556'
-        tunnel_color: '#552118'
-      farmland:
-        color: '#c3e10c'
-        opacity: 0.97
-        color_private: '#282d34'
-        appear_at: 13
-      farmyard:
-        color: '#052b76'
-        opacity: 0.5
-        color_private: '#2da9b7'
-        tunnel_color: '#077810'
+        color: '#5135a7'
+        opacity: 0.45
+        outline_color: '#8c4116'
         pattern: grave_yard_jewish
         pattern_at: 11
-      garages:
-        color: '#c1bc45'
-        opacity: 0.46
-      greenfield:
-        color: '#cdbe29'
-        opacity: 0.57
-        outline_color: '#ef78bc'
-        tunnel_color: '#e2eb1c'
-        appear_at: 12
-      industrial:
-        color: '#7c7824'
-        opacity: 1.0
-        outline_color: '#413130'
-        appear_at: 12
-      landfill:
-        color: '#e715d8'
-        opacity: 0.61
-        outline_color: '#2cceaf'
-      military:
-        color: '#28aff3'
-        opacity: 0.74
-        color_private: '#253479'
-        tunnel_color: '#365025'
-        pattern: chaos-3
-        pattern_at: 14
-      quarry:
-        color: '#be9478'
-        opacity: 0.43
-        outline_color: '#9d20e9'
-      railway:
-        color: '#248da7'
-        opacity: 0.58
-        appear_at: 12
-        pattern: grave_yard_generic
-        pattern_at: 14
-      recreation_ground:
-        color: '#d6af7b'
-        opacity: 0.46
-        outline_color: '#586eda'
-        tunnel_color: '#c332a4'
-        pattern: grave_yard_generic
+      brownfield:
+        color: '#024b2d'
+        opacity: 0.66
+      cemetery:
+        color: '#d96176'
+        opacity: 0.77
+        pattern: null
+        by_pattern:
+          christian: military-hatch
+          jewish: grave_yard_generic
+          muslim: chaos-2
+      commercial:
+        color: '#b82b0b'
+        opacity: 0.4
+        tunnel_color: '#881913'
+        pattern: grave_yard_muslim
+        pattern_at: 10
+      construction:
+        color: '#7e2a7b'
+        opacity: 0.21
+        pattern: military-hatch
         pattern_at: 11
-      religious:
-        color: '#304179'
-        opacity: 0.69
-        color_private: '#4aed09'
-        outline_color: '#095b9a'
-      residential:
-        color: '#7675da'
-        opacity: 0.31
-        outline_color: '#559362'
-      retail:
-        color: '#40bb95'
-        opacity: 0.89
-        color_private: '#dda9ea'
-        outline_color: '#5dbe57'
-        tunnel_color: '#fa4da3'
-        appear_at: 13
-        pattern: grave_yard_christian
-        pattern_at: 13
-      village_green:
-        color: '#9db7dd'
-        opacity: 0.23
-        pattern: chaos-2
+      depot:
+        color: '#1c7aa6'
+        opacity: 0.38
+        color_private: '#05ff51'
+        appear_at: 11
+      education:
+        color: '#8d750d'
+        opacity: 0.24
+        color_private: '#4c1a21'
+        tunnel_color: '#96327c'
+        appear_at: 14
+        pattern: chaos-1
         pattern_at: 12
+      farmland:
+        color: '#f2f4a9'
+        opacity: 0.44
+        color_private: '#adb6cb'
+        appear_at: 12
+      farmyard:
+        color: '#f29d97'
+        opacity: 0.69
+      garages:
+        color: '#1e0da6'
+        opacity: 0.5
+        outline_color: '#3dbe48'
+        appear_at: 10
+      greenfield:
+        color: '#9335e0'
+        opacity: 0.75
+        pattern: chaos-4
+        pattern_at: 12
+      industrial:
+        color: '#560567'
+        opacity: 0.64
+        tunnel_color: '#1fd8e2'
+        appear_at: 10
+      landfill:
+        color: '#7d3391'
+        opacity: 0.8
+        pattern: grave_yard_christian
+        pattern_at: 12
+      military:
+        color: '#56b99c'
+        opacity: 0.49
+        outline_color: '#47b615'
+        appear_at: 13
+        pattern: grave_yard_muslim
+        pattern_at: 12
+      quarry:
+        color: '#43f86a'
+        opacity: 0.65
+        color_private: '#3d0f5c'
+        outline_color: '#83e47f'
+        pattern: green-hatch
+        pattern_at: 13
+      railway:
+        color: '#c2c962'
+        opacity: 0.22
+      recreation_ground:
+        color: '#33ad20'
+        opacity: 0.69
+        color_private: '#a8254e'
+        outline_color: '#644b1e'
+      religious:
+        color: '#2b98f5'
+        opacity: 0.4
+        outline_color: '#b89bf3'
+        tunnel_color: '#f6aa85'
+        pattern: green-hatch
+        pattern_at: 10
+      residential:
+        color: '#32919f'
+        opacity: 0.33
+      retail:
+        color: '#f40c39'
+        opacity: 0.66
+        appear_at: 14
+      village_green:
+        color: '#c1310a'
+        opacity: 0.69
+        pattern: grave_yard_muslim
+        pattern_at: 13
   leisure:
-    color: '#e9b4ae'
-    opacity: 0.99
+    color: '#661234'
+    opacity: 0.82
     visible: true
-    appear_at: 10
+    appear_at: 13
     labels_at: 18
     sports:
-      markings_at: 17
+      markings_at: 14
       default:
-        color: '#471a4c'
-        outline_color: '#f2ebb7'
-        length: 21
+        color: '#a5705d'
+        outline_color: '#131e7f'
+        length: 75
       values:
         basketball:
-          color: '#a7673e'
-          outline_color: '#8549f0'
-          length: 78
+          color: '#af3f3a'
+          outline_color: '#fe6ee6'
+          length: 112
         boules:
-          color: '#177aea'
-          outline_color: '#3ce771'
-          length: 137
+          color: '#8f3eb1'
+          outline_color: '#756615'
+          length: 28
         soccer:
-          color: '#cef834'
-          outline_color: '#3b98aa'
-          length: 81
+          color: '#342fc4'
+          outline_color: '#ddd858'
+          length: 136
         tennis:
-          color: '#651e75'
-          outline_color: '#8dc455'
-          length: 99
+          color: '#85e76c'
+          outline_color: '#ef7558'
+          length: 54
     subtypes:
       dog_park:
-        color: '#169d17'
-        opacity: 0.97
-        tunnel_color: '#3f6201'
-        appear_at: 10
+        color: '#17155c'
+        opacity: 0.82
+        color_private: '#88c57b'
+        outline_color: '#a9caf2'
       fitness_station:
-        color: '#d59ab1'
-        opacity: 0.72
-        outline_color: '#14e94c'
+        color: '#fb66d6'
+        opacity: 0.27
+        tunnel_color: '#29867c'
         appear_at: 13
       outdoor_seating:
-        color: '#40e6ea'
-        opacity: 0.47
-        color_private: '#ce0c8d'
-        outline_color: '#8ff6e4'
+        color: '#e0a685'
+        opacity: 0.91
+        color_private: '#453730'
       pitch:
-        color: '#6fa761'
-        opacity: 0.38
-        color_private: '#aa5d21'
-        outline_color: '#2de219'
+        color: '#3debf2'
+        opacity: 0.94
+        outline_color: '#42217c'
+        tunnel_color: '#f9cf8b'
       playground:
-        color: '#ab0470'
-        opacity: 0.52
+        color: '#a5cc75'
+        opacity: 0.8
+        outline_color: '#453eca'
   pedestrian:
-    color: '#7378ac'
-    opacity: 0.6
+    color: '#3c82a9'
+    opacity: 0.53
     visible: true
-    appear_at: 15
+    appear_at: 17
     labels_at: 18
     subtypes:
       footway:
-        color: '#05f521'
-        opacity: 0.25
-        color_private: '#51a557'
-        outline_color: '#31a688'
-        appear_at: 16
+        color: '#a39560'
+        opacity: 0.78
+        outline_color: '#de2031'
       path:
-        color: '#ee7857'
-        opacity: 0.38
-        color_private: '#dca448'
-        outline_color: '#369319'
-        tunnel_color: '#a2475f'
+        color: '#42d9f2'
+        opacity: 0.67
+        outline_color: '#f7be03'
+        tunnel_color: '#ed094c'
+        appear_at: 15
       pedestrian:
-        color: '#6cf172'
-        opacity: 0.96
-        color_private: '#301a0b'
-        tunnel_color: '#a7e56a'
+        color: '#4947e5'
+        opacity: 0.88
+        appear_at: 13
       steps:
-        color: '#41e91c'
-        opacity: 0.59
-        tunnel_color: '#1371da'
+        color: '#ae525a'
+        opacity: 0.61
+        color_private: '#8e5536'
+        tunnel_color: '#4efb93'
   poi:
-    color: '#6d9ace'
-    opacity: 0.98
+    color: '#1614f0'
+    opacity: 0.65
     visible: true
-    appear_at: 17
-    labels_at: 17
+    appear_at: 16
+    labels_at: 16
     subtypes:
       company:
-        color: '#da3522'
-        opacity: 0.61
+        color: '#9fe25b'
+        opacity: 0.46
+        color_private: '#cd6fe6'
+        appear_at: 16
       memorial:
-        color: '#da613b'
-        opacity: 0.37
-        tunnel_color: '#fc2f1e'
-        appear_at: 17
+        color: '#317f5a'
+        opacity: 0.33
+        color_private: '#abae4f'
+        outline_color: '#dcb530'
+        tunnel_color: '#c1f8ef'
   public_transport:
-    color: '#b3f7e0'
-    opacity: 0.39
-    visible: true
-    appear_at: 10
-    labels_at: 12
-    swatch_colors:
-    - '#023a96'
-    - '#7cbaef'
-    subtypes:
-      bus:
-        color: '#53da0b'
-        opacity: 0.23
-        tunnel_color: '#588871'
-      subway:
-        color: '#58fc41'
-        opacity: 0.44
-      tram:
-        color: '#e03a50'
-        opacity: 0.29
-        tunnel_color: '#94b373'
-  railway:
-    color: '#90d0ed'
-    opacity: 0.31
-    visible: true
-    appear_at: 11
-    labels_at: 11
-    subtypes:
-      miniature:
-        color: '#f2a086'
-        opacity: 0.89
-        tunnel_color: '#eaf750'
-      rail:
-        color: '#f8cd3b'
-        opacity: 0.99
-        outline_color: '#824b18'
-        tunnel_color: '#f5f731'
-      subway:
-        color: '#20e28b'
-        opacity: 0.59
-        tunnel_color: '#56d526'
-      tram:
-        color: '#dfb483'
-        opacity: 0.51
-        tunnel_color: '#ac150d'
-  roads:
-    color: '#49b677'
-    opacity: 0.31
+    color: '#eed6af'
+    opacity: 0.49
     visible: false
     appear_at: 11
-    labels_at: 13
+    labels_at: 16
+    swatch_colors:
+    - '#c57be4'
+    - '#989920'
+    subtypes:
+      bus:
+        color: '#8e9691'
+        opacity: 0.39
+        tunnel_color: '#062d55'
+      subway:
+        color: '#9fdf01'
+        opacity: 0.32
+        tunnel_color: '#20d501'
+      tram:
+        color: '#6f77f1'
+        opacity: 0.25
+  railway:
+    color: '#e2fd9e'
+    opacity: 0.32
+    visible: true
+    appear_at: 13
+    labels_at: 14
+    subtypes:
+      miniature:
+        color: '#d9f552'
+        opacity: 0.48
+        color_private: '#d8da6d'
+        outline_color: '#0d61df'
+        tunnel_color: '#441858'
+      rail:
+        color: '#97f009'
+        opacity: 0.38
+        tunnel_color: '#687bb1'
+      subway:
+        color: '#c07a73'
+        opacity: 0.59
+        outline_color: '#1b1328'
+        tunnel_color: '#3c17d0'
+      tram:
+        color: '#f2be20'
+        opacity: 0.2
+        color_private: '#21e6bf'
+        tunnel_color: '#6aed4a'
+  roads:
+    color: '#3f00a6'
+    opacity: 0.93
+    visible: false
+    appear_at: 14
+    labels_at: 18
     subtypes:
       busway:
-        color: '#d365fc'
-        opacity: 0.31
-        color_private: '#126b71'
-        outline_color: '#5a2a08'
+        color: '#1fc9c5'
+        opacity: 0.39
+        outline_color: '#489d4a'
+        appear_at: 17
       living_street:
-        color: '#b7d93a'
-        opacity: 0.47
-        color_private: '#906990'
-        outline_color: '#f05e23'
-        tunnel_color: '#3d153f'
-      motorway:
-        color: '#b5a507'
-        opacity: 0.85
-        color_private: '#9cb269'
-        outline_color: '#a1cab0'
-      motorway_link:
-        color: '#02983e'
-        opacity: 0.48
-        outline_color: '#4461e7'
-        tunnel_color: '#d8c15e'
-        appear_at: 15
-      primary:
-        color: '#15e40b'
+        color: '#aa8f0e'
         opacity: 0.31
-        outline_color: '#1e697b'
-        tunnel_color: '#3d8f37'
-        appear_at: 10
-      primary_link:
-        color: '#64db7a'
-        opacity: 0.19
-        outline_color: '#ddcfed'
-      residential:
-        color: '#a00c94'
-        opacity: 0.52
-        outline_color: '#7db2ed'
-      secondary:
-        color: '#edbf81'
-        opacity: 0.42
-        outline_color: '#233d6e'
-      secondary_link:
-        color: '#b54157'
-        opacity: 0.58
-        outline_color: '#6bd6f8'
-      service:
-        color: '#3d8917'
-        opacity: 0.44
-        outline_color: '#ab7c2a'
-      tertiary:
-        color: '#e12b5d'
-        opacity: 0.59
-        outline_color: '#31f760'
-        tunnel_color: '#00043d'
+        color_private: '#07de87'
+        outline_color: '#a73317'
+      motorway:
+        color: '#820237'
+        opacity: 0.56
+        outline_color: '#8d48f7'
         appear_at: 11
+      motorway_link:
+        color: '#898093'
+        opacity: 0.42
+        outline_color: '#8b6639'
+      primary:
+        color: '#ff129d'
+        opacity: 0.48
+        outline_color: '#b03255'
+        tunnel_color: '#e04a2a'
+      primary_link:
+        color: '#db8d25'
+        opacity: 0.9
+        color_private: '#b15c6f'
+        outline_color: '#676654'
+      residential:
+        color: '#4fea78'
+        opacity: 0.4
+        color_private: '#7da922'
+        outline_color: '#dce054'
+      secondary:
+        color: '#02f0e8'
+        opacity: 0.71
+        outline_color: '#48ae93'
+        appear_at: 13
+      secondary_link:
+        color: '#5034e7'
+        opacity: 0.21
+        outline_color: '#1a39c7'
+        tunnel_color: '#8cc0c6'
+      service:
+        color: '#c77220'
+        opacity: 0.83
+        color_private: '#0abac8'
+        outline_color: '#ecbd05'
+        tunnel_color: '#210c48'
+      tertiary:
+        color: '#d38fd0'
+        opacity: 0.72
+        outline_color: '#40e9cb'
+        appear_at: 12
       tertiary_link:
-        color: '#b3c114'
-        opacity: 0.17
-        outline_color: '#9c2a0f'
+        color: '#d4e276'
+        opacity: 0.98
+        outline_color: '#c34809'
+        tunnel_color: '#484b1d'
         appear_at: 15
       track:
-        color: '#de6f0b'
-        opacity: 0.74
-        outline_color: '#938dd9'
+        color: '#569f20'
+        opacity: 0.18
+        outline_color: '#c0deb3'
+        tunnel_color: '#9ec9a6'
       trunk:
-        color: '#1e2ee0'
-        opacity: 0.32
-        color_private: '#08fe5b'
-        outline_color: '#50b32c'
+        color: '#cfb5b4'
+        opacity: 0.79
+        outline_color: '#8fdb75'
       trunk_link:
-        color: '#4c1b17'
-        opacity: 0.61
-        color_private: '#de6bb6'
-        outline_color: '#bd3361'
-        tunnel_color: '#60ca2e'
-        appear_at: 15
+        color: '#80ae1d'
+        opacity: 0.64
+        outline_color: '#074749'
       unclassified:
-        color: '#ea273d'
-        opacity: 0.94
-        outline_color: '#4ce96d'
-        tunnel_color: '#610bf4'
+        color: '#c99fde'
+        opacity: 0.52
+        outline_color: '#227be4'
+        appear_at: 12
   street_furniture:
-    color: '#3793fb'
-    opacity: 0.84
-    visible: true
+    color: '#d947fa'
+    opacity: 0.91
+    visible: false
     appear_at: 18
     labels_at: 18
     subtypes:
       artwork:
-        color: '#631fba'
-        opacity: 0.56
-        appear_at: 18
+        color: '#6163aa'
+        opacity: 0.57
       assembly_point:
-        color: '#cb1232'
-        opacity: 0.2
+        color: '#9776d6'
+        opacity: 0.54
+        outline_color: '#261881'
       atm:
-        color: '#20eac0'
-        opacity: 0.3
-        color_private: '#b20824'
-        outline_color: '#0a594a'
+        color: '#471e2e'
+        opacity: 0.34
       bench:
-        color: '#2bbd2b'
-        opacity: 0.71
-        outline_color: '#c69380'
-        tunnel_color: '#d98b63'
+        color: '#88c615'
+        opacity: 0.83
+        color_private: '#c8a15f'
+        tunnel_color: '#5bd25c'
       bicycle_rental:
-        color: '#808b4c'
-        opacity: 0.79
-        outline_color: '#6dff27'
-        tunnel_color: '#d66224'
+        color: '#951cc8'
+        opacity: 0.36
+        appear_at: 18
       bicycle_repair_station:
-        color: '#76daea'
-        opacity: 0.98
-        appear_at: 18
+        color: '#f295f1'
+        opacity: 0.67
       bollard:
-        color: '#e60f64'
-        opacity: 0.24
-        appear_at: 18
-      bus_trap:
-        color: '#5e4ece'
-        opacity: 0.86
-        tunnel_color: '#d034ad'
-      car_sharing:
-        color: '#cc1dce'
-        opacity: 0.84
-        color_private: '#5875c7'
-      charging_station:
-        color: '#00d600'
-        opacity: 0.19
-        tunnel_color: '#f71415'
-      clock:
-        color: '#cb10bd'
-        opacity: 0.37
-        outline_color: '#40ac50'
-      cycle_barrier:
-        color: '#a58f41'
-        opacity: 0.84
-      defibrillator:
-        color: '#fccd8a'
-        opacity: 0.9
-        tunnel_color: '#fe245d'
-        appear_at: 18
-      dog_toilet:
-        color: '#5550b6'
-        opacity: 0.52
-        color_private: '#f8251a'
-        outline_color: '#3d6563'
-      drinking_water:
-        color: '#737e6c'
-        opacity: 0.39
-        outline_color: '#8c8e9c'
-        tunnel_color: '#d5637b'
-        appear_at: 18
-      entrance:
-        color: '#6c9355'
-        opacity: 0.81
-        tunnel_color: '#fbd117'
-      fence:
-        color: '#6d2d61'
-        opacity: 0.24
-        tunnel_color: '#a21e11'
-      fire_extinguisher:
-        color: '#7c11e7'
+        color: '#abb6bf'
         opacity: 0.72
-        color_private: '#f6955c'
-        outline_color: '#8a6827'
+        outline_color: '#7c3e90'
+        tunnel_color: '#18e1fe'
+      bus_trap:
+        color: '#59a222'
+        opacity: 0.22
+        outline_color: '#98a209'
+      car_sharing:
+        color: '#487315'
+        opacity: 0.96
+      charging_station:
+        color: '#4888fa'
+        opacity: 0.54
+        color_private: '#9765c4'
+      clock:
+        color: '#b676e6'
+        opacity: 0.98
+        color_private: '#2fd6d2'
+        outline_color: '#df2136'
+      cycle_barrier:
+        color: '#fb9603'
+        opacity: 0.82
+        tunnel_color: '#f1d2c5'
+      defibrillator:
+        color: '#2a5e86'
+        opacity: 0.74
+      dog_toilet:
+        color: '#2e5069'
+        opacity: 0.45
+      drinking_water:
+        color: '#8307ca'
+        opacity: 0.95
+      entrance:
+        color: '#cdece9'
+        opacity: 0.38
+        appear_at: 18
+      fence:
+        color: '#14b660'
+        opacity: 0.56
+        outline_color: '#596fe6'
+      fire_extinguisher:
+        color: '#d06159'
+        opacity: 0.83
+        outline_color: '#637ea9'
       fire_hose:
-        color: '#1e2a03'
-        opacity: 0.4
-        color_private: '#24906e'
+        color: '#4e1620'
+        opacity: 0.17
+        outline_color: '#d7fe4e'
       fire_hydrant:
-        color: '#ab45e4'
-        opacity: 0.61
+        color: '#ec83f1'
+        opacity: 0.31
       fountain:
-        color: '#295152'
-        opacity: 0.63
+        color: '#a9b217'
+        opacity: 0.24
+        tunnel_color: '#984d17'
       gate:
-        color: '#9b77c5'
-        opacity: 0.26
+        color: '#52b056'
+        opacity: 0.16
         appear_at: 18
       give_box:
-        color: '#b0b003'
-        opacity: 0.56
-        tunnel_color: '#e1018e'
-      life_ring:
-        color: '#2b5256'
-        opacity: 0.82
-        color_private: '#baf28a'
-      lift_gate:
-        color: '#d0b287'
-        opacity: 0.81
-        color_private: '#be6568'
-        outline_color: '#214c94'
+        color: '#0ca81d'
+        opacity: 0.73
         appear_at: 18
+      life_ring:
+        color: '#ac82ca'
+        opacity: 0.59
+        outline_color: '#31afb5'
+        tunnel_color: '#d3f81f'
+        appear_at: 18
+      lift_gate:
+        color: '#83c571'
+        opacity: 0.41
       lounger:
-        color: '#d4cc7f'
-        opacity: 0.43
+        color: '#043ca2'
+        opacity: 0.98
+        tunnel_color: '#b610c8'
       meeting_point:
-        color: '#5fbeaf'
-        opacity: 0.32
-        tunnel_color: '#91319c'
+        color: '#cf455b'
+        opacity: 0.4
+        outline_color: '#e3edc6'
       parcel_locker:
-        color: '#71d906'
-        opacity: 0.27
-        color_private: '#ca5c7d'
-        tunnel_color: '#9fe107'
+        color: '#8004c3'
+        opacity: 0.5
+        tunnel_color: '#1af2f3'
       phone:
-        color: '#68560e'
-        opacity: 0.6
-        tunnel_color: '#c4eeac'
+        color: '#6b969c'
+        opacity: 0.49
+        color_private: '#198dd9'
+        tunnel_color: '#d286f4'
         appear_at: 18
       photo_booth:
-        color: '#c05f16'
-        opacity: 0.94
-        outline_color: '#ba2f50'
-        appear_at: 18
-      planter:
-        color: '#d0d689'
-        opacity: 0.57
-        color_private: '#ced926'
-        outline_color: '#4a7804'
-        appear_at: 18
-      post_box:
-        color: '#ac9a2a'
-        opacity: 0.97
-        color_private: '#560ee8'
-      public_bookcase:
-        color: '#91adf2'
-        opacity: 0.84
-      recycling:
-        color: '#5f2dfa'
-        opacity: 0.91
-        appear_at: 18
-      street_lamp:
-        color: '#87a645'
+        color: '#44327c'
         opacity: 0.98
-        color_private: '#dd61cc'
-        appear_at: 18
+        outline_color: '#4d215d'
+      planter:
+        color: '#41e211'
+        opacity: 0.38
+        color_private: '#e889d7'
+      post_box:
+        color: '#f1fa31'
+        opacity: 0.86
+      public_bookcase:
+        color: '#bbc416'
+        opacity: 0.69
+      recycling:
+        color: '#e919cb'
+        opacity: 0.69
+        color_private: '#644f13'
+      street_lamp:
+        color: '#84cdba'
+        opacity: 0.42
       taxi:
-        color: '#51e6c6'
-        opacity: 0.57
-        color_private: '#63cefe'
+        color: '#676d0e'
+        opacity: 0.64
       toilets:
-        color: '#7c2b99'
-        opacity: 0.33
-        color_private: '#f9ed83'
-        outline_color: '#9db623'
-        tunnel_color: '#d3cd50'
+        color: '#87a648'
+        opacity: 0.63
+        outline_color: '#b280cc'
+        tunnel_color: '#67ed86'
       vending_machine:
-        color: '#18597f'
-        opacity: 0.3
-        color_private: '#526391'
+        color: '#bd5c8e'
+        opacity: 0.68
+        color_private: '#656b0f'
+        outline_color: '#a6828f'
+        appear_at: 18
       waste_basket:
-        color: '#8194ab'
-        opacity: 0.87
-        color_private: '#4b6cf3'
+        color: '#77dcb2'
+        opacity: 0.68
+        color_private: '#752e41'
+        outline_color: '#4b364b'
+        tunnel_color: '#1326ef'
   trees:
-    color: '#b7391a'
-    opacity: 0.15
-    visible: true
-    appear_at: 17
-    labels_at: 18
+    color: '#36c85b'
+    opacity: 0.7
+    visible: false
+    appear_at: 14
+    labels_at: 17
     subtypes:
       hedge:
-        color: '#c7a104'
-        opacity: 0.71
+        color: '#7f9327'
+        opacity: 0.46
       tree:
-        color: '#0110c5'
-        opacity: 0.35
+        color: '#0927bc'
+        opacity: 0.53
+        color_private: '#334972'
         by_color:
-          broadleaved: '#0326c9'
-          needleleaved: '#4ae984'
+          broadleaved: '#6f2941'
+          needleleaved: '#86c47b'
       tree_row:
-        color: '#efb213'
-        opacity: 0.29
+        color: '#4a2a01'
+        opacity: 0.35
   water:
-    color: '#f06897'
-    opacity: 0.42
+    color: '#df1899'
+    opacity: 0.45
     visible: true
     appear_at: 12
-    labels_at: 16
+    labels_at: 14
     subtypes:
       canal:
-        color: '#357aff'
-        opacity: 0.28
-        tunnel_color: '#1c9b5c'
-        appear_at: 14
+        color: '#166734'
+        opacity: 0.65
       ditch:
-        color: '#314254'
-        opacity: 0.82
-        tunnel_color: '#fd55cc'
-        appear_at: 16
+        color: '#d986c9'
+        opacity: 0.97
+        tunnel_color: '#dc4524'
       river:
-        color: '#c5fba7'
-        opacity: 0.4
+        color: '#b385a8'
+        opacity: 0.9
+        color_private: '#cb250a'
       stream:
-        color: '#7b56d0'
-        opacity: 0.5
-        appear_at: 14
+        color: '#0e10ea'
+        opacity: 0.58
       wetland:
-        color: '#158500'
-        opacity: 0.83
+        color: '#6ddeaa'
+        opacity: 0.17
+        outline_color: '#37c258'
   indoor:
-    appear_at: 16
-    level_height: 7.82
-    slab: 0.72
-    volume_ratio: 0.45
-    floor_opacity: 0.84
-    volume_opacity: 0.27
+    appear_at: 17
+    level_height: 8.03
+    slab: 0.64
+    volume_ratio: 0.77
+    floor_opacity: 0.61
+    volume_opacity: 0.17
     subtypes:
       platform:
-        color: '#eac36b'
+        color: '#88a38a'
       footway:
-        color: '#ef6365'
+        color: '#b67a6e'
       corridor:
-        color: '#ab3e09'
+        color: '#188b3b'
       pedestrian:
-        color: '#df3499'
+        color: '#f6a135'
       steps:
-        color: '#b358f3'
+        color: '#cf02e5'
       room:
-        color: '#db4931'
+        color: '#b3fde0'
       area:
-        color: '#ea08f5'
+        color: '#dccf50'
       wall:
-        color: '#9d3d0b'
+        color: '#3b4528'
       elevator:
-        color: '#b1f213'
+        color: '#0e4962'
       escalator:
-        color: '#0e35b8'
+        color: '#c5ab91'
       arrow:
-        color: '#bbc0c6'
+        color: '#2c63f6'

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ZinnekeTiles — recherche cuisine=friture</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
+  <style>
+    html, body { margin: 0; height: 100%; background: #ffffff; font-family: system-ui, sans-serif; }
+    #map { position: absolute; inset: 0; }
+    .maplibregl-ctrl-attrib { font-size: 10px; }
+    #panel {
+      position: absolute; z-index: 2;
+      top: calc(10px + env(safe-area-inset-top, 0px)); left: 10px;
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 8px 10px; max-width: calc(100vw - 40px);
+      background: rgba(255, 255, 255, 0.92); color: #1a1a1a;
+      border-radius: 6px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); font-size: 13px;
+    }
+    #panel button { font: inherit; padding: 5px 10px; cursor: pointer; }
+    #status { color: #555; }
+    #list {
+      margin: 0; padding: 0; list-style: none;
+      max-height: 40vh; overflow: auto; max-width: calc(100vw - 60px);
+    }
+    #list li { padding: 3px 0; border-top: 1px solid #e5e5e5; cursor: pointer; }
+    #list li:first-child { border-top: none; }
+    #list li:hover { background: #f0f0f0; }
+    #list small { color: #777; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <button id="search">Rechercher cuisine=friture</button>
+  <div id="status"></div>
+  <ul id="list"></ul>
+</div>
+<script>
+const TILES_BASE = 'https://pasloin.github.io/ZinnekeTiles/';
+const POI_URL = TILES_BASE + 'poi.pmtiles';
+const MANIFEST_URL = new URL('styles.json', location.href).href;
+const SEARCH_ZOOM = 14; // zoom d'analyse des tuiles POI
+const KEY = 'cuisine';
+const VALUE = 'friture';
+
+const protocol = new pmtiles.Protocol();
+maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
+
+let map = null;
+
+function absolutize(style) {
+  for (const src of Object.values(style.sources)) {
+    if (src.url && src.url.endsWith('.pmtiles')) {
+      src.url = 'pmtiles://' + new URL(src.url, TILES_BASE).href;
+    }
+  }
+  return style;
+}
+
+async function loadPatterns(patterns) {
+  // (motifs du style Zinneke, comme dans index.html)
+  const PATTERN_PIXEL_RATIO = 2;
+  await Promise.all(Object.entries(patterns || {}).map(async ([name, cfg]) => {
+    try {
+      const url = URL.createObjectURL(new Blob(
+        [await (await fetch(new URL(cfg.file, TILES_BASE).href)).text()],
+        { type: 'image/svg+xml;charset=utf-8' }));
+      try {
+        const img = new Image();
+        await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; img.src = url; });
+        const px = Math.round((cfg.size || 32) * PATTERN_PIXEL_RATIO);
+        const canvas = document.createElement('canvas');
+        canvas.width = canvas.height = px;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, px, px);
+        if (!map.hasImage(name)) map.addImage(name, ctx.getImageData(0, 0, px, px), { pixelRatio: PATTERN_PIXEL_RATIO });
+      } finally { URL.revokeObjectURL(url); }
+    } catch (err) {
+      console.warn('Motif indisponible :', name, err);
+    }
+  }));
+  map.triggerRepaint();
+}
+
+async function initMap() {
+  const manifest = await (await fetch(MANIFEST_URL, { cache: 'no-cache' })).json();
+  const entries = manifest.styles || [];
+  const wanted = new URL(location.href).searchParams.get('style');
+  const entry = entries.find(s => s.id === wanted) || entries.find(s => s.id === manifest.default) || entries[0];
+  const style = absolutize(await (await fetch(new URL(entry.url, location.href).href, { cache: 'no-cache' })).json());
+  const meta = style.metadata['brussels:map'] || {};
+  map = new maplibregl.Map({
+    container: 'map',
+    style,
+    center: meta.center || [4.3517, 50.8503],
+    zoom: meta.zoom || 13,
+    hash: true,
+    minZoom: 10,
+    maxZoom: 19,
+  });
+  map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+  map.addControl(new maplibregl.ScaleControl({ maxWidth: 100, unit: 'metric' }), 'bottom-left');
+  map.once('load', () => loadPatterns(style.metadata['brussels:patterns']));
+}
+
+function tileXY(lon, lat, z) {
+  const n = 2 ** z, s = Math.sin(lat * Math.PI / 180);
+  return [
+    Math.floor((lon + 180) / 360 * n),
+    Math.floor((0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * n)
+  ];
+}
+
+async function search() {
+  const status = document.getElementById('status');
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  status.textContent = 'Lecture du PMTiles…';
+
+  const [{ VectorTile }, { default: Pbf }] = await Promise.all([
+    import('https://esm.sh/@mapbox/vector-tile@1.3.1'),
+    import('https://esm.sh/pbf@3.2.1'),
+  ]);
+  const p = new pmtiles.PMTiles(POI_URL);
+  const h = await p.getHeader();
+  // bbox du dataset -> plage de tuiles au zoom d'analyse
+  const z = Math.min(h.maxZoom, SEARCH_ZOOM);
+  const [x0, y0] = tileXY(h.minLon, h.maxLat, z);
+  const [x1, y1] = tileXY(h.maxLon, h.minLat, z);
+
+  const seen = new Set(), hits = [];
+  let nTiles = 0;
+  for (let x = x0; x <= x1; x++) {
+    for (let y = y0; y <= y1; y++) {
+      const t = await p.getZxy(z, x, y);
+      if (!t) continue;
+      nTiles++;
+      const vt = new VectorTile(new Pbf(new Uint8Array(t.data)));
+      for (const [layerName, layer] of Object.entries(vt.layers)) {
+        for (let i = 0; i < layer.length; i++) {
+          const f = layer.feature(i);
+          if (f.type !== 1) continue; // points uniquement
+          if (f.properties[KEY] !== VALUE) continue; // tag exact
+          const [fx, fy] = f.toGeoJSON(x, y, z).geometry.coordinates;
+          const id = f.id ?? `${fx.toFixed(6)}|${fy.toFixed(6)}`;
+          if (seen.has(id)) continue; // doublons dus aux buffers de tuiles
+          seen.add(id);
+          hits.push({ props: f.properties, lon: fx, lat: fy, layer: layerName });
+        }
+      }
+    }
+  }
+  return hits;
+}
+
+function showResults(hits) {
+  const status = document.getElementById('status');
+  const list = document.getElementById('list');
+  const geo = {
+    type: 'FeatureCollection',
+    features: hits.map(h => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [h.lon, h.lat] },
+      properties: { name: h.props.name || '(sans nom)' },
+    })),
+  };
+  if (!map.getSource('hits')) {
+    map.addSource('hits', { type: 'geojson', data: geo });
+    map.addLayer({
+      id: 'hits-circle', type: 'circle', source: 'hits',
+      paint: {
+        'circle-radius': 7,
+        'circle-color': '#d33',
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#fff',
+      },
+    });
+  } else {
+    map.getSource('hits').setData(geo);
+  }
+
+  for (const h of hits) {
+    const li = document.createElement('li');
+    li.innerHTML = `<strong>${(h.props.name || '(sans nom)').replace(/[<>&]/g, '')}</strong><br><small>${h.layer}</small>`;
+    li.addEventListener('click', () => {
+      map.flyTo({ center: [h.lon, h.lat], zoom: 18 });
+      list.innerHTML = '';
+      status.textContent = `${hits.length} résultat(s) — clic sur la carte pour revenir`;
+    });
+    list.appendChild(li);
+  }
+  if (hits.length) {
+    const b = new maplibregl.LngLatBounds();
+    hits.forEach(h => b.extend([h.lon, h.lat]));
+    map.fitBounds(b, { padding: 60, maxZoom: 16 });
+  }
+  status.textContent = `${hits.length} résultat(s) pour ${KEY}=${VALUE}`;
+}
+
+document.getElementById('search').addEventListener('click', async () => {
+  const status = document.getElementById('status');
+  status.textContent = 'Recherche en cours…';
+  try {
+    showResults(await search());
+  } catch (err) {
+    status.textContent = 'Erreur : ' + err.message;
+    console.error(err);
+  }
+});
+
+initMap().catch(err => console.error('Impossible de charger le style :', err));
+</script>
+</body>
+</html>

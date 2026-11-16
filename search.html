@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ZinnekeTiles — recherche POI</title>
+  <title>ZinnekeTiles — recherche data</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
@@ -27,6 +27,7 @@
     #opts { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 6px; }
     #panel label { display: flex; flex-direction: column; font-size: 11px; color: #555; }
     #panel input, #panel select { font: inherit; padding: 4px 6px; min-width: 0; }
+    #files { min-height: 4.5em; }
     #panel button { font: inherit; padding: 5px 10px; cursor: pointer; }
     #actions { display: flex; gap: 4px; }
     #actions button[type=submit] { flex: 1; }
@@ -53,7 +54,9 @@
           <option value="or">au moins une (or)</option>
         </select>
       </label>
-      <label>Couche<input id="layer" placeholder="toutes" /></label>
+      <label>Fichiers PMTiles
+        <select id="files" multiple></select>
+      </label>
     </div>
     <div id="actions">
       <button type="button" id="add">+ critère</button>
@@ -63,7 +66,7 @@
   <template id="cond-tpl">
     <div class="cond">
       <label class="not"><input type="checkbox" class="negate" />not</label>
-      <input class="key" list="keys" placeholder="clé" />
+      <input class="key" placeholder="clé" />
       <input class="value" placeholder="valeur" />
       <select class="mode">
         <option value="exact">=</option>
@@ -73,16 +76,11 @@
       <button type="button" class="rm" title="supprimer">×</button>
     </div>
   </template>
-  <datalist id="keys">
-    <option value="name"><option value="amenity"><option value="shop"><option value="cuisine">
-    <option value="toilets"><option value="wheelchair"><option value="opening_hours">
-  </datalist>
   <div id="status"></div>
   <ul id="list"></ul>
 </div>
 <script>
 const TILES_BASE = 'https://pasloin.github.io/ZinnekeTiles/';
-const POI_URL = TILES_BASE + 'poi.pmtiles';
 const MANIFEST_URL = new URL('styles.json', location.href).href;
 const MAX_TILES = 400;
 
@@ -90,8 +88,8 @@ const protocol = new pmtiles.Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
 
 let map = null;
-let poi = null;
 let codecs = null;
+const archives = new Map();
 
 function absolutize(style) {
   for (const src of Object.values(style.sources)) {
@@ -100,6 +98,21 @@ function absolutize(style) {
     src.url = 'pmtiles://' + TILES_BASE + u.split('/').pop();
   }
   return style;
+}
+
+function populateFiles(style) {
+  const sel = document.getElementById('files');
+  sel.innerHTML = '';
+  for (const [name, src] of Object.entries(style.sources)) {
+    const u = (src.url || '');
+    if (!u.endsWith('.pmtiles')) continue;
+    const opt = document.createElement('option');
+    opt.value = u.replace(/^pmtiles:\/\//, '');
+    opt.textContent = name;
+    opt.selected = /poi/i.test(name) || /poi/i.test(u);
+    sel.appendChild(opt);
+  }
+  if (!sel.selectedOptions.length && sel.options.length) sel.options[0].selected = true;
 }
 
 async function loadPatterns(patterns) {
@@ -135,6 +148,7 @@ async function initMap() {
     || entries.find(s => s.id === manifest.default)
     || entries[0];
   const style = absolutize(await (await fetch(new URL(entry.url, location.href).href, { cache: 'no-cache' })).json());
+  populateFiles(style);
   const meta = style.metadata['brussels:map'] || {};
   map = new maplibregl.Map({
     container: 'map',
@@ -169,6 +183,11 @@ async function getCodecs() {
   return codecs;
 }
 
+function getArchive(url) {
+  if (!archives.has(url)) archives.set(url, new pmtiles.PMTiles(url));
+  return archives.get(url);
+}
+
 function buildMatcher(cond) {
   const key = cond.key.trim();
   const value = cond.value.trim();
@@ -197,82 +216,116 @@ function formatQuery(conditions, combine) {
   }).join(` ${combine} `);
 }
 
-async function search(conditions, combine, layerFilter) {
+function extendBbox(bb, coords) {
+  if (typeof coords[0] === 'number') {
+    if (coords[0] < bb[0]) bb[0] = coords[0];
+    if (coords[1] < bb[1]) bb[1] = coords[1];
+    if (coords[0] > bb[2]) bb[2] = coords[0];
+    if (coords[1] > bb[3]) bb[3] = coords[1];
+  } else {
+    for (const c of coords) extendBbox(bb, c);
+  }
+  return bb;
+}
+
+function featureKey(f, fileName, layerName, bb) {
+  if (f.id != null) return `${fileName}|${layerName}|${f.id}`;
+  const round = v => v.toFixed(f.type === 1 ? 6 : 3);
+  return `${fileName}|${layerName}|${JSON.stringify(f.properties)}|${round(bb[0])}|${round(bb[1])}`;
+}
+
+async function search(conditions, combine, files) {
   const { VectorTile, Pbf } = await getCodecs();
-  if (!poi) poi = new pmtiles.PMTiles(POI_URL);
-  const h = await poi.getHeader();
   const b = map.getBounds();
-  const west = Math.max(b.getWest(), h.minLon);
-  const east = Math.min(b.getEast(), h.maxLon);
-  const south = Math.max(b.getSouth(), h.minLat);
-  const north = Math.min(b.getNorth(), h.maxLat);
-  if (west > east || south > north) return { hits: [], nTiles: 0, z: h.maxZoom };
-
-  const z = h.maxZoom;
-  const [x0, y0] = tileXY(west, north, z);
-  const [x1, y1] = tileXY(east, south, z);
-  const total = (x1 - x0 + 1) * (y1 - y0 + 1);
-  if (total > MAX_TILES) throw new Error(`Vue trop large (${total} tuiles, max ${MAX_TILES}) : zoomez davantage`);
-
+  const view = [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()];
   const matches = buildQuery(conditions, combine);
-  const inView = (lon, lat) => lon >= west && lon <= east && lat >= south && lat <= north;
+  const intersects = bb => bb[0] <= view[2] && bb[2] >= view[0] && bb[1] <= view[3] && bb[3] >= view[1];
 
-  const seen = new Set(), hits = [];
+  const hits = new Map();
   let nTiles = 0;
-  for (let x = x0; x <= x1; x++) {
-    for (let y = y0; y <= y1; y++) {
-      const t = await poi.getZxy(z, x, y);
-      if (!t) continue;
-      nTiles++;
-      const vt = new VectorTile(new Pbf(new Uint8Array(t.data)));
-      for (const [layerName, layer] of Object.entries(vt.layers)) {
-        if (layerFilter && layerName !== layerFilter) continue;
-        for (let i = 0; i < layer.length; i++) {
-          const f = layer.feature(i);
-          if (f.type !== 1) continue;
-          if (!matches(f.properties)) continue;
-          const [fx, fy] = f.toGeoJSON(x, y, z).geometry.coordinates;
-          if (!inView(fx, fy)) continue;
-          const id = f.id ?? `${fx.toFixed(6)}|${fy.toFixed(6)}`;
-          if (seen.has(id)) continue;
-          seen.add(id);
-          hits.push({ props: f.properties, lon: fx, lat: fy, layer: layerName });
+  for (const file of files) {
+    const archive = getArchive(file.url);
+    const h = await archive.getHeader();
+    const west = Math.max(view[0], h.minLon), east = Math.min(view[2], h.maxLon);
+    const south = Math.max(view[1], h.minLat), north = Math.min(view[3], h.maxLat);
+    if (west > east || south > north) continue;
+
+    const z = h.maxZoom;
+    const [x0, y0] = tileXY(west, north, z);
+    const [x1, y1] = tileXY(east, south, z);
+    const total = (x1 - x0 + 1) * (y1 - y0 + 1);
+    if (total > MAX_TILES) throw new Error(`${file.name} : vue trop large (${total} tuiles, max ${MAX_TILES}), zoomez davantage`);
+
+    for (let x = x0; x <= x1; x++) {
+      for (let y = y0; y <= y1; y++) {
+        const t = await archive.getZxy(z, x, y);
+        if (!t) continue;
+        nTiles++;
+        const vt = new VectorTile(new Pbf(new Uint8Array(t.data)));
+        for (const [layerName, layer] of Object.entries(vt.layers)) {
+          for (let i = 0; i < layer.length; i++) {
+            const f = layer.feature(i);
+            if (!matches(f.properties)) continue;
+            const geom = f.toGeoJSON(x, y, z).geometry;
+            const bb = extendBbox([Infinity, Infinity, -Infinity, -Infinity], geom.coordinates);
+            if (!intersects(bb)) continue;
+            const key = featureKey(f, file.name, layerName, bb);
+            const existing = hits.get(key);
+            if (existing) {
+              existing.parts.push(geom);
+              extendBbox(existing.bbox, geom.coordinates);
+            } else {
+              hits.set(key, { props: f.properties, file: file.name, layer: layerName, parts: [geom], bbox: bb });
+            }
+          }
         }
       }
     }
   }
-  return { hits, nTiles, z };
+  return { hits: [...hits.values()], nTiles };
 }
 
 function esc(s) {
   return String(s).replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
 }
 
+function ensureLayers() {
+  if (map.getSource('hits')) return;
+  map.addSource('hits', { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  map.addLayer({
+    id: 'hits-fill', type: 'fill', source: 'hits',
+    filter: ['==', '$type', 'Polygon'],
+    paint: { 'fill-color': '#d33', 'fill-opacity': 0.25 },
+  });
+  map.addLayer({
+    id: 'hits-line', type: 'line', source: 'hits',
+    filter: ['in', '$type', 'Polygon', 'LineString'],
+    paint: { 'line-color': '#d33', 'line-width': 2 },
+  });
+  map.addLayer({
+    id: 'hits-circle', type: 'circle', source: 'hits',
+    filter: ['==', '$type', 'Point'],
+    paint: {
+      'circle-radius': 7,
+      'circle-color': '#d33',
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#fff',
+    },
+  });
+}
+
 function showResults({ hits, nTiles }, conditions, combine) {
   const status = document.getElementById('status');
   const list = document.getElementById('list');
-  const geo = {
+  ensureLayers();
+  map.getSource('hits').setData({
     type: 'FeatureCollection',
     features: hits.map(h => ({
       type: 'Feature',
-      geometry: { type: 'Point', coordinates: [h.lon, h.lat] },
-      properties: { name: h.props.name || '(sans nom)' },
+      geometry: h.parts.length === 1 ? h.parts[0] : { type: 'GeometryCollection', geometries: h.parts },
+      properties: { name: h.props.name || '' },
     })),
-  };
-  if (!map.getSource('hits')) {
-    map.addSource('hits', { type: 'geojson', data: geo });
-    map.addLayer({
-      id: 'hits-circle', type: 'circle', source: 'hits',
-      paint: {
-        'circle-radius': 7,
-        'circle-color': '#d33',
-        'circle-stroke-width': 2,
-        'circle-stroke-color': '#fff',
-      },
-    });
-  } else {
-    map.getSource('hits').setData(geo);
-  }
+  });
 
   list.innerHTML = '';
   for (const h of hits) {
@@ -281,8 +334,12 @@ function showResults({ hits, nTiles }, conditions, combine) {
       .filter(c => h.props[c.key] != null)
       .map(c => `${esc(c.key)}=${esc(h.props[c.key])}`)
       .join(' · ');
-    li.innerHTML = `<strong>${esc(h.props.name || '(sans nom)')}</strong><br><small>${esc(h.layer)} · ${detail}</small>`;
-    li.addEventListener('click', () => map.flyTo({ center: [h.lon, h.lat], zoom: 18 }));
+    li.innerHTML = `<strong>${esc(h.props.name || '(sans nom)')}</strong><br><small>${esc(h.file)}/${esc(h.layer)} · ${detail}</small>`;
+    li.addEventListener('click', () => {
+      const [w, s, e, n] = h.bbox;
+      if (w === e && s === n) map.flyTo({ center: [w, s], zoom: 18 });
+      else map.fitBounds([[w, s], [e, n]], { padding: 80, maxZoom: 18 });
+    });
     list.appendChild(li);
   }
   status.textContent = `${hits.length} résultat(s) pour ${formatQuery(conditions, combine)} dans la vue · ${nTiles} tuile(s)`;
@@ -316,6 +373,10 @@ function readConditions() {
   })).filter(c => c.key.trim());
 }
 
+function readFiles() {
+  return [...document.getElementById('files').selectedOptions].map(o => ({ name: o.textContent, url: o.value }));
+}
+
 document.getElementById('add').addEventListener('click', () => addCondition().querySelector('.key').focus());
 
 document.getElementById('form').addEventListener('submit', async e => {
@@ -324,12 +385,13 @@ document.getElementById('form').addEventListener('submit', async e => {
   if (!map) { status.textContent = 'Carte non chargée'; return; }
   const conditions = readConditions();
   const combine = document.getElementById('combine').value;
-  const layerFilter = document.getElementById('layer').value.trim();
+  const files = readFiles();
   if (!conditions.length) { status.textContent = 'Au moins un critère avec une clé'; return; }
   if (conditions.every(c => c.negate)) { status.textContent = 'Il faut au moins un critère positif'; return; }
-  status.textContent = 'Lecture du PMTiles…';
+  if (!files.length) { status.textContent = 'Sélectionnez au moins un fichier PMTiles'; return; }
+  status.textContent = 'Lecture des PMTiles…';
   try {
-    showResults(await search(conditions, combine, layerFilter), conditions, combine);
+    showResults(await search(conditions, combine, files), conditions, combine);
   } catch (err) {
     status.textContent = 'Erreur : ' + err.message;
     console.error(err);
@@ -337,7 +399,6 @@ document.getElementById('form').addEventListener('submit', async e => {
 });
 
 addCondition({ key: 'cuisine', value: 'friture' });
-
 initMap().catch(err => console.error('Impossible de charger le style :', err));
 </script>
 </body>

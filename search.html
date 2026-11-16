@@ -19,10 +19,17 @@
       background: rgba(255, 255, 255, 0.92); color: #1a1a1a;
       border-radius: 6px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); font-size: 13px;
     }
-    #panel form { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 6px; }
+    #panel form { display: flex; flex-direction: column; gap: 4px; }
+    #conds { display: flex; flex-direction: column; gap: 4px; }
+    .cond { display: grid; grid-template-columns: auto 1fr 1fr auto auto; gap: 4px; align-items: center; }
+    .cond .not { font-size: 11px; display: flex; align-items: center; gap: 2px; white-space: nowrap; }
+    .cond .rm { padding: 2px 6px; }
+    #opts { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 6px; }
     #panel label { display: flex; flex-direction: column; font-size: 11px; color: #555; }
     #panel input, #panel select { font: inherit; padding: 4px 6px; min-width: 0; }
-    #panel button { font: inherit; padding: 5px 10px; cursor: pointer; grid-column: 1 / -1; }
+    #panel button { font: inherit; padding: 5px 10px; cursor: pointer; }
+    #actions { display: flex; gap: 4px; }
+    #actions button[type=submit] { flex: 1; }
     #status { color: #555; }
     #list {
       margin: 0; padding: 0; list-style: none;
@@ -38,18 +45,34 @@
 <div id="map"></div>
 <div id="panel">
   <form id="form">
-    <label>Clé<input id="key" value="cuisine" list="keys" /></label>
-    <label>Valeur<input id="value" value="friture" /></label>
-    <label>Mode
-      <select id="mode">
-        <option value="exact">exact</option>
-        <option value="contains">contient</option>
-        <option value="exists">clé présente</option>
-      </select>
-    </label>
-    <label>Couche<input id="layer" placeholder="toutes" /></label>
-    <button>Rechercher dans la vue</button>
+    <div id="conds"></div>
+    <div id="opts">
+      <label>Combinaison
+        <select id="combine">
+          <option value="and">toutes (and)</option>
+          <option value="or">au moins une (or)</option>
+        </select>
+      </label>
+      <label>Couche<input id="layer" placeholder="toutes" /></label>
+    </div>
+    <div id="actions">
+      <button type="button" id="add">+ critère</button>
+      <button type="submit">Rechercher dans la vue</button>
+    </div>
   </form>
+  <template id="cond-tpl">
+    <div class="cond">
+      <label class="not"><input type="checkbox" class="negate" />not</label>
+      <input class="key" list="keys" placeholder="clé" />
+      <input class="value" placeholder="valeur" />
+      <select class="mode">
+        <option value="exact">=</option>
+        <option value="contains">~</option>
+        <option value="exists">*</option>
+      </select>
+      <button type="button" class="rm" title="supprimer">×</button>
+    </div>
+  </template>
   <datalist id="keys">
     <option value="name"><option value="amenity"><option value="shop"><option value="cuisine">
     <option value="toilets"><option value="wheelchair"><option value="opening_hours">
@@ -150,14 +173,31 @@ function buildMatcher(cond) {
   const key = cond.key.trim();
   const value = cond.value.trim();
   const lower = value.toLowerCase();
+  let m;
   switch (cond.mode) {
-    case 'exists': return props => props[key] != null;
-    case 'contains': return props => props[key] != null && String(props[key]).toLowerCase().includes(lower);
-    default: return props => props[key] != null && String(props[key]) === value;
+    case 'exists': m = props => props[key] != null; break;
+    case 'contains': m = props => props[key] != null && String(props[key]).toLowerCase().includes(lower); break;
+    default: m = props => props[key] != null && String(props[key]) === value;
   }
+  return cond.negate ? props => !m(props) : m;
 }
 
-async function search(conditions, layerFilter) {
+function buildQuery(conditions, combine) {
+  const matchers = conditions.map(buildMatcher);
+  return combine === 'or'
+    ? props => matchers.some(m => m(props))
+    : props => matchers.every(m => m(props));
+}
+
+function formatQuery(conditions, combine) {
+  return conditions.map(c => {
+    const op = c.mode === 'exists' ? '' : (c.mode === 'contains' ? '~' : '=');
+    const body = c.mode === 'exists' ? `${c.key}=*` : `${c.key}${op}${c.value}`;
+    return c.negate ? `not ${body}` : body;
+  }).join(` ${combine} `);
+}
+
+async function search(conditions, combine, layerFilter) {
   const { VectorTile, Pbf } = await getCodecs();
   if (!poi) poi = new pmtiles.PMTiles(POI_URL);
   const h = await poi.getHeader();
@@ -174,8 +214,7 @@ async function search(conditions, layerFilter) {
   const total = (x1 - x0 + 1) * (y1 - y0 + 1);
   if (total > MAX_TILES) throw new Error(`Vue trop large (${total} tuiles, max ${MAX_TILES}) : zoomez davantage`);
 
-  const matchers = conditions.map(buildMatcher);
-  const matches = props => matchers.every(m => m(props));
+  const matches = buildQuery(conditions, combine);
   const inView = (lon, lat) => lon >= west && lon <= east && lat >= south && lat <= north;
 
   const seen = new Set(), hits = [];
@@ -209,7 +248,7 @@ function esc(s) {
   return String(s).replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
 }
 
-function showResults({ hits, nTiles }, conditions) {
+function showResults({ hits, nTiles }, conditions, combine) {
   const status = document.getElementById('status');
   const list = document.getElementById('list');
   const geo = {
@@ -239,36 +278,65 @@ function showResults({ hits, nTiles }, conditions) {
   for (const h of hits) {
     const li = document.createElement('li');
     const detail = conditions
-      .filter(c => c.mode !== 'exists' || h.props[c.key] != null)
+      .filter(c => h.props[c.key] != null)
       .map(c => `${esc(c.key)}=${esc(h.props[c.key])}`)
       .join(' · ');
     li.innerHTML = `<strong>${esc(h.props.name || '(sans nom)')}</strong><br><small>${esc(h.layer)} · ${detail}</small>`;
     li.addEventListener('click', () => map.flyTo({ center: [h.lon, h.lat], zoom: 18 }));
     list.appendChild(li);
   }
-  const query = conditions.map(c => c.mode === 'exists' ? c.key : `${c.key}${c.mode === 'contains' ? '~' : '='}${c.value}`).join(' and ');
-  status.textContent = `${hits.length} résultat(s) pour ${query} dans la vue · ${nTiles} tuile(s)`;
+  status.textContent = `${hits.length} résultat(s) pour ${formatQuery(conditions, combine)} dans la vue · ${nTiles} tuile(s)`;
 }
+
+const condsEl = document.getElementById('conds');
+
+function addCondition(init = {}) {
+  const node = document.getElementById('cond-tpl').content.firstElementChild.cloneNode(true);
+  node.querySelector('.key').value = init.key || '';
+  node.querySelector('.value').value = init.value || '';
+  node.querySelector('.mode').value = init.mode || 'exact';
+  node.querySelector('.negate').checked = !!init.negate;
+  const syncValue = () => { node.querySelector('.value').disabled = node.querySelector('.mode').value === 'exists'; };
+  node.querySelector('.mode').addEventListener('change', syncValue);
+  syncValue();
+  node.querySelector('.rm').addEventListener('click', () => {
+    node.remove();
+    if (!condsEl.children.length) addCondition();
+  });
+  condsEl.appendChild(node);
+  return node;
+}
+
+function readConditions() {
+  return [...condsEl.querySelectorAll('.cond')].map(n => ({
+    key: n.querySelector('.key').value,
+    value: n.querySelector('.value').value,
+    mode: n.querySelector('.mode').value,
+    negate: n.querySelector('.negate').checked,
+  })).filter(c => c.key.trim());
+}
+
+document.getElementById('add').addEventListener('click', () => addCondition().querySelector('.key').focus());
 
 document.getElementById('form').addEventListener('submit', async e => {
   e.preventDefault();
   const status = document.getElementById('status');
   if (!map) { status.textContent = 'Carte non chargée'; return; }
-  const conditions = [{
-    key: document.getElementById('key').value,
-    value: document.getElementById('value').value,
-    mode: document.getElementById('mode').value,
-  }];
+  const conditions = readConditions();
+  const combine = document.getElementById('combine').value;
   const layerFilter = document.getElementById('layer').value.trim();
-  if (!conditions[0].key.trim()) { status.textContent = 'Clé requise'; return; }
+  if (!conditions.length) { status.textContent = 'Au moins un critère avec une clé'; return; }
+  if (conditions.every(c => c.negate)) { status.textContent = 'Il faut au moins un critère positif'; return; }
   status.textContent = 'Lecture du PMTiles…';
   try {
-    showResults(await search(conditions, layerFilter), conditions);
+    showResults(await search(conditions, combine, layerFilter), conditions, combine);
   } catch (err) {
     status.textContent = 'Erreur : ' + err.message;
     console.error(err);
   }
 });
+
+addCondition({ key: 'cuisine', value: 'friture' });
 
 initMap().catch(err => console.error('Impossible de charger le style :', err));
 </script>

@@ -42,7 +42,6 @@
 const TILES_BASE = 'https://pasloin.github.io/ZinnekeTiles/';
 const POI_URL = TILES_BASE + 'poi.pmtiles';
 const MANIFEST_URL = new URL('styles.json', location.href).href;
-const SEARCH_ZOOM = 14; // zoom d'analyse des tuiles POI
 const KEY = 'cuisine';
 const VALUE = 'friture';
 
@@ -53,13 +52,10 @@ let map = null;
 
 function absolutize(style) {
   for (const src of Object.values(style.sources)) {
-    let u = (src.url || '').trim();
+    const u = (src.url || '').trim();
     if (!u.endsWith('.pmtiles')) continue;
-    // retirer tout préfixe de schéma éventuel (pmtiles://, https://, https// malformé…)
-    u = u.replace(/^(pmtiles:)?\/\//, '').replace(/^https?:\/\/|^https?:\/\//, '');
-    if (/^https?\/\//.test(u)) u = u.slice(u.indexOf('//') + 2);
-    // reconstruire une URL pmtiles bien formée vers le dépôt de tuiles
-    src.url = 'pmtiles://' + (u.includes('/') ? u : TILES_BASE + u);
+    // toujours reconstruire depuis le nom de fichier vers le dépôt de tuiles
+    src.url = 'pmtiles://' + TILES_BASE + u.split('/').pop();
   }
   return style;
 }
@@ -131,7 +127,7 @@ async function search() {
   const p = new pmtiles.PMTiles(POI_URL);
   const h = await p.getHeader();
   // bbox du dataset -> plage de tuiles au zoom d'analyse
-  const z = Math.min(h.maxZoom, SEARCH_ZOOM);
+  const z = h.maxZoom;
   const [x0, y0] = tileXY(h.minLon, h.maxLat, z);
   const [x1, y1] = tileXY(h.maxLon, h.minLat, z);
 

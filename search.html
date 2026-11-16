@@ -89,7 +89,10 @@ async function initMap() {
   const manifest = await (await fetch(MANIFEST_URL, { cache: 'no-cache' })).json();
   const entries = manifest.styles || [];
   const wanted = new URL(location.href).searchParams.get('style');
-  const entry = entries.find(s => s.id === wanted) || entries.find(s => s.id === manifest.default) || entries[0];
+  const entry = entries.find(s => s.id === wanted)
+    || entries.find(s => s.url && s.url.includes('typologie'))
+    || entries.find(s => s.id === manifest.default)
+    || entries[0];
   const style = absolutize(await (await fetch(new URL(entry.url, location.href).href, { cache: 'no-cache' })).json());
   const meta = style.metadata['brussels:map'] || {};
   map = new maplibregl.Map({

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ZinnekeTiles — recherche cuisine=friture</title>
+  <title>ZinnekeTiles — recherche POI</title>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
   <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
   <script src="https://unpkg.com/pmtiles@3.2.0/dist/pmtiles.js"></script>
@@ -19,7 +19,10 @@
       background: rgba(255, 255, 255, 0.92); color: #1a1a1a;
       border-radius: 6px; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3); font-size: 13px;
     }
-    #panel button { font: inherit; padding: 5px 10px; cursor: pointer; }
+    #panel form { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 6px; }
+    #panel label { display: flex; flex-direction: column; font-size: 11px; color: #555; }
+    #panel input, #panel select { font: inherit; padding: 4px 6px; min-width: 0; }
+    #panel button { font: inherit; padding: 5px 10px; cursor: pointer; grid-column: 1 / -1; }
     #status { color: #555; }
     #list {
       margin: 0; padding: 0; list-style: none;
@@ -34,7 +37,23 @@
 <body>
 <div id="map"></div>
 <div id="panel">
-  <button id="search">Rechercher cuisine=friture</button>
+  <form id="form">
+    <label>Clé<input id="key" value="cuisine" list="keys" /></label>
+    <label>Valeur<input id="value" value="friture" /></label>
+    <label>Mode
+      <select id="mode">
+        <option value="exact">exact</option>
+        <option value="contains">contient</option>
+        <option value="exists">clé présente</option>
+      </select>
+    </label>
+    <label>Couche<input id="layer" placeholder="toutes" /></label>
+    <button>Rechercher dans la vue</button>
+  </form>
+  <datalist id="keys">
+    <option value="name"><option value="amenity"><option value="shop"><option value="cuisine">
+    <option value="toilets"><option value="wheelchair"><option value="opening_hours">
+  </datalist>
   <div id="status"></div>
   <ul id="list"></ul>
 </div>
@@ -42,26 +61,25 @@
 const TILES_BASE = 'https://pasloin.github.io/ZinnekeTiles/';
 const POI_URL = TILES_BASE + 'poi.pmtiles';
 const MANIFEST_URL = new URL('styles.json', location.href).href;
-const KEY = 'cuisine';
-const VALUE = 'friture';
+const MAX_TILES = 400;
 
 const protocol = new pmtiles.Protocol();
 maplibregl.addProtocol('pmtiles', protocol.tile.bind(protocol));
 
 let map = null;
+let poi = null;
+let codecs = null;
 
 function absolutize(style) {
   for (const src of Object.values(style.sources)) {
     const u = (src.url || '').trim();
     if (!u.endsWith('.pmtiles')) continue;
-    // toujours reconstruire depuis le nom de fichier vers le dépôt de tuiles
     src.url = 'pmtiles://' + TILES_BASE + u.split('/').pop();
   }
   return style;
 }
 
 async function loadPatterns(patterns) {
-  // (motifs du style Zinneke, comme dans index.html)
   const PATTERN_PIXEL_RATIO = 2;
   await Promise.all(Object.entries(patterns || {}).map(async ([name, cfg]) => {
     try {
@@ -117,49 +135,81 @@ function tileXY(lon, lat, z) {
   ];
 }
 
-async function search() {
-  const status = document.getElementById('status');
-  const list = document.getElementById('list');
-  list.innerHTML = '';
-  status.textContent = 'Lecture du PMTiles…';
+async function getCodecs() {
+  if (!codecs) {
+    const [{ VectorTile }, { default: Pbf }] = await Promise.all([
+      import('https://esm.sh/@mapbox/vector-tile@1.3.1'),
+      import('https://esm.sh/pbf@3.2.1'),
+    ]);
+    codecs = { VectorTile, Pbf };
+  }
+  return codecs;
+}
 
-  const [{ VectorTile }, { default: Pbf }] = await Promise.all([
-    import('https://esm.sh/@mapbox/vector-tile@1.3.1'),
-    import('https://esm.sh/pbf@3.2.1'),
-  ]);
-  const p = new pmtiles.PMTiles(POI_URL);
-  const h = await p.getHeader();
-  // bbox du dataset -> plage de tuiles au zoom d'analyse
+function buildMatcher(cond) {
+  const key = cond.key.trim();
+  const value = cond.value.trim();
+  const lower = value.toLowerCase();
+  switch (cond.mode) {
+    case 'exists': return props => props[key] != null;
+    case 'contains': return props => props[key] != null && String(props[key]).toLowerCase().includes(lower);
+    default: return props => props[key] != null && String(props[key]) === value;
+  }
+}
+
+async function search(conditions, layerFilter) {
+  const { VectorTile, Pbf } = await getCodecs();
+  if (!poi) poi = new pmtiles.PMTiles(POI_URL);
+  const h = await poi.getHeader();
+  const b = map.getBounds();
+  const west = Math.max(b.getWest(), h.minLon);
+  const east = Math.min(b.getEast(), h.maxLon);
+  const south = Math.max(b.getSouth(), h.minLat);
+  const north = Math.min(b.getNorth(), h.maxLat);
+  if (west > east || south > north) return { hits: [], nTiles: 0, z: h.maxZoom };
+
   const z = h.maxZoom;
-  const [x0, y0] = tileXY(h.minLon, h.maxLat, z);
-  const [x1, y1] = tileXY(h.maxLon, h.minLat, z);
+  const [x0, y0] = tileXY(west, north, z);
+  const [x1, y1] = tileXY(east, south, z);
+  const total = (x1 - x0 + 1) * (y1 - y0 + 1);
+  if (total > MAX_TILES) throw new Error(`Vue trop large (${total} tuiles, max ${MAX_TILES}) : zoomez davantage`);
+
+  const matchers = conditions.map(buildMatcher);
+  const matches = props => matchers.every(m => m(props));
+  const inView = (lon, lat) => lon >= west && lon <= east && lat >= south && lat <= north;
 
   const seen = new Set(), hits = [];
   let nTiles = 0;
   for (let x = x0; x <= x1; x++) {
     for (let y = y0; y <= y1; y++) {
-      const t = await p.getZxy(z, x, y);
+      const t = await poi.getZxy(z, x, y);
       if (!t) continue;
       nTiles++;
       const vt = new VectorTile(new Pbf(new Uint8Array(t.data)));
       for (const [layerName, layer] of Object.entries(vt.layers)) {
+        if (layerFilter && layerName !== layerFilter) continue;
         for (let i = 0; i < layer.length; i++) {
           const f = layer.feature(i);
-          if (f.type !== 1) continue; // points uniquement
-          if (f.properties[KEY] !== VALUE) continue; // tag exact
+          if (f.type !== 1) continue;
+          if (!matches(f.properties)) continue;
           const [fx, fy] = f.toGeoJSON(x, y, z).geometry.coordinates;
+          if (!inView(fx, fy)) continue;
           const id = f.id ?? `${fx.toFixed(6)}|${fy.toFixed(6)}`;
-          if (seen.has(id)) continue; // doublons dus aux buffers de tuiles
+          if (seen.has(id)) continue;
           seen.add(id);
           hits.push({ props: f.properties, lon: fx, lat: fy, layer: layerName });
         }
       }
     }
   }
-  return hits;
+  return { hits, nTiles, z };
 }
 
-function showResults(hits) {
+function esc(s) {
+  return String(s).replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
+}
+
+function showResults({ hits, nTiles }, conditions) {
   const status = document.getElementById('status');
   const list = document.getElementById('list');
   const geo = {
@@ -185,29 +235,35 @@ function showResults(hits) {
     map.getSource('hits').setData(geo);
   }
 
+  list.innerHTML = '';
   for (const h of hits) {
     const li = document.createElement('li');
-    li.innerHTML = `<strong>${(h.props.name || '(sans nom)').replace(/[<>&]/g, '')}</strong><br><small>${h.layer}</small>`;
-    li.addEventListener('click', () => {
-      map.flyTo({ center: [h.lon, h.lat], zoom: 18 });
-      list.innerHTML = '';
-      status.textContent = `${hits.length} résultat(s) — clic sur la carte pour revenir`;
-    });
+    const detail = conditions
+      .filter(c => c.mode !== 'exists' || h.props[c.key] != null)
+      .map(c => `${esc(c.key)}=${esc(h.props[c.key])}`)
+      .join(' · ');
+    li.innerHTML = `<strong>${esc(h.props.name || '(sans nom)')}</strong><br><small>${esc(h.layer)} · ${detail}</small>`;
+    li.addEventListener('click', () => map.flyTo({ center: [h.lon, h.lat], zoom: 18 }));
     list.appendChild(li);
   }
-  if (hits.length) {
-    const b = new maplibregl.LngLatBounds();
-    hits.forEach(h => b.extend([h.lon, h.lat]));
-    map.fitBounds(b, { padding: 60, maxZoom: 16 });
-  }
-  status.textContent = `${hits.length} résultat(s) pour ${KEY}=${VALUE}`;
+  const query = conditions.map(c => c.mode === 'exists' ? c.key : `${c.key}${c.mode === 'contains' ? '~' : '='}${c.value}`).join(' and ');
+  status.textContent = `${hits.length} résultat(s) pour ${query} dans la vue · ${nTiles} tuile(s)`;
 }
 
-document.getElementById('search').addEventListener('click', async () => {
+document.getElementById('form').addEventListener('submit', async e => {
+  e.preventDefault();
   const status = document.getElementById('status');
-  status.textContent = 'Recherche en cours…';
+  if (!map) { status.textContent = 'Carte non chargée'; return; }
+  const conditions = [{
+    key: document.getElementById('key').value,
+    value: document.getElementById('value').value,
+    mode: document.getElementById('mode').value,
+  }];
+  const layerFilter = document.getElementById('layer').value.trim();
+  if (!conditions[0].key.trim()) { status.textContent = 'Clé requise'; return; }
+  status.textContent = 'Lecture du PMTiles…';
   try {
-    showResults(await search());
+    showResults(await search(conditions, layerFilter), conditions);
   } catch (err) {
     status.textContent = 'Erreur : ' + err.message;
     console.error(err);

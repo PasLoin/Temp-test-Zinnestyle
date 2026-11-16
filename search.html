@@ -53,9 +53,13 @@ let map = null;
 
 function absolutize(style) {
   for (const src of Object.values(style.sources)) {
-    if (src.url && src.url.endsWith('.pmtiles')) {
-      src.url = 'pmtiles://' + new URL(src.url, TILES_BASE).href;
-    }
+    let u = (src.url || '').trim();
+    if (!u.endsWith('.pmtiles')) continue;
+    // retirer tout préfixe de schéma éventuel (pmtiles://, https://, https// malformé…)
+    u = u.replace(/^(pmtiles:)?\/\//, '').replace(/^https?:\/\/|^https?:\/\//, '');
+    if (/^https?\/\//.test(u)) u = u.slice(u.indexOf('//') + 2);
+    // reconstruire une URL pmtiles bien formée vers le dépôt de tuiles
+    src.url = 'pmtiles://' + (u.includes('/') ? u : TILES_BASE + u);
   }
   return style;
 }

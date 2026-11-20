@@ -1,416 +1,416 @@
 variant:
-  label: Typologie · 1795029486 · complémentaire, clair
+  label: Typologie · 1795201220 · analogue, clair
 map:
-  background: '#f0f5f2'
-  font: '#273d30'
+  background: '#f5f6f8'
+  font: '#20242f'
 palette:
   water:
-    tunnel_core: '#f0f5f2'
+    tunnel_core: '#f5f6f8'
   buildings:
-    roof: '#839e8d'
+    roof: '#787d92'
   leisure:
-    outline: '#869e93'
+    outline: '#7d8393'
   roads:
-    bridge_casing: '#273d30'
-    busway_center: '#25d97b'
-    tunnel_area: '#e2e6e4'
-    tunnel_area_outline: '#8ca293'
-    bridge_area: '#cdd5d1'
-    bridge_area_outline: '#7e9c87'
-    label: '#273d30'
-    label_halo: rgba(240,245,242,0.85)
-    oneway: '#758f84'
-    oneway_halo: rgba(240,245,242,0.85)
+    bridge_casing: '#20242f'
+    busway_center: '#3693b1'
+    tunnel_area: '#e0e1e4'
+    tunnel_area_outline: '#8f96a0'
+    bridge_area: '#cacdd1'
+    bridge_area_outline: '#7f8795'
+    label: '#20242f'
+    label_halo: rgba(245,246,248,0.85)
+    oneway: '#84899a'
+    oneway_halo: rgba(245,246,248,0.85)
   pedestrian:
-    no_access: '#d6dbd8'
+    no_access: '#dedfe2'
   cycleway:
-    oneway: '#f0f5f2'
+    oneway: '#f5f6f8'
   railway:
-    bridge_casing: '#273d30'
+    bridge_casing: '#20242f'
   public_transport:
-    casing: '#f0f5f2'
-    label: '#273d30'
-    label_halo: rgba(240,245,242,0.85)
+    casing: '#f5f6f8'
+    label: '#20242f'
+    label_halo: rgba(245,246,248,0.85)
   addresses:
-    halo: rgba(240,245,242,0.85)
+    halo: rgba(245,246,248,0.85)
   poi:
-    stroke: '#f0f5f2'
-    label_halo: rgba(240,245,242,0.85)
+    stroke: '#f5f6f8'
+    label_halo: rgba(245,246,248,0.85)
 patterns:
   grave_yard_christian:
     replace:
-      '#88b78e': '#3fc37f'
+      '#88b78e': '#7354c6'
   grave_yard_generic:
     replace:
-      '#88b78e': '#4dcb71'
+      '#88b78e': '#4c57b8'
   grave_yard_jewish:
     replace:
-      '#88b78e': '#c9559c'
+      '#88b78e': '#c560cb'
   grave_yard_muslim:
     replace:
-      '#88b78e': '#c64980'
+      '#88b78e': '#9668bd'
   green-hatch:
     replace:
-      '#bd4a72': '#5ccda6'
+      '#bd4a72': '#6ba7c5'
   military-hatch:
     replace:
-      '#bd4a72': '#61db8e'
+      '#bd4a72': '#9144c2'
 layers:
   landuse:
-    color: '#cbe7e1'
+    color: '#dfe3ec'
     subtypes:
       allotments:
-        color: '#c2dee2'
+        color: '#d5d8ea'
       brownfield:
-        color: '#d5ebea'
+        color: '#c5dfdd'
       cemetery:
-        color: '#cce7cd'
+        color: '#e4dced'
       commercial:
-        color: '#bfdece'
+        color: '#d7e0e9'
       construction:
-        color: '#d0e6da'
+        color: '#d0d6e7'
       depot:
-        color: '#bedebe'
+        color: '#d7d0e4'
       education:
-        color: '#bde2c6'
+        color: '#cfcbe1'
       farmland:
-        color: '#c1e2bf'
+        color: '#cdc5e1'
       farmyard:
-        color: '#cce8e3'
+        color: '#c0d8d9'
       garages:
-        color: '#d0e7e0'
+        color: '#d5d1e5'
       greenfield:
-        color: '#daede7'
+        color: '#cfc4dd'
       industrial:
-        color: '#d9ebd9'
+        color: '#c6dbe0'
       landfill:
-        color: '#daedd8'
+        color: '#c0d7db'
       military:
-        color: '#d9e8d0'
+        color: '#d7d4ea'
       quarry:
-        color: '#d1e6cd'
-        outline_color: '#83b75b'
+        color: '#c6d5e1'
+        outline_color: '#6ab0aa'
       railway:
-        color: '#cce8e2'
+        color: '#cee0e3'
       recreation_ground:
-        color: '#c5e2db'
+        color: '#dae4ec'
       religious:
-        color: '#dbefe6'
-        outline_color: '#62bb6a'
+        color: '#d8e0eb'
+        outline_color: '#749bba'
       residential:
-        color: '#cee8d1'
+        color: '#c7d0e3'
       retail:
-        color: '#c9e3c2'
+        color: '#c2c5dc'
       village_green:
-        color: '#bce1d8'
+        color: '#cdd4e2'
   green:
-    color: '#f1d4dd'
+    color: '#bcbde5'
     subtypes:
       flowerbed:
-        color: '#e6bed0'
-        color_private: '#eccadf'
+        color: '#d0d1ea'
+        color_private: '#d7d3f0'
       forest:
-        color: '#e9bed6'
-        color_private: '#e7b8df'
+        color: '#c6c3e5'
+        color_private: '#bab8e5'
       garden:
-        color: '#e9c1df'
-        color_private: '#eaafdf'
+        color: '#d2bfe4'
+        color_private: '#c9c6e8'
       grass:
-        color: '#efd2e9'
-        color_private: '#f0cbea'
+        color: '#d4d4ed'
+        color_private: '#dcceee'
       grassland:
-        color: '#efc2e2'
-        color_private: '#e6b8cb'
+        color: '#cec6ea'
+        color_private: '#cfc6e8'
       heath:
-        color: '#f1d1e2'
+        color: '#d8c8e9'
       meadow:
-        color: '#e7b4cd'
-        color_private: '#f3d4e8'
+        color: '#dbdaf0'
+        color_private: '#cebde8'
       park:
-        color: '#edc2de'
-        color_private: '#f4d5e1'
+        color: '#b8b6e3'
+        color_private: '#d7c6e6'
       scrub:
-        color: '#ebc9da'
+        color: '#d6cceb'
       shrubbery:
-        color: '#e7bed0'
-        color_private: '#f0d8e6'
+        color: '#c2c3ea'
+        color_private: '#c4bae3'
       wood:
-        color: '#f3d4e4'
-        color_private: '#efd1db'
+        color: '#c8bae6'
+        color_private: '#d4c6e6'
   leisure:
-    color: '#eed2db'
+    color: '#d7d1ea'
     subtypes:
       dog_park:
-        color: '#ebc9e4'
+        color: '#cbbede'
       fitness_station:
-        color: '#f1d5df'
+        color: '#cdc8e8'
       outdoor_seating:
-        color: '#f1d5ec'
+        color: '#d0bfe0'
       pitch:
-        color: '#e8cad3'
-        outline_color: '#b85183'
+        color: '#dcd5e9'
+        outline_color: '#8867af'
       playground:
-        color: '#eed1d9'
+        color: '#cecbe7'
     sports:
       default:
-        color: '#b53b93'
-        outline_color: '#ca549b'
+        color: '#5b429f'
+        outline_color: '#8f6fc9'
       values:
         basketball:
-          color: '#4cbe85'
-          outline_color: '#2ba080'
+          color: '#ae5ec7'
+          outline_color: '#702f91'
         boules:
-          color: '#c4506d'
-          outline_color: '#862e5d'
+          color: '#6677be'
+          outline_color: '#314d8e'
         soccer:
-          color: '#44cca5'
-          outline_color: '#257950'
+          color: '#3f71b8'
+          outline_color: '#324473'
         tennis:
-          color: '#41b882'
-          outline_color: '#33a25e'
+          color: '#4c42a4'
+          outline_color: '#42349b'
   water:
-    color: '#b6ece0'
+    color: '#bbdee2'
     subtypes:
       canal:
-        color: '#aae8d9'
+        color: '#b1ccdf'
       ditch:
-        color: '#b7ebda'
+        color: '#abd9dd'
       river:
-        color: '#a4dfc2'
+        color: '#9bcad5'
       stream:
-        color: '#b4e9d5'
+        color: '#93cdd4'
       wetland:
-        color: '#a1e5d6'
+        color: '#9ccdd5'
   trees:
-    color: '#b944a3'
+    color: '#504693'
     subtypes:
       hedge:
-        color: '#cc5ba7'
+        color: '#4f4bb0'
       tree:
-        color: '#984173'
+        color: '#543e9b'
         by_color:
-          broadleaved: '#a03783'
-          needleleaved: '#c85592'
+          broadleaved: '#6b4ba9'
+          needleleaved: '#6566bd'
       tree_row:
-        color: '#b3398d'
+        color: '#6c5cbe'
   buildings:
-    color: '#e3d3db'
-    border_color: '#a56c85'
+    color: '#c4b7ce'
+    border_color: '#9a73a5'
     materials:
-      bluestone: '#d5b0cd'
-      brick: '#e2cedc'
-      cement_block: '#d9bdc3'
-      concrete: '#d6b0cd'
-      glass: '#d6b4b7'
-      limestone: '#d8bfc6'
-      metal: '#e2d0d1'
-      plaster: '#d2b4ba'
-      sandstone: '#d4b9ce'
-      stone: '#d4b7cb'
-      wood: '#d6bdd2'
+      bluestone: '#d0bdd8'
+      brick: '#decde0'
+      cement_block: '#c7b8d2'
+      concrete: '#dbd0e0'
+      glass: '#cbbcd5'
+      limestone: '#e3cfe1'
+      metal: '#c1b8d1'
+      plaster: '#dacfe1'
+      sandstone: '#d5cfe2'
+      stone: '#d5bad3'
+      wood: '#cdb7cf'
   addresses:
-    color: '#442c36'
+    color: '#271e2d'
   roads:
     subtypes:
       motorway:
-        color: '#e7558a'
-        outline_color: '#b11950'
+        color: '#ba59e3'
+        outline_color: '#6b188f'
       motorway_link:
-        color: '#e7558a'
-        outline_color: '#b11950'
+        color: '#ba59e3'
+        outline_color: '#6b188f'
       trunk:
-        color: '#e0708a'
-        outline_color: '#9c213e'
+        color: '#aa75db'
+        outline_color: '#5d2691'
       trunk_link:
-        color: '#e0708a'
-        outline_color: '#9c213e'
+        color: '#aa75db'
+        outline_color: '#5d2691'
       primary:
-        color: '#e3828c'
-        outline_color: '#841e28'
+        color: '#a68ed7'
+        outline_color: '#523492'
       primary_link:
-        color: '#e3828c'
-        outline_color: '#841e28'
+        color: '#a68ed7'
+        outline_color: '#523492'
       secondary:
-        color: '#de9e9c'
-        outline_color: '#9c3835'
+        color: '#a8a0da'
+        outline_color: '#3f3485'
       secondary_link:
-        color: '#de9e9c'
-        outline_color: '#9c3835'
+        color: '#a8a0da'
+        outline_color: '#3f3485'
       tertiary:
-        color: '#dfb6af'
-        outline_color: '#70372d'
+        color: '#b6b8d7'
+        outline_color: '#42457a'
       tertiary_link:
-        color: '#dfb6af'
-        outline_color: '#70372d'
+        color: '#b6b8d7'
+        outline_color: '#42457a'
       residential:
-        color: '#fafbfa'
-        outline_color: '#96a49a'
+        color: '#fcfcfc'
+        outline_color: '#979aa3'
       unclassified:
         color: '#fcfcfc'
-        outline_color: '#88998c'
+        outline_color: '#8f939f'
       living_street:
-        color: '#fafbfa'
-        outline_color: '#889c8e'
+        color: '#fdfdfd'
+        outline_color: '#8e909a'
       service:
-        color: '#fbfbfb'
-        outline_color: '#94a59a'
+        color: '#fefefe'
+        outline_color: '#7c7f8d'
       busway:
-        color: '#ffffff'
-        outline_color: '#85948b'
+        color: '#fefefe'
+        outline_color: '#8c909a'
       track:
-        color: '#4aaf78'
+        color: '#4a6995'
   pedestrian:
-    color: '#4bb592'
+    color: '#4f85a4'
     subtypes:
       footway:
-        color: '#46b191'
+        color: '#4784a0'
         outline_color: '#fdfdfd'
       path:
-        color: '#42a074'
-        outline_color: '#fafbfa'
+        color: '#4a9896'
+        outline_color: '#fdfdfd'
       pedestrian:
-        color: '#53c088'
+        color: '#517aa7'
       steps:
-        color: '#3aa296'
+        color: '#559ca4'
   cycleway:
-    color: '#ce267d'
+    color: '#5d3edd'
   railway:
-    color: '#828c87'
+    color: '#888b92'
     subtypes:
       miniature:
-        color: '#969f99'
+        color: '#96989e'
       rail:
-        color: '#949e99'
-        tunnel_color: '#dcdfdd'
+        color: '#82858b'
+        tunnel_color: '#cbcccf'
       subway:
-        color: '#7c8880'
-        tunnel_color: '#dce0dd'
+        color: '#7c7f85'
+        tunnel_color: '#d5d6d8'
       tram:
-        color: '#7b867e'
-        tunnel_color: '#dfe2e0'
+        color: '#808188'
+        tunnel_color: '#ccccd0'
   public_transport:
-    color: '#44ddb1'
+    color: '#2b92c2'
     subtypes:
       tram:
-        color: '#ea641a'
+        color: '#cb8e28'
       subway:
-        color: '#16c253'
+        color: '#35dc9e'
       bus:
-        color: '#561cbe'
+        color: '#a040da'
     swatch_colors:
-    - '#ea641a'
-    - '#16c253'
+    - '#cb8e28'
+    - '#35dc9e'
   poi:
-    color: '#c72963'
+    color: '#bc36c7'
     subtypes:
       company:
-        color: '#cd4e7e'
+        color: '#713fa5'
       memorial:
-        color: '#d94c6f'
+        color: '#9c3ea2'
   street_furniture:
-    color: '#799684'
+    color: '#8f94a5'
     subtypes:
       bench:
-        color: '#87a394'
+        color: '#7e8397'
       lounger:
-        color: '#7e988a'
+        color: '#7f8797'
       waste_basket:
-        color: '#789481'
+        color: '#818695'
       vending_machine:
-        color: '#7c9988'
+        color: '#767a8c'
       atm:
-        color: '#729280'
+        color: '#868a9a'
       charging_station:
-        color: '#8ba395'
+        color: '#8f95a3'
       bicycle_rental:
-        color: '#758f81'
+        color: '#828b9a'
       car_sharing:
-        color: '#809b8a'
+        color: '#818996'
       taxi:
-        color: '#8fa79b'
+        color: '#7e8397'
       parcel_locker:
-        color: '#7b9a89'
+        color: '#848a9c'
       toilets:
-        color: '#73927d'
+        color: '#7d8297'
       drinking_water:
-        color: '#7f9d8a'
+        color: '#8991a0'
       fountain:
-        color: '#829a8c'
+        color: '#757a8b'
       public_bookcase:
-        color: '#94a89e'
+        color: '#808498'
       bicycle_repair_station:
-        color: '#8ca694'
+        color: '#8e92a0'
       dog_toilet:
-        color: '#849e90'
+        color: '#828795'
       post_box:
-        color: '#829c8d'
+        color: '#878e9a'
       recycling:
-        color: '#7c9988'
+        color: '#9197a4'
       clock:
-        color: '#7e9889'
+        color: '#757a90'
       photo_booth:
-        color: '#849d8b'
+        color: '#888c9d'
       give_box:
-        color: '#748f7c'
+        color: '#888d9c'
       meeting_point:
-        color: '#7e9a87'
+        color: '#8a909d'
       bollard:
-        color: '#87a294'
+        color: '#86899a'
       gate:
-        color: '#779383'
+        color: '#757e90'
       bus_trap:
-        color: '#82998c'
+        color: '#818a9b'
       cycle_barrier:
-        color: '#738d80'
+        color: '#8b909d'
       lift_gate:
-        color: '#7c9587'
+        color: '#767a8c'
       planter:
-        color: '#74937d'
+        color: '#9395a5'
       fence:
-        color: '#7a9886'
+        color: '#9299a7'
       street_lamp:
-        color: '#7f9a87'
+        color: '#878c9d'
       entrance:
-        color: '#849b8b'
+        color: '#7b8291'
       defibrillator:
-        color: '#889f90'
+        color: '#787e93'
       fire_hydrant:
-        color: '#849b8c'
+        color: '#808795'
       fire_extinguisher:
-        color: '#7b9585'
+        color: '#848a97'
       fire_hose:
-        color: '#819988'
+        color: '#8a919f'
       life_ring:
-        color: '#7c9586'
+        color: '#767c8f'
       phone:
-        color: '#8ca698'
+        color: '#797e90'
       assembly_point:
-        color: '#7f988a'
+        color: '#7a8292'
       artwork:
-        color: '#819989'
+        color: '#9194a4'
   boundaries:
-    color: '#35d4ae'
+    color: '#46abc5'
   indoor:
     subtypes:
       platform:
-        color: '#c0e4d0'
+        color: '#c8b2d9'
       footway:
-        color: '#afd8b5'
+        color: '#d1b9de'
       corridor:
-        color: '#deb8d0'
+        color: '#cbbadf'
       pedestrian:
-        color: '#e8c8e7'
+        color: '#b9cede'
       steps:
-        color: '#b0e1c2'
+        color: '#dfc6e0'
       room:
-        color: '#b5ded2'
+        color: '#cac3e2'
       area:
-        color: '#cde9e0'
+        color: '#c3c0dc'
       wall:
-        color: '#89777f'
+        color: '#9d919f'
       elevator:
-        color: '#24e6ab'
+        color: '#2b83c4'
       escalator:
-        color: '#b9e1d2'
+        color: '#b6c8db'
       arrow:
-        color: '#eef0ee'
+        color: '#f2f3f4'

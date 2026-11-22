@@ -1,73 +1,55 @@
 {
   "version": 8,
-  "name": "Map · Chaos · 1795325064",
+  "name": "Map · Chaos · 1795371716",
   "metadata": {
     "brussels:map": {
       "name": "Map",
       "version": "1.0.0",
       "center": [
-        4.26418,
-        50.81507
+        4.29748,
+        50.86135
       ],
-      "zoom": 11.69,
-      "background": "#81ad61",
-      "font": "#7467b7",
+      "zoom": 12.98,
+      "background": "#9fdeb6",
+      "font": "#f29485",
       "glyphs": "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf"
     },
     "brussels:config_hash": "ef964aa1fa41",
     "brussels:patterns": {
       "chaos-1": {
-        "file": "assets/icons/hackerspace.svg",
-        "size": 43,
-        "replace": {
-          "#000": "#f6338b"
-        }
+        "file": "assets/icons/car_sharing.svg",
+        "size": 10
       },
       "chaos-2": {
-        "file": "assets/icons/memorial.svg",
-        "size": 38
-      },
-      "chaos-3": {
-        "file": "assets/icons/cannabis.svg",
-        "size": 14
-      },
-      "chaos-4": {
-        "file": "assets/icons/erotic.svg",
-        "size": 17
-      },
-      "chaos-5": {
-        "file": "assets/icons/life_ring.svg",
-        "size": 14,
-        "replace": {
-          "#000": "#3dd0ba"
-        }
+        "file": "assets/icons/books.svg",
+        "size": 16
       },
       "grave_yard_christian": {
         "file": "assets/patterns/grave_yard_christian.svg",
-        "size": 30,
+        "size": 13,
         "replace": {
-          "#88b78e": "#240f98"
+          "#88b78e": "#4ee51a"
         }
       },
       "grave_yard_generic": {
         "file": "assets/patterns/grave_yard_generic.svg",
-        "size": 19,
+        "size": 62,
         "replace": {
-          "#88b78e": "#065018"
+          "#88b78e": "#50e57a"
         }
       },
       "grave_yard_jewish": {
         "file": "assets/patterns/grave_yard_jewish.svg",
-        "size": 40,
+        "size": 53,
         "replace": {
-          "#88b78e": "#c4c49c"
+          "#88b78e": "#483a29"
         }
       },
-      "grave_yard_muslim": {
-        "file": "assets/patterns/grave_yard_muslim.svg",
-        "size": 11,
+      "green-hatch": {
+        "file": "assets/military_hatch.svg",
+        "size": 34,
         "replace": {
-          "#88b78e": "#bd953e"
+          "#bd4a72": "#752315"
         }
       }
     },
@@ -75,15 +57,15 @@
       {
         "id": "landuse",
         "label": "Occupation du sol",
-        "color": "#1be2be",
+        "color": "#8987ac",
         "swatch": "fill",
-        "visible": true,
+        "visible": false,
         "layers": [],
         "items": [
           {
             "id": "allotments",
             "label": "Jardins familiaux",
-            "color": "#867f4c",
+            "color": "#5d00ce",
             "swatch": "fill",
             "layers": [
               "landuse-allotments",
@@ -93,59 +75,55 @@
           {
             "id": "brownfield",
             "label": "Friche",
-            "color": "#9441d6",
+            "color": "#e114cc",
             "swatch": "fill",
             "layers": [
               "landuse-brownfield",
-              "landuse-brownfield-hatch",
               "landuse-brownfield-outline"
             ]
           },
           {
             "id": "cemetery",
             "label": "Cimetière",
-            "color": "#9740b5",
+            "color": "#4b8401",
             "swatch": "fill",
             "layers": [
               "landuse-cemetery",
-              "landuse-cemetery-hatch",
-              "landuse-cemetery-outline"
+              "landuse-cemetery-hatch"
             ]
           },
           {
             "id": "commercial",
             "label": "Commercial",
-            "color": "#12cf54",
+            "color": "#68fcb1",
             "swatch": "fill",
             "layers": [
               "landuse-commercial",
-              "landuse-commercial-hatch"
+              "landuse-commercial-outline"
             ]
           },
           {
             "id": "construction",
             "label": "Chantier",
-            "color": "#3a63e6",
+            "color": "#d4ba4f",
             "swatch": "fill",
             "layers": [
-              "landuse-construction",
-              "landuse-construction-hatch"
+              "landuse-construction"
             ]
           },
           {
             "id": "depot",
             "label": "Dépôt",
-            "color": "#b9f582",
+            "color": "#673991",
             "swatch": "fill",
             "layers": [
-              "landuse-depot",
-              "landuse-depot-outline"
+              "landuse-depot"
             ]
           },
           {
             "id": "education",
             "label": "Éducation",
-            "color": "#dfe86b",
+            "color": "#79840e",
             "swatch": "fill",
             "layers": [
               "landuse-education",
@@ -155,17 +133,16 @@
           {
             "id": "farmland",
             "label": "Terres agricoles",
-            "color": "#799e41",
+            "color": "#b94b75",
             "swatch": "fill",
             "layers": [
-              "landuse-farmland",
-              "landuse-farmland-hatch"
+              "landuse-farmland"
             ]
           },
           {
             "id": "farmyard",
             "label": "Cour de ferme",
-            "color": "#aaf660",
+            "color": "#3eb905",
             "swatch": "fill",
             "layers": [
               "landuse-farmyard"
@@ -174,7 +151,7 @@
           {
             "id": "garages",
             "label": "Garages",
-            "color": "#80c1fb",
+            "color": "#84fa43",
             "swatch": "fill",
             "layers": [
               "landuse-garages"
@@ -183,67 +160,65 @@
           {
             "id": "greenfield",
             "label": "Terrain non bâti",
-            "color": "#ef9d28",
+            "color": "#10f867",
             "swatch": "fill",
             "layers": [
-              "landuse-greenfield",
-              "landuse-greenfield-hatch",
-              "landuse-greenfield-outline"
+              "landuse-greenfield"
             ]
           },
           {
             "id": "industrial",
             "label": "Industriel",
-            "color": "#fbab09",
+            "color": "#b2e3e9",
             "swatch": "fill",
             "layers": [
-              "landuse-industrial",
-              "landuse-industrial-outline"
+              "landuse-industrial"
             ]
           },
           {
             "id": "landfill",
             "label": "Décharge",
-            "color": "#014e3e",
+            "color": "#e9b61b",
             "swatch": "fill",
             "layers": [
-              "landuse-landfill",
-              "landuse-landfill-hatch"
+              "landuse-landfill"
             ]
           },
           {
             "id": "military",
             "label": "Militaire",
-            "color": "#dadbf0",
+            "color": "#bf8203",
             "swatch": "fill",
             "layers": [
               "landuse-military",
-              "landuse-military-outline"
+              "landuse-military-hatch"
             ]
           },
           {
             "id": "quarry",
             "label": "Carrière",
-            "color": "#ce2a8c",
+            "color": "#52ca31",
             "swatch": "fill",
             "layers": [
               "landuse-quarry",
+              "landuse-quarry-hatch",
               "landuse-quarry-outline"
             ]
           },
           {
             "id": "railway",
             "label": "Emprise ferroviaire",
-            "color": "#2e92d0",
+            "color": "#fd5e9a",
             "swatch": "fill",
             "layers": [
-              "landuse-railway"
+              "landuse-railway",
+              "landuse-railway-hatch"
             ]
           },
           {
             "id": "recreation_ground",
             "label": "Terrain de loisirs",
-            "color": "#cf0f8d",
+            "color": "#f9c2bf",
             "swatch": "fill",
             "layers": [
               "landuse-recreation_ground",
@@ -253,17 +228,18 @@
           {
             "id": "religious",
             "label": "Religieux",
-            "color": "#b3ccad",
+            "color": "#135097",
             "swatch": "fill",
             "layers": [
               "landuse-religious",
+              "landuse-religious-hatch",
               "landuse-religious-outline"
             ]
           },
           {
             "id": "residential",
             "label": "Résidentiel",
-            "color": "#08351d",
+            "color": "#6df977",
             "swatch": "fill",
             "layers": [
               "landuse-residential",
@@ -273,7 +249,7 @@
           {
             "id": "retail",
             "label": "Commerces",
-            "color": "#4c6b6c",
+            "color": "#ba3605",
             "swatch": "fill",
             "layers": [
               "landuse-retail",
@@ -283,10 +259,12 @@
           {
             "id": "village_green",
             "label": "Pelouse communale",
-            "color": "#e4c3fd",
+            "color": "#4bd594",
             "swatch": "fill",
             "layers": [
-              "landuse-village_green"
+              "landuse-village_green",
+              "landuse-village_green-hatch",
+              "landuse-village_green-outline"
             ]
           }
         ]
@@ -294,20 +272,19 @@
       {
         "id": "green",
         "label": "Espaces verts",
-        "color": "#50096a",
+        "color": "#0770bb",
         "swatch": "fill",
         "visible": true,
         "layers": [
           "green-hatch-chaos_2",
-          "green-hatch-chaos_3",
           "green-hatch-grave_yard_jewish",
-          "green-hatch-grave_yard_muslim"
+          "green-hatch-chaos_1"
         ],
         "items": [
           {
             "id": "flowerbed",
             "label": "Parterres",
-            "color": "#8e0545",
+            "color": "#13310a",
             "swatch": "fill",
             "layers": [
               "green-flowerbed"
@@ -324,7 +301,7 @@
           {
             "id": "forest",
             "label": "Forêt",
-            "color": "#e83054",
+            "color": "#84910a",
             "swatch": "fill",
             "layers": [
               "green-forest"
@@ -341,7 +318,7 @@
           {
             "id": "garden",
             "label": "Jardins",
-            "color": "#9d439a",
+            "color": "#15e5a1",
             "swatch": "fill",
             "layers": [
               "green-garden"
@@ -358,7 +335,7 @@
           {
             "id": "grass",
             "label": "Pelouse",
-            "color": "#a4dfb2",
+            "color": "#770414",
             "swatch": "fill",
             "layers": [
               "green-grass"
@@ -375,7 +352,7 @@
           {
             "id": "grassland",
             "label": "Prairie",
-            "color": "#a1e053",
+            "color": "#5fd7c1",
             "swatch": "fill",
             "layers": [
               "green-grassland"
@@ -392,7 +369,7 @@
           {
             "id": "heath",
             "label": "Lande",
-            "color": "#e1833e",
+            "color": "#22bcc8",
             "swatch": "fill",
             "layers": [
               "green-heath"
@@ -409,7 +386,7 @@
           {
             "id": "meadow",
             "label": "Pré",
-            "color": "#8178f3",
+            "color": "#d3a2fd",
             "swatch": "fill",
             "layers": [
               "green-meadow"
@@ -426,7 +403,7 @@
           {
             "id": "park",
             "label": "Parcs",
-            "color": "#ce7bce",
+            "color": "#beb7ef",
             "swatch": "fill",
             "layers": [
               "green-park"
@@ -443,7 +420,7 @@
           {
             "id": "scrub",
             "label": "Broussailles",
-            "color": "#5683ce",
+            "color": "#811180",
             "swatch": "fill",
             "layers": [
               "green-scrub"
@@ -460,7 +437,7 @@
           {
             "id": "shrubbery",
             "label": "Massifs arbustifs",
-            "color": "#f974ed",
+            "color": "#5e1805",
             "swatch": "fill",
             "layers": [
               "green-shrubbery"
@@ -477,7 +454,7 @@
           {
             "id": "wood",
             "label": "Bois",
-            "color": "#ba0892",
+            "color": "#3a1759",
             "swatch": "fill",
             "layers": [
               "green-wood"
@@ -496,7 +473,7 @@
       {
         "id": "leisure",
         "label": "Loisirs",
-        "color": "#d02b54",
+        "color": "#d82713",
         "swatch": "fill",
         "visible": true,
         "layers": [
@@ -508,7 +485,7 @@
           {
             "id": "dog_park",
             "label": "Parc à chiens",
-            "color": "#c23cd1",
+            "color": "#dfc768",
             "swatch": "fill",
             "layers": [],
             "filter": [
@@ -523,7 +500,7 @@
           {
             "id": "fitness_station",
             "label": "Fitness extérieur",
-            "color": "#c8d1bd",
+            "color": "#9a9edc",
             "swatch": "fill",
             "layers": [],
             "filter": [
@@ -533,13 +510,12 @@
                 "leisure"
               ],
               "fitness_station"
-            ],
-            "appear_at": 14
+            ]
           },
           {
             "id": "outdoor_seating",
             "label": "Terrasses",
-            "color": "#043c17",
+            "color": "#622150",
             "swatch": "fill",
             "layers": [],
             "filter": [
@@ -554,7 +530,7 @@
           {
             "id": "pitch",
             "label": "Terrains de sport",
-            "color": "#337062",
+            "color": "#0018cc",
             "swatch": "fill",
             "layers": [
               "pitch-sport-fill",
@@ -573,7 +549,7 @@
           {
             "id": "playground",
             "label": "Aires de jeux",
-            "color": "#c26e6f",
+            "color": "#814eeb",
             "swatch": "fill",
             "layers": [],
             "filter": [
@@ -590,7 +566,7 @@
       {
         "id": "water",
         "label": "Eau",
-        "color": "#3629d0",
+        "color": "#1e631f",
         "swatch": "fill",
         "visible": true,
         "layers": [
@@ -603,7 +579,7 @@
           {
             "id": "canal",
             "label": "Canal",
-            "color": "#4eaf9c",
+            "color": "#c6b6b1",
             "swatch": "line",
             "layers": [
               "waterway-canal"
@@ -620,7 +596,7 @@
           {
             "id": "ditch",
             "label": "Fossé",
-            "color": "#dee1a2",
+            "color": "#8474c0",
             "swatch": "line",
             "layers": [
               "waterway-ditch"
@@ -637,7 +613,7 @@
           {
             "id": "river",
             "label": "Rivière",
-            "color": "#24cb68",
+            "color": "#b1c46f",
             "swatch": "line",
             "layers": [
               "waterway-river"
@@ -654,7 +630,7 @@
           {
             "id": "stream",
             "label": "Ruisseau",
-            "color": "#ebfcd2",
+            "color": "#81a40d",
             "swatch": "line",
             "layers": [
               "waterway-stream"
@@ -671,7 +647,7 @@
           {
             "id": "wetland",
             "label": "Zone humide",
-            "color": "#737fce",
+            "color": "#d22e2e",
             "swatch": "fill",
             "layers": [
               "water-wetland"
@@ -690,7 +666,7 @@
       {
         "id": "trees",
         "label": "Arbres et haies",
-        "color": "#9e9330",
+        "color": "#e94f70",
         "swatch": "dot",
         "visible": true,
         "layers": [],
@@ -698,7 +674,7 @@
           {
             "id": "hedge",
             "label": "Haies",
-            "color": "#3bb6fd",
+            "color": "#27f44a",
             "swatch": "line",
             "layers": [
               "trees-hedge"
@@ -707,7 +683,7 @@
           {
             "id": "tree",
             "label": "Arbres",
-            "color": "#9cf9b6",
+            "color": "#85d993",
             "swatch": "dot",
             "layers": [
               "trees-tree"
@@ -716,7 +692,7 @@
           {
             "id": "tree_row",
             "label": "Alignements d’arbres",
-            "color": "#5424c7",
+            "color": "#4cf2e8",
             "swatch": "line",
             "layers": [
               "trees-row-line",
@@ -728,19 +704,20 @@
       {
         "id": "buildings",
         "label": "Bâtiments",
-        "color": "#61364e",
+        "color": "#a9757e",
         "swatch": "fill",
-        "visible": true,
+        "visible": false,
         "layers": [
           "buildings-fill",
-          "buildings-outline"
+          "buildings-outline",
+          "buildings-3d"
         ],
         "items": []
       },
       {
         "id": "addresses",
         "label": "Numéros de rue",
-        "color": "#23a3bc",
+        "color": "#61b833",
         "swatch": "dot",
         "visible": true,
         "layers": [
@@ -751,7 +728,7 @@
       {
         "id": "roads",
         "label": "Routes",
-        "color": "#7899be",
+        "color": "#0628c3",
         "swatch": "line",
         "visible": true,
         "layers": [
@@ -767,7 +744,7 @@
           {
             "id": "motorway",
             "label": "Autoroute",
-            "color": "#953b4b",
+            "color": "#54fb0b",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-motorway",
@@ -789,7 +766,7 @@
           {
             "id": "motorway_link",
             "label": "Bretelle d’autoroute",
-            "color": "#93e538",
+            "color": "#5886a5",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-motorway_link",
@@ -811,7 +788,7 @@
           {
             "id": "trunk",
             "label": "Voie rapide",
-            "color": "#d255e3",
+            "color": "#4dde41",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-trunk",
@@ -833,7 +810,7 @@
           {
             "id": "trunk_link",
             "label": "Bretelle de voie rapide",
-            "color": "#35db15",
+            "color": "#4a0c9d",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-trunk_link",
@@ -855,7 +832,7 @@
           {
             "id": "primary",
             "label": "Route principale",
-            "color": "#195b5a",
+            "color": "#de1cfc",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-primary",
@@ -877,7 +854,7 @@
           {
             "id": "primary_link",
             "label": "Bretelle principale",
-            "color": "#c31ba6",
+            "color": "#f39320",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-primary_link",
@@ -899,7 +876,7 @@
           {
             "id": "secondary",
             "label": "Route secondaire",
-            "color": "#3326c0",
+            "color": "#cffa58",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-secondary",
@@ -921,7 +898,7 @@
           {
             "id": "secondary_link",
             "label": "Bretelle secondaire",
-            "color": "#399de3",
+            "color": "#5282b8",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-secondary_link",
@@ -943,7 +920,7 @@
           {
             "id": "tertiary",
             "label": "Route tertiaire",
-            "color": "#3b604f",
+            "color": "#cff6c2",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-tertiary",
@@ -965,7 +942,7 @@
           {
             "id": "tertiary_link",
             "label": "Bretelle tertiaire",
-            "color": "#fb55a8",
+            "color": "#0328f8",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-tertiary_link",
@@ -987,7 +964,7 @@
           {
             "id": "residential",
             "label": "Rue résidentielle",
-            "color": "#f4043e",
+            "color": "#5d77ea",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-residential",
@@ -1009,7 +986,7 @@
           {
             "id": "unclassified",
             "label": "Route non classée",
-            "color": "#aba368",
+            "color": "#a1bff8",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-unclassified",
@@ -1031,7 +1008,7 @@
           {
             "id": "living_street",
             "label": "Zone de rencontre",
-            "color": "#e0bbdb",
+            "color": "#f837b6",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-living_street",
@@ -1053,7 +1030,7 @@
           {
             "id": "service",
             "label": "Voie de service",
-            "color": "#6b85a4",
+            "color": "#b7b4c9",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-service",
@@ -1075,7 +1052,7 @@
           {
             "id": "busway",
             "label": "Site propre bus",
-            "color": "#c67623",
+            "color": "#31d093",
             "swatch": "line",
             "layers": [
               "roads-tunnel-casing-busway",
@@ -1098,7 +1075,7 @@
           {
             "id": "track",
             "label": "Chemin agricole",
-            "color": "#59d9e8",
+            "color": "#2f3695",
             "swatch": "line",
             "layers": [
               "roads-tunnel-fill-track",
@@ -1119,7 +1096,7 @@
       {
         "id": "pedestrian",
         "label": "Piétons",
-        "color": "#4e72ff",
+        "color": "#967bcb",
         "swatch": "line",
         "visible": true,
         "layers": [],
@@ -1127,7 +1104,7 @@
           {
             "id": "footway",
             "label": "Chemins piétons",
-            "color": "#3f6c94",
+            "color": "#5ef5e4",
             "swatch": "line",
             "layers": [
               "pedestrian-footway-casing",
@@ -1139,7 +1116,7 @@
           {
             "id": "path",
             "label": "Sentiers",
-            "color": "#6bd13e",
+            "color": "#3dd9be",
             "swatch": "line",
             "layers": [
               "pedestrian-path-casing",
@@ -1151,7 +1128,7 @@
           {
             "id": "pedestrian",
             "label": "Rues piétonnes",
-            "color": "#7b3a74",
+            "color": "#89f942",
             "swatch": "line",
             "layers": [
               "pedestrian-street-casing",
@@ -1161,7 +1138,7 @@
           {
             "id": "steps",
             "label": "Escaliers",
-            "color": "#1918f1",
+            "color": "#58abb7",
             "swatch": "line",
             "layers": [
               "pedestrian-steps"
@@ -1172,7 +1149,7 @@
       {
         "id": "cycleway",
         "label": "Cyclable",
-        "color": "#251740",
+        "color": "#a6b8b0",
         "swatch": "line",
         "visible": true,
         "layers": [
@@ -1184,7 +1161,7 @@
       {
         "id": "railway",
         "label": "Ferroviaire",
-        "color": "#066bf7",
+        "color": "#dfaec4",
         "swatch": "line",
         "visible": true,
         "layers": [
@@ -1194,7 +1171,7 @@
           {
             "id": "miniature",
             "label": "Miniature",
-            "color": "#aa3db7",
+            "color": "#ee9cb9",
             "swatch": "line",
             "layers": [
               "railway-miniature",
@@ -1212,7 +1189,7 @@
           {
             "id": "rail",
             "label": "Rail",
-            "color": "#5efaaf",
+            "color": "#5d33d9",
             "swatch": "line",
             "layers": [
               "railway-tunnel-rail-casing",
@@ -1234,7 +1211,7 @@
           {
             "id": "subway",
             "label": "Métro",
-            "color": "#b6b464",
+            "color": "#44a54f",
             "swatch": "line",
             "layers": [
               "railway-tunnel-subway",
@@ -1253,7 +1230,7 @@
           {
             "id": "tram",
             "label": "Tram",
-            "color": "#50e571",
+            "color": "#359ef3",
             "swatch": "line",
             "layers": [
               "railway-tunnel-tram",
@@ -1274,9 +1251,9 @@
       {
         "id": "public_transport",
         "label": "Transport STIB",
-        "color": "#0b307e",
+        "color": "#074208",
         "swatch": "fill",
-        "visible": false,
+        "visible": true,
         "layers": [
           "public_transport-casing",
           "public_transport-line",
@@ -1286,7 +1263,7 @@
           {
             "id": "tram",
             "label": "Tram",
-            "color": "#0139d6",
+            "color": "#768781",
             "swatch": "line",
             "layers": [],
             "filter": [
@@ -1301,7 +1278,7 @@
           {
             "id": "subway",
             "label": "Métro",
-            "color": "#703712",
+            "color": "#741b62",
             "swatch": "line",
             "layers": [],
             "filter": [
@@ -1316,7 +1293,7 @@
           {
             "id": "bus",
             "label": "Bus",
-            "color": "#d3c5fc",
+            "color": "#abafac",
             "swatch": "line",
             "layers": [],
             "filter": [
@@ -1326,18 +1303,19 @@
                 "route"
               ],
               "bus"
-            ]
+            ],
+            "appear_at": 12
           }
         ],
         "colors": [
-          "#5dbf4e",
-          "#c27e8e"
+          "#408998",
+          "#eaa788"
         ]
       },
       {
         "id": "poi",
         "label": "POI",
-        "color": "#dba5d8",
+        "color": "#bb7f8a",
         "swatch": "dot",
         "visible": true,
         "layers": [
@@ -1348,7 +1326,7 @@
           {
             "id": "company",
             "label": "Entreprises",
-            "color": "#2eb2f8",
+            "color": "#a4e3b3",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1364,7 +1342,7 @@
           {
             "id": "memorial",
             "label": "Mémoriaux",
-            "color": "#985688",
+            "color": "#eb201f",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1382,7 +1360,7 @@
       {
         "id": "street_furniture",
         "label": "Mobilier",
-        "color": "#e2dfb5",
+        "color": "#0c0ead",
         "swatch": "dot",
         "visible": true,
         "layers": [
@@ -1392,7 +1370,7 @@
           {
             "id": "bench",
             "label": "Bancs",
-            "color": "#918248",
+            "color": "#88e7bf",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1407,7 +1385,7 @@
           {
             "id": "lounger",
             "label": "Transats",
-            "color": "#2182d6",
+            "color": "#eba369",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1422,7 +1400,7 @@
           {
             "id": "waste_basket",
             "label": "Poubelles",
-            "color": "#3377fc",
+            "color": "#56c396",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1437,7 +1415,7 @@
           {
             "id": "vending_machine",
             "label": "Distributeurs",
-            "color": "#0f9e95",
+            "color": "#40cff9",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1452,7 +1430,7 @@
           {
             "id": "atm",
             "label": "Distributeurs de billets",
-            "color": "#6bb882",
+            "color": "#75931c",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1467,7 +1445,7 @@
           {
             "id": "charging_station",
             "label": "Bornes de recharge",
-            "color": "#35b8ea",
+            "color": "#e1665a",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1482,7 +1460,7 @@
           {
             "id": "bicycle_rental",
             "label": "Vélos partagés",
-            "color": "#7bbcf0",
+            "color": "#0cb187",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1497,7 +1475,7 @@
           {
             "id": "car_sharing",
             "label": "Voitures partagées",
-            "color": "#299f95",
+            "color": "#24e54c",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1512,7 +1490,7 @@
           {
             "id": "taxi",
             "label": "Stations de taxi",
-            "color": "#45d4b7",
+            "color": "#7c7da4",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1527,7 +1505,7 @@
           {
             "id": "parcel_locker",
             "label": "Consignes à colis",
-            "color": "#11fbd4",
+            "color": "#d9e2c9",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1542,7 +1520,7 @@
           {
             "id": "toilets",
             "label": "Toilettes",
-            "color": "#4675b8",
+            "color": "#305e0c",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1557,7 +1535,7 @@
           {
             "id": "drinking_water",
             "label": "Eau potable",
-            "color": "#dd1b27",
+            "color": "#b42c93",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1572,7 +1550,7 @@
           {
             "id": "fountain",
             "label": "Fontaines",
-            "color": "#bf9b8e",
+            "color": "#c09751",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1587,7 +1565,7 @@
           {
             "id": "public_bookcase",
             "label": "Boîtes à livres",
-            "color": "#77b2e0",
+            "color": "#5cf23f",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1602,7 +1580,7 @@
           {
             "id": "bicycle_repair_station",
             "label": "Réparation vélo",
-            "color": "#80d442",
+            "color": "#09512b",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1617,7 +1595,7 @@
           {
             "id": "dog_toilet",
             "label": "Canisites",
-            "color": "#efe956",
+            "color": "#50c355",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1632,7 +1610,7 @@
           {
             "id": "post_box",
             "label": "Boîtes aux lettres",
-            "color": "#274ce3",
+            "color": "#cd4cf3",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1647,7 +1625,7 @@
           {
             "id": "recycling",
             "label": "Recyclage",
-            "color": "#8098d5",
+            "color": "#71d4bb",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1662,7 +1640,7 @@
           {
             "id": "clock",
             "label": "Horloges",
-            "color": "#69b0ec",
+            "color": "#88b7f0",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1677,7 +1655,7 @@
           {
             "id": "photo_booth",
             "label": "Photomatons",
-            "color": "#213d60",
+            "color": "#62ca31",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1692,7 +1670,7 @@
           {
             "id": "give_box",
             "label": "Boîtes à dons",
-            "color": "#101cf4",
+            "color": "#b4afde",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1707,7 +1685,7 @@
           {
             "id": "meeting_point",
             "label": "Points de rencontre",
-            "color": "#578a0e",
+            "color": "#9c4a7b",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1722,7 +1700,7 @@
           {
             "id": "bollard",
             "label": "Potelets",
-            "color": "#89fa5b",
+            "color": "#1559f4",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1737,7 +1715,7 @@
           {
             "id": "gate",
             "label": "Portails",
-            "color": "#b3646c",
+            "color": "#f28c49",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1752,7 +1730,7 @@
           {
             "id": "bus_trap",
             "label": "Sas Bus",
-            "color": "#426f99",
+            "color": "#f93c70",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1767,7 +1745,7 @@
           {
             "id": "cycle_barrier",
             "label": "Chicanes vélo",
-            "color": "#012e33",
+            "color": "#2b7dbb",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1782,7 +1760,7 @@
           {
             "id": "lift_gate",
             "label": "Barrières levantes",
-            "color": "#079ef7",
+            "color": "#40ac3d",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1797,7 +1775,7 @@
           {
             "id": "planter",
             "label": "Bacs à plantes",
-            "color": "#dd51cc",
+            "color": "#0e8f11",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1812,7 +1790,7 @@
           {
             "id": "fence",
             "label": "Clôtures",
-            "color": "#0a9076",
+            "color": "#ea3e30",
             "swatch": "line",
             "layers": [
               "street-furniture-fence"
@@ -1829,7 +1807,7 @@
           {
             "id": "street_lamp",
             "label": "Lampadaires",
-            "color": "#1fa98c",
+            "color": "#a1f817",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1844,7 +1822,7 @@
           {
             "id": "entrance",
             "label": "Entrées",
-            "color": "#5057f6",
+            "color": "#e0bf22",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1855,7 +1833,7 @@
           {
             "id": "defibrillator",
             "label": "Défibrillateurs",
-            "color": "#c8a554",
+            "color": "#3ae194",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1870,7 +1848,7 @@
           {
             "id": "fire_hydrant",
             "label": "Bornes incendie",
-            "color": "#d55bc9",
+            "color": "#c29d9a",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1885,7 +1863,7 @@
           {
             "id": "fire_extinguisher",
             "label": "Extincteurs",
-            "color": "#fd4573",
+            "color": "#6be3db",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1900,7 +1878,7 @@
           {
             "id": "fire_hose",
             "label": "Dévidoirs incendie",
-            "color": "#aa11dd",
+            "color": "#6a1d96",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1915,7 +1893,7 @@
           {
             "id": "life_ring",
             "label": "Bouées de sauvetage",
-            "color": "#d95205",
+            "color": "#00b2e9",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1930,7 +1908,7 @@
           {
             "id": "phone",
             "label": "Téléphones d’urgence",
-            "color": "#74a107",
+            "color": "#5acfde",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1945,7 +1923,7 @@
           {
             "id": "assembly_point",
             "label": "Points de rassemblement",
-            "color": "#a2d527",
+            "color": "#ee6b6d",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1960,7 +1938,7 @@
           {
             "id": "artwork",
             "label": "Œuvres d’art",
-            "color": "#b89985",
+            "color": "#47c2f4",
             "swatch": "dot",
             "layers": [],
             "filter": [
@@ -1977,7 +1955,7 @@
       {
         "id": "boundaries",
         "label": "Limites administratives",
-        "color": "#201262",
+        "color": "#1aa6a1",
         "swatch": "line",
         "visible": true,
         "layers": [
@@ -2073,9 +2051,9 @@
     },
     "brussels:lazy": {
       "before": "address-labels",
-      "level_height": 6.04,
-      "slab": 0.49,
-      "volume_ratio": 0.26,
+      "level_height": 8.32,
+      "slab": 0.53,
+      "volume_ratio": 0.78,
       "sources": {
         "building_parts": {
           "type": "vector",
@@ -2103,34 +2081,42 @@
           },
           "paint": {
             "fill-extrusion-color": [
-              "match",
+              "to-color",
               [
                 "get",
-                "building:material"
+                "building:colour"
               ],
-              "bluestone",
-              "#46ad67",
-              "brick",
-              "#aa549b",
-              "cement_block",
-              "#791685",
-              "concrete",
-              "#358e7f",
-              "glass",
-              "#d1d4bc",
-              "limestone",
-              "#1b2de2",
-              "metal",
-              "#6de4f4",
-              "plaster",
-              "#aa8c62",
-              "sandstone",
-              "#f56cde",
-              "stone",
-              "#13ff2a",
-              "wood",
-              "#f16afa",
-              "#61364e"
+              [
+                "match",
+                [
+                  "get",
+                  "building:material"
+                ],
+                "bluestone",
+                "#3e5d3d",
+                "brick",
+                "#5fbad3",
+                "cement_block",
+                "#2352d2",
+                "concrete",
+                "#784b08",
+                "glass",
+                "#ff35a1",
+                "limestone",
+                "#69a2b8",
+                "metal",
+                "#2af162",
+                "plaster",
+                "#98d81a",
+                "sandstone",
+                "#b923a2",
+                "stone",
+                "#d1b959",
+                "wood",
+                "#61fd78",
+                "#a9757e"
+              ],
+              "#a9757e"
             ],
             "fill-extrusion-base": [
               "case",
@@ -2278,7 +2264,7 @@
           "type": "fill-extrusion",
           "source": "indoor",
           "source-layer": "indoor",
-          "minzoom": 16,
+          "minzoom": 17,
           "metadata": {
             "brussels:group": "indoor",
             "brussels:extrusion": "slab"
@@ -2314,30 +2300,30 @@
                 "kind"
               ],
               "area",
-              "#566c88",
+              "#879097",
               "arrow",
-              "#305e27",
+              "#dea06f",
               "corridor",
-              "#379c20",
+              "#29a71a",
               "elevator",
-              "#a25684",
+              "#094c0b",
               "escalator",
-              "#10db6d",
+              "#04c105",
               "footway",
-              "#0b6f8d",
+              "#9bbcaa",
               "pedestrian",
-              "#1d2433",
+              "#42fec5",
               "platform",
-              "#bc91d5",
+              "#7e3aed",
               "room",
-              "#33ffd1",
+              "#583fe8",
               "steps",
-              "#0c7ee9",
+              "#d7b6ca",
               "wall",
-              "#7aa5e9",
-              "#566c88"
+              "#c43703",
+              "#879097"
             ],
-            "fill-extrusion-opacity": 0.18,
+            "fill-extrusion-opacity": 0.79,
             "fill-extrusion-base": [
               "*",
               [
@@ -2360,7 +2346,7 @@
                 ],
                 0
               ],
-              6.04
+              8.32
             ],
             "fill-extrusion-height": [
               "+",
@@ -2393,9 +2379,9 @@
                   ],
                   0
                 ],
-                6.04
+                8.32
               ],
-              0.49
+              0.53
             ]
           }
         },
@@ -2404,7 +2390,7 @@
           "type": "fill-extrusion",
           "source": "indoor",
           "source-layer": "indoor",
-          "minzoom": 16,
+          "minzoom": 17,
           "metadata": {
             "brussels:group": "indoor",
             "brussels:extrusion": "volume"
@@ -2435,30 +2421,30 @@
                 "kind"
               ],
               "area",
-              "#566c88",
+              "#879097",
               "arrow",
-              "#305e27",
+              "#dea06f",
               "corridor",
-              "#379c20",
+              "#29a71a",
               "elevator",
-              "#a25684",
+              "#094c0b",
               "escalator",
-              "#10db6d",
+              "#04c105",
               "footway",
-              "#0b6f8d",
+              "#9bbcaa",
               "pedestrian",
-              "#1d2433",
+              "#42fec5",
               "platform",
-              "#bc91d5",
+              "#7e3aed",
               "room",
-              "#33ffd1",
+              "#583fe8",
               "steps",
-              "#0c7ee9",
+              "#d7b6ca",
               "wall",
-              "#7aa5e9",
-              "#566c88"
+              "#c43703",
+              "#879097"
             ],
-            "fill-extrusion-opacity": 0.29,
+            "fill-extrusion-opacity": 0.77,
             "fill-extrusion-base": [
               "*",
               [
@@ -2481,7 +2467,7 @@
                 ],
                 0
               ],
-              6.04
+              8.32
             ],
             "fill-extrusion-height": [
               "+",
@@ -2514,9 +2500,9 @@
                   ],
                   0
                 ],
-                6.04
+                8.32
               ],
-              1.57
+              6.49
             ]
           }
         },
@@ -2525,7 +2511,7 @@
           "type": "fill-extrusion",
           "source": "indoor",
           "source-layer": "indoor",
-          "minzoom": 16,
+          "minzoom": 17,
           "metadata": {
             "brussels:group": "indoor",
             "brussels:extrusion": "arrow"
@@ -2554,28 +2540,28 @@
                 "kind"
               ],
               "area",
-              "#566c88",
+              "#879097",
               "arrow",
-              "#305e27",
+              "#dea06f",
               "corridor",
-              "#379c20",
+              "#29a71a",
               "elevator",
-              "#a25684",
+              "#094c0b",
               "escalator",
-              "#10db6d",
+              "#04c105",
               "footway",
-              "#0b6f8d",
+              "#9bbcaa",
               "pedestrian",
-              "#1d2433",
+              "#42fec5",
               "platform",
-              "#bc91d5",
+              "#7e3aed",
               "room",
-              "#33ffd1",
+              "#583fe8",
               "steps",
-              "#0c7ee9",
+              "#d7b6ca",
               "wall",
-              "#7aa5e9",
-              "#566c88"
+              "#c43703",
+              "#879097"
             ],
             "fill-extrusion-opacity": 1.0,
             "fill-extrusion-base": [
@@ -2609,9 +2595,9 @@
                   ],
                   0
                 ],
-                6.04
+                8.32
               ],
-              0.49
+              0.53
             ],
             "fill-extrusion-height": [
               "+",
@@ -2646,9 +2632,9 @@
                     ],
                     0
                   ],
-                  6.04
+                  8.32
                 ],
-                0.49
+                0.53
               ],
               0.12
             ]
@@ -2658,8 +2644,8 @@
     },
     "brussels:variant": {
       "id": "chaos",
-      "label": "Chaos · 1795325064",
-      "hash": "07cfc1bcaa98"
+      "label": "Chaos · 1795371716",
+      "hash": "1f56765da021"
     }
   },
   "sources": {
@@ -2745,7 +2731,7 @@
       "id": "background",
       "type": "background",
       "paint": {
-        "background-color": "#81ad61"
+        "background-color": "#9fdeb6"
       }
     },
     {
@@ -2762,10 +2748,10 @@
         "residential"
       ],
       "paint": {
-        "fill-color": "#08351d",
+        "fill-color": "#6df977",
         "fill-opacity": 0.44
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-residential-outline",
@@ -2781,10 +2767,10 @@
         "residential"
       ],
       "paint": {
-        "line-color": "#43b158",
+        "line-color": "#5139a2",
         "line-width": 0.5
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-industrial",
@@ -2800,29 +2786,10 @@
         "industrial"
       ],
       "paint": {
-        "fill-color": "#fbab09",
-        "fill-opacity": 0.48
+        "fill-color": "#b2e3e9",
+        "fill-opacity": 0.67
       },
-      "minzoom": 12
-    },
-    {
-      "id": "landuse-industrial-outline",
-      "type": "line",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "industrial"
-      ],
-      "paint": {
-        "line-color": "#03f8d9",
-        "line-width": 0.5
-      },
-      "minzoom": 12
+      "minzoom": 14
     },
     {
       "id": "landuse-commercial",
@@ -2838,17 +2805,16 @@
         "commercial"
       ],
       "paint": {
-        "fill-color": "#12cf54",
-        "fill-opacity": 0.29
+        "fill-color": "#68fcb1",
+        "fill-opacity": 0.73
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
-      "id": "landuse-commercial-hatch",
-      "type": "fill",
+      "id": "landuse-commercial-outline",
+      "type": "line",
       "source": "landuse",
       "source-layer": "landuse",
-      "minzoom": 11,
       "filter": [
         "==",
         [
@@ -2858,8 +2824,10 @@
         "commercial"
       ],
       "paint": {
-        "fill-pattern": "chaos-3"
-      }
+        "line-color": "#c82042",
+        "line-width": 0.5
+      },
+      "minzoom": 13
     },
     {
       "id": "landuse-retail",
@@ -2875,10 +2843,10 @@
         "retail"
       ],
       "paint": {
-        "fill-color": "#4c6b6c",
-        "fill-opacity": 0.24
+        "fill-color": "#ba3605",
+        "fill-opacity": 0.93
       },
-      "minzoom": 12
+      "minzoom": 11
     },
     {
       "id": "landuse-retail-outline",
@@ -2894,10 +2862,10 @@
         "retail"
       ],
       "paint": {
-        "line-color": "#87af4d",
+        "line-color": "#07c9c7",
         "line-width": 0.5
       },
-      "minzoom": 12
+      "minzoom": 11
     },
     {
       "id": "landuse-railway",
@@ -2913,10 +2881,28 @@
         "railway"
       ],
       "paint": {
-        "fill-color": "#2e92d0",
-        "fill-opacity": 0.32
+        "fill-color": "#fd5e9a",
+        "fill-opacity": 0.69
       },
       "minzoom": 12
+    },
+    {
+      "id": "landuse-railway-hatch",
+      "type": "fill",
+      "source": "landuse",
+      "source-layer": "landuse",
+      "minzoom": 10,
+      "filter": [
+        "==",
+        [
+          "get",
+          "landuse"
+        ],
+        "railway"
+      ],
+      "paint": {
+        "fill-pattern": "grave_yard_generic"
+      }
     },
     {
       "id": "landuse-education",
@@ -2932,17 +2918,17 @@
         "education"
       ],
       "paint": {
-        "fill-color": "#dfe86b",
-        "fill-opacity": 0.17
+        "fill-color": "#79840e",
+        "fill-opacity": 0.28
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-education-hatch",
       "type": "fill",
       "source": "landuse",
       "source-layer": "landuse",
-      "minzoom": 11,
+      "minzoom": 14,
       "filter": [
         "==",
         [
@@ -2952,7 +2938,7 @@
         "education"
       ],
       "paint": {
-        "fill-pattern": "grave_yard_muslim"
+        "fill-pattern": "green-hatch"
       }
     },
     {
@@ -2969,28 +2955,10 @@
         "farmland"
       ],
       "paint": {
-        "fill-color": "#799e41",
-        "fill-opacity": 0.3
+        "fill-color": "#b94b75",
+        "fill-opacity": 0.89
       },
-      "minzoom": 12
-    },
-    {
-      "id": "landuse-farmland-hatch",
-      "type": "fill",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "minzoom": 10,
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "farmland"
-      ],
-      "paint": {
-        "fill-pattern": "chaos-3"
-      }
+      "minzoom": 13
     },
     {
       "id": "landuse-farmyard",
@@ -3006,10 +2974,10 @@
         "farmyard"
       ],
       "paint": {
-        "fill-color": "#aaf660",
-        "fill-opacity": 0.38
+        "fill-color": "#3eb905",
+        "fill-opacity": 0.73
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-brownfield",
@@ -3025,28 +2993,10 @@
         "brownfield"
       ],
       "paint": {
-        "fill-color": "#9441d6",
-        "fill-opacity": 0.85
+        "fill-color": "#e114cc",
+        "fill-opacity": 0.92
       },
       "minzoom": 12
-    },
-    {
-      "id": "landuse-brownfield-hatch",
-      "type": "fill",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "minzoom": 12,
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "brownfield"
-      ],
-      "paint": {
-        "fill-pattern": "grave_yard_christian"
-      }
     },
     {
       "id": "landuse-brownfield-outline",
@@ -3062,7 +3012,7 @@
         "brownfield"
       ],
       "paint": {
-        "line-color": "#b39ed9",
+        "line-color": "#42b3a3",
         "line-width": 0.5
       },
       "minzoom": 12
@@ -3081,47 +3031,10 @@
         "greenfield"
       ],
       "paint": {
-        "fill-color": "#ef9d28",
-        "fill-opacity": 0.77
+        "fill-color": "#10f867",
+        "fill-opacity": 0.62
       },
-      "minzoom": 12
-    },
-    {
-      "id": "landuse-greenfield-hatch",
-      "type": "fill",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "minzoom": 14,
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "greenfield"
-      ],
-      "paint": {
-        "fill-pattern": "chaos-4"
-      }
-    },
-    {
-      "id": "landuse-greenfield-outline",
-      "type": "line",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "greenfield"
-      ],
-      "paint": {
-        "line-color": "#2569e4",
-        "line-width": 0.5
-      },
-      "minzoom": 12
+      "minzoom": 11
     },
     {
       "id": "landuse-construction",
@@ -3137,28 +3050,10 @@
         "construction"
       ],
       "paint": {
-        "fill-color": "#3a63e6",
-        "fill-opacity": 0.77
+        "fill-color": "#d4ba4f",
+        "fill-opacity": 0.49
       },
-      "minzoom": 11
-    },
-    {
-      "id": "landuse-construction-hatch",
-      "type": "fill",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "minzoom": 14,
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "construction"
-      ],
-      "paint": {
-        "fill-pattern": "grave_yard_jewish"
-      }
+      "minzoom": 14
     },
     {
       "id": "landuse-landfill",
@@ -3174,28 +3069,10 @@
         "landfill"
       ],
       "paint": {
-        "fill-color": "#014e3e",
-        "fill-opacity": 0.48
+        "fill-color": "#e9b61b",
+        "fill-opacity": 0.97
       },
-      "minzoom": 12
-    },
-    {
-      "id": "landuse-landfill-hatch",
-      "type": "fill",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "minzoom": 13,
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "landfill"
-      ],
-      "paint": {
-        "fill-pattern": "grave_yard_muslim"
-      }
+      "minzoom": 13
     },
     {
       "id": "landuse-allotments",
@@ -3211,17 +3088,17 @@
         "allotments"
       ],
       "paint": {
-        "fill-color": "#867f4c",
-        "fill-opacity": 0.42
+        "fill-color": "#5d00ce",
+        "fill-opacity": 0.18
       },
-      "minzoom": 14
+      "minzoom": 13
     },
     {
       "id": "landuse-allotments-hatch",
       "type": "fill",
       "source": "landuse",
       "source-layer": "landuse",
-      "minzoom": 10,
+      "minzoom": 13,
       "filter": [
         "==",
         [
@@ -3231,7 +3108,7 @@
         "allotments"
       ],
       "paint": {
-        "fill-pattern": "grave_yard_muslim"
+        "fill-pattern": "grave_yard_christian"
       }
     },
     {
@@ -3248,17 +3125,17 @@
         "cemetery"
       ],
       "paint": {
-        "fill-color": "#9740b5",
-        "fill-opacity": 0.63
+        "fill-color": "#4b8401",
+        "fill-opacity": 0.42
       },
-      "minzoom": 12
+      "minzoom": 11
     },
     {
       "id": "landuse-cemetery-hatch",
       "type": "fill",
       "source": "landuse",
       "source-layer": "landuse",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "==",
         [
@@ -3275,33 +3152,14 @@
             "religion"
           ],
           "christian",
-          "chaos-5",
+          "green-hatch",
           "jewish",
-          "grave_yard_muslim",
+          "grave_yard_christian",
           "muslim",
-          "chaos-1",
-          "chaos-2"
+          "chaos-2",
+          "green-hatch"
         ]
       }
-    },
-    {
-      "id": "landuse-cemetery-outline",
-      "type": "line",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "cemetery"
-      ],
-      "paint": {
-        "line-color": "#063da6",
-        "line-width": 0.5
-      },
-      "minzoom": 12
     },
     {
       "id": "landuse-garages",
@@ -3317,10 +3175,10 @@
         "garages"
       ],
       "paint": {
-        "fill-color": "#80c1fb",
-        "fill-opacity": 0.63
+        "fill-color": "#84fa43",
+        "fill-opacity": 0.19
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-depot",
@@ -3336,27 +3194,8 @@
         "depot"
       ],
       "paint": {
-        "fill-color": "#b9f582",
-        "fill-opacity": 0.79
-      },
-      "minzoom": 12
-    },
-    {
-      "id": "landuse-depot-outline",
-      "type": "line",
-      "source": "landuse",
-      "source-layer": "landuse",
-      "filter": [
-        "==",
-        [
-          "get",
-          "landuse"
-        ],
-        "depot"
-      ],
-      "paint": {
-        "line-color": "#08e88d",
-        "line-width": 0.5
+        "fill-color": "#673991",
+        "fill-opacity": 0.54
       },
       "minzoom": 12
     },
@@ -3374,10 +3213,28 @@
         "quarry"
       ],
       "paint": {
-        "fill-color": "#ce2a8c",
+        "fill-color": "#52ca31",
         "fill-opacity": 0.25
       },
-      "minzoom": 12
+      "minzoom": 13
+    },
+    {
+      "id": "landuse-quarry-hatch",
+      "type": "fill",
+      "source": "landuse",
+      "source-layer": "landuse",
+      "minzoom": 10,
+      "filter": [
+        "==",
+        [
+          "get",
+          "landuse"
+        ],
+        "quarry"
+      ],
+      "paint": {
+        "fill-pattern": "chaos-2"
+      }
     },
     {
       "id": "landuse-quarry-outline",
@@ -3393,10 +3250,10 @@
         "quarry"
       ],
       "paint": {
-        "line-color": "#e76d92",
+        "line-color": "#aca619",
         "line-width": 0.5
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-religious",
@@ -3412,10 +3269,28 @@
         "religious"
       ],
       "paint": {
-        "fill-color": "#b3ccad",
-        "fill-opacity": 0.85
+        "fill-color": "#135097",
+        "fill-opacity": 0.86
       },
-      "minzoom": 12
+      "minzoom": 13
+    },
+    {
+      "id": "landuse-religious-hatch",
+      "type": "fill",
+      "source": "landuse",
+      "source-layer": "landuse",
+      "minzoom": 13,
+      "filter": [
+        "==",
+        [
+          "get",
+          "landuse"
+        ],
+        "religious"
+      ],
+      "paint": {
+        "fill-pattern": "grave_yard_jewish"
+      }
     },
     {
       "id": "landuse-religious-outline",
@@ -3431,10 +3306,10 @@
         "religious"
       ],
       "paint": {
-        "line-color": "#556e1b",
+        "line-color": "#ffb1f0",
         "line-width": 0.5
       },
-      "minzoom": 12
+      "minzoom": 13
     },
     {
       "id": "landuse-recreation_ground",
@@ -3450,10 +3325,10 @@
         "recreation_ground"
       ],
       "paint": {
-        "fill-color": "#cf0f8d",
-        "fill-opacity": 0.58
+        "fill-color": "#f9c2bf",
+        "fill-opacity": 0.82
       },
-      "minzoom": 12
+      "minzoom": 11
     },
     {
       "id": "landuse-recreation_ground-hatch",
@@ -3487,10 +3362,47 @@
         "village_green"
       ],
       "paint": {
-        "fill-color": "#e4c3fd",
-        "fill-opacity": 0.29
+        "fill-color": "#4bd594",
+        "fill-opacity": 0.9
       },
-      "minzoom": 12
+      "minzoom": 11
+    },
+    {
+      "id": "landuse-village_green-hatch",
+      "type": "fill",
+      "source": "landuse",
+      "source-layer": "landuse",
+      "minzoom": 13,
+      "filter": [
+        "==",
+        [
+          "get",
+          "landuse"
+        ],
+        "village_green"
+      ],
+      "paint": {
+        "fill-pattern": "grave_yard_christian"
+      }
+    },
+    {
+      "id": "landuse-village_green-outline",
+      "type": "line",
+      "source": "landuse",
+      "source-layer": "landuse",
+      "filter": [
+        "==",
+        [
+          "get",
+          "landuse"
+        ],
+        "village_green"
+      ],
+      "paint": {
+        "line-color": "#c716ff",
+        "line-width": 0.5
+      },
+      "minzoom": 11
     },
     {
       "id": "landuse-military",
@@ -3506,16 +3418,17 @@
         "military"
       ],
       "paint": {
-        "fill-color": "#dadbf0",
-        "fill-opacity": 0.83
+        "fill-color": "#bf8203",
+        "fill-opacity": 0.37
       },
-      "minzoom": 13
+      "minzoom": 12
     },
     {
-      "id": "landuse-military-outline",
-      "type": "line",
+      "id": "landuse-military-hatch",
+      "type": "fill",
       "source": "landuse",
       "source-layer": "landuse",
+      "minzoom": 10,
       "filter": [
         "==",
         [
@@ -3525,10 +3438,8 @@
         "military"
       ],
       "paint": {
-        "line-color": "#709b17",
-        "line-width": 0.5
-      },
-      "minzoom": 13
+        "fill-pattern": "chaos-1"
+      }
     },
     {
       "id": "green-park",
@@ -3554,10 +3465,10 @@
             ],
             "private"
           ],
-          "#b0ce28",
-          "#ce7bce"
+          "#900f82",
+          "#beb7ef"
         ],
-        "fill-opacity": 0.69
+        "fill-opacity": 0.74
       }
     },
     {
@@ -3584,12 +3495,11 @@
             ],
             "private"
           ],
-          "#76ddbb",
-          "#9d439a"
+          "#9e9c40",
+          "#15e5a1"
         ],
-        "fill-opacity": 0.26
-      },
-      "minzoom": 12
+        "fill-opacity": 0.95
+      }
     },
     {
       "id": "green-forest",
@@ -3615,10 +3525,10 @@
             ],
             "private"
           ],
-          "#e97534",
-          "#e83054"
+          "#838483",
+          "#84910a"
         ],
-        "fill-opacity": 0.7
+        "fill-opacity": 0.47
       }
     },
     {
@@ -3645,10 +3555,10 @@
             ],
             "private"
           ],
-          "#efcc14",
-          "#ba0892"
+          "#8a72de",
+          "#3a1759"
         ],
-        "fill-opacity": 0.74
+        "fill-opacity": 0.75
       },
       "minzoom": 12
     },
@@ -3666,22 +3576,9 @@
         "scrub"
       ],
       "paint": {
-        "fill-color": [
-          "case",
-          [
-            "==",
-            [
-              "get",
-              "access"
-            ],
-            "private"
-          ],
-          "#f7ddd9",
-          "#5683ce"
-        ],
-        "fill-opacity": 0.79
-      },
-      "minzoom": 12
+        "fill-color": "#811180",
+        "fill-opacity": 0.6
+      }
     },
     {
       "id": "green-shrubbery",
@@ -3707,12 +3604,11 @@
             ],
             "private"
           ],
-          "#52d50c",
-          "#f974ed"
+          "#cb7008",
+          "#5e1805"
         ],
-        "fill-opacity": 0.49
-      },
-      "minzoom": 12
+        "fill-opacity": 0.78
+      }
     },
     {
       "id": "green-heath",
@@ -3728,10 +3624,9 @@
         "heath"
       ],
       "paint": {
-        "fill-color": "#e1833e",
-        "fill-opacity": 0.26
-      },
-      "minzoom": 12
+        "fill-color": "#22bcc8",
+        "fill-opacity": 0.41
+      }
     },
     {
       "id": "green-grass",
@@ -3757,12 +3652,11 @@
             ],
             "private"
           ],
-          "#114267",
-          "#a4dfb2"
+          "#a6db34",
+          "#770414"
         ],
-        "fill-opacity": 0.27
-      },
-      "minzoom": 12
+        "fill-opacity": 0.84
+      }
     },
     {
       "id": "green-grassland",
@@ -3788,12 +3682,11 @@
             ],
             "private"
           ],
-          "#8e7adb",
-          "#a1e053"
+          "#c9deb6",
+          "#5fd7c1"
         ],
-        "fill-opacity": 0.93
-      },
-      "minzoom": 12
+        "fill-opacity": 0.83
+      }
     },
     {
       "id": "green-meadow",
@@ -3819,12 +3712,11 @@
             ],
             "private"
           ],
-          "#f6d88f",
-          "#8178f3"
+          "#73702a",
+          "#d3a2fd"
         ],
-        "fill-opacity": 0.36
-      },
-      "minzoom": 12
+        "fill-opacity": 0.82
+      }
     },
     {
       "id": "green-flowerbed",
@@ -3850,12 +3742,11 @@
             ],
             "private"
           ],
-          "#b0ce48",
-          "#8e0545"
+          "#1989fc",
+          "#13310a"
         ],
-        "fill-opacity": 0.72
-      },
-      "minzoom": 12
+        "fill-opacity": 0.39
+      }
     },
     {
       "id": "green-hatch-chaos_2",
@@ -3870,10 +3761,64 @@
             "==",
             [
               "get",
-              "landuse"
+              "leisure"
             ],
-            "forest"
+            "park"
+          ]
+        ],
+        [
+          "==",
+          [
+            "get",
+            "access"
           ],
+          "private"
+        ]
+      ],
+      "paint": {
+        "fill-pattern": "chaos-2"
+      }
+    },
+    {
+      "id": "green-hatch-grave_yard_jewish",
+      "type": "fill",
+      "source": "green",
+      "source-layer": "green",
+      "filter": [
+        "all",
+        [
+          "any",
+          [
+            "==",
+            [
+              "get",
+              "natural"
+            ],
+            "shrubbery"
+          ]
+        ],
+        [
+          "==",
+          [
+            "get",
+            "access"
+          ],
+          "private"
+        ]
+      ],
+      "paint": {
+        "fill-pattern": "grave_yard_jewish"
+      }
+    },
+    {
+      "id": "green-hatch-chaos_1",
+      "type": "fill",
+      "source": "green",
+      "source-layer": "green",
+      "filter": [
+        "all",
+        [
+          "any",
           [
             "==",
             [
@@ -3893,108 +3838,7 @@
         ]
       ],
       "paint": {
-        "fill-pattern": "chaos-2"
-      }
-    },
-    {
-      "id": "green-hatch-chaos_3",
-      "type": "fill",
-      "source": "green",
-      "source-layer": "green",
-      "filter": [
-        "all",
-        [
-          "any",
-          [
-            "==",
-            [
-              "get",
-              "natural"
-            ],
-            "scrub"
-          ]
-        ],
-        [
-          "==",
-          [
-            "get",
-            "access"
-          ],
-          "private"
-        ]
-      ],
-      "paint": {
-        "fill-pattern": "chaos-3"
-      }
-    },
-    {
-      "id": "green-hatch-grave_yard_jewish",
-      "type": "fill",
-      "source": "green",
-      "source-layer": "green",
-      "filter": [
-        "all",
-        [
-          "any",
-          [
-            "==",
-            [
-              "get",
-              "natural"
-            ],
-            "heath"
-          ]
-        ],
-        [
-          "==",
-          [
-            "get",
-            "access"
-          ],
-          "private"
-        ]
-      ],
-      "paint": {
-        "fill-pattern": "grave_yard_jewish"
-      }
-    },
-    {
-      "id": "green-hatch-grave_yard_muslim",
-      "type": "fill",
-      "source": "green",
-      "source-layer": "green",
-      "filter": [
-        "all",
-        [
-          "any",
-          [
-            "==",
-            [
-              "get",
-              "natural"
-            ],
-            "grassland"
-          ],
-          [
-            "==",
-            [
-              "get",
-              "landuse"
-            ],
-            "meadow"
-          ]
-        ],
-        [
-          "==",
-          [
-            "get",
-            "access"
-          ],
-          "private"
-        ]
-      ],
-      "paint": {
-        "fill-pattern": "grave_yard_muslim"
+        "fill-pattern": "chaos-1"
       }
     },
     {
@@ -4037,7 +3881,7 @@
         ]
       ],
       "paint": {
-        "fill-color": "#3629d0"
+        "fill-color": "#1e631f"
       }
     },
     {
@@ -4064,8 +3908,8 @@
         ]
       ],
       "paint": {
-        "fill-color": "#737fce",
-        "fill-opacity": 0.93
+        "fill-color": "#d22e2e",
+        "fill-opacity": 0.34
       }
     },
     {
@@ -4073,7 +3917,7 @@
       "type": "line",
       "source": "water",
       "source-layer": "water",
-      "minzoom": 11,
+      "minzoom": 10,
       "filter": [
         "all",
         [
@@ -4109,7 +3953,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#3629d0",
+        "line-color": "#1e631f",
         "line-width": [
           "interpolate",
           [
@@ -4130,7 +3974,7 @@
       "type": "line",
       "source": "water",
       "source-layer": "water",
-      "minzoom": 12,
+      "minzoom": 10,
       "filter": [
         "all",
         [
@@ -4166,7 +4010,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#3629d0",
+        "line-color": "#1e631f",
         "line-width": [
           "interpolate",
           [
@@ -4223,7 +4067,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#3629d0",
+        "line-color": "#1e631f",
         "line-width": [
           "interpolate",
           [
@@ -4280,7 +4124,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#3629d0",
+        "line-color": "#1e631f",
         "line-width": [
           "interpolate",
           [
@@ -4343,7 +4187,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#3629d0",
+        "line-color": "#1e631f",
         "line-width": [
           "interpolate",
           [
@@ -4394,7 +4238,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#3629d0",
+        "line-color": "#1e631f",
         "line-dasharray": [
           2,
           2
@@ -4449,7 +4293,7 @@
         ]
       ],
       "paint": {
-        "line-color": "#48f7b1",
+        "line-color": "#4c9ca8",
         "line-opacity": 0.4,
         "line-width": [
           "interpolate",
@@ -4486,16 +4330,16 @@
             "leisure"
           ],
           "dog_park",
-          "#c23cd1",
+          "#dfc768",
           "fitness_station",
-          "#c8d1bd",
+          "#9a9edc",
           "outdoor_seating",
-          "#043c17",
+          "#622150",
           "pitch",
-          "#337062",
+          "#0018cc",
           "playground",
-          "#c26e6f",
-          "#d02b54"
+          "#814eeb",
+          "#d82713"
         ],
         "fill-opacity": 1.0
       }
@@ -4519,15 +4363,11 @@
             "get",
             "leisure"
           ],
-          "fitness_station",
-          "#933cba",
-          "outdoor_seating",
-          "#88afac",
+          "dog_park",
+          "#c13531",
           "pitch",
-          "#c2ff44",
-          "playground",
-          "#447892",
-          "#38e37f"
+          "#b09b34",
+          "#f1a240"
         ],
         "line-width": 0.5
       }
@@ -4571,14 +4411,14 @@
             "sport_render"
           ],
           "basketball",
-          "#3fab43",
+          "#7ee63e",
           "boules",
-          "#dd78d2",
+          "#d482af",
           "soccer",
-          "#d1995b",
+          "#2cce1e",
           "tennis",
-          "#d3c8e1",
-          "#ce7203"
+          "#35d46c",
+          "#b74bcc"
         ],
         "fill-opacity": 1.0
       }
@@ -4622,14 +4462,14 @@
             "sport_render"
           ],
           "basketball",
-          "#212334",
+          "#5ea03c",
           "boules",
-          "#b2198c",
+          "#346d69",
           "soccer",
-          "#c69d36",
+          "#7e6291",
           "tennis",
-          "#27c1f6",
-          "#d0740b"
+          "#0b51e4",
+          "#729418"
         ],
         "line-width": 0.8
       }
@@ -4641,7 +4481,7 @@
       "source-layer": "buildings",
       "minzoom": 13,
       "paint": {
-        "fill-color": "#61364e"
+        "fill-color": "#a9757e"
       }
     },
     {
@@ -4651,7 +4491,7 @@
       "source-layer": "buildings",
       "minzoom": 13,
       "paint": {
-        "line-color": "#72feaa",
+        "line-color": "#854ff9",
         "line-width": 0.5
       }
     },
@@ -4684,7 +4524,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#3bb6fd",
+        "line-color": "#27f44a",
         "line-width": [
           "interpolate",
           [
@@ -4730,7 +4570,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5424c7",
+        "line-color": "#4cf2e8",
         "line-width": [
           "interpolate",
           [
@@ -4744,7 +4584,7 @@
           18,
           1.5
         ],
-        "line-opacity": 0.93
+        "line-opacity": 0.74
       }
     },
     {
@@ -4863,12 +4703,12 @@
             "leaf_type"
           ],
           "broadleaved",
-          "#6ac41c",
+          "#ec2707",
           "needleleaved",
-          "#d139ef",
-          "#9cf9b6"
+          "#a369ac",
+          "#85d993"
         ],
-        "text-halo-color": "#81ad61",
+        "text-halo-color": "#9fdeb6",
         "text-halo-width": 0.8
       }
     },
@@ -4969,12 +4809,12 @@
             "leaf_type"
           ],
           "broadleaved",
-          "#6ac41c",
+          "#ec2707",
           "needleleaved",
-          "#d139ef",
-          "#9cf9b6"
+          "#a369ac",
+          "#85d993"
         ],
-        "text-halo-color": "#81ad61",
+        "text-halo-color": "#9fdeb6",
         "text-halo-width": 0.9
       }
     },
@@ -4983,7 +4823,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5013,7 +4853,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5427c7",
+        "line-color": "#b78cb6",
         "line-width": [
           "interpolate",
           [
@@ -5022,7 +4862,7 @@
           [
             "zoom"
           ],
-          15,
+          13,
           3,
           18,
           7
@@ -5039,7 +4879,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5069,7 +4909,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5427c7",
+        "line-color": "#b78cb6",
         "line-width": [
           "interpolate",
           [
@@ -5078,7 +4918,7 @@
           [
             "zoom"
           ],
-          15,
+          13,
           0.8,
           18,
           2
@@ -5125,7 +4965,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#cf9192",
+        "line-color": "#4595a7",
         "line-width": [
           "interpolate",
           [
@@ -5181,7 +5021,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#3b86d7",
+        "line-color": "#97966b",
         "line-width": [
           "interpolate",
           [
@@ -5207,7 +5047,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5248,7 +5088,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5efaaf",
+        "line-color": "#5d33d9",
         "line-width": [
           "interpolate",
           [
@@ -5266,7 +5106,7 @@
           0.2,
           4
         ],
-        "line-opacity": 0.68
+        "line-opacity": 0.91
       }
     },
     {
@@ -5274,7 +5114,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5315,7 +5155,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5efaaf",
+        "line-color": "#5d33d9",
         "line-width": [
           "interpolate",
           [
@@ -5329,7 +5169,7 @@
           18,
           2
         ],
-        "line-opacity": 0.68
+        "line-opacity": 0.91
       }
     },
     {
@@ -5337,7 +5177,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5367,7 +5207,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#096663",
+        "line-color": "#070335",
         "line-width": [
           "interpolate",
           [
@@ -5376,7 +5216,7 @@
           [
             "zoom"
           ],
-          15,
+          13,
           4,
           18,
           9
@@ -5389,7 +5229,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5413,7 +5253,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5efaaf",
+        "line-color": "#5d33d9",
         "line-width": [
           "interpolate",
           [
@@ -5431,7 +5271,7 @@
           0.2,
           4
         ],
-        "line-opacity": 0.68
+        "line-opacity": 0.91
       }
     },
     {
@@ -5439,7 +5279,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 15,
+      "minzoom": 13,
       "filter": [
         "all",
         [
@@ -5463,7 +5303,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#5efaaf",
+        "line-color": "#5d33d9",
         "line-width": [
           "interpolate",
           [
@@ -5477,7 +5317,7 @@
           18,
           2
         ],
-        "line-opacity": 0.68
+        "line-opacity": 0.91
       }
     },
     {
@@ -5526,7 +5366,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#b6b464",
+        "line-color": "#44a54f",
         "line-width": [
           "interpolate",
           [
@@ -5540,7 +5380,7 @@
           18,
           2
         ],
-        "line-opacity": 0.69
+        "line-opacity": 0.71
       }
     },
     {
@@ -5572,7 +5412,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#b6b464",
+        "line-color": "#44a54f",
         "line-width": [
           "interpolate",
           [
@@ -5586,7 +5426,7 @@
           18,
           2
         ],
-        "line-opacity": 0.69
+        "line-opacity": 0.71
       }
     },
     {
@@ -5635,7 +5475,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#50e571",
+        "line-color": "#359ef3",
         "line-width": [
           "interpolate",
           [
@@ -5649,7 +5489,7 @@
           18,
           1.5
         ],
-        "line-opacity": 0.8
+        "line-opacity": 0.33
       }
     },
     {
@@ -5681,7 +5521,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#50e571",
+        "line-color": "#359ef3",
         "line-width": [
           "interpolate",
           [
@@ -5695,7 +5535,7 @@
           18,
           1.5
         ],
-        "line-opacity": 0.8
+        "line-opacity": 0.33
       }
     },
     {
@@ -5703,7 +5543,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 17,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -5744,7 +5584,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#aa3db7",
+        "line-color": "#ee9cb9",
         "line-width": [
           "interpolate",
           [
@@ -5758,7 +5598,7 @@
           18,
           1
         ],
-        "line-opacity": 0.72
+        "line-opacity": 0.76
       }
     },
     {
@@ -5766,7 +5606,7 @@
       "type": "line",
       "source": "railway",
       "source-layer": "railway",
-      "minzoom": 17,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -5790,7 +5630,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#aa3db7",
+        "line-color": "#ee9cb9",
         "line-width": [
           "interpolate",
           [
@@ -5804,7 +5644,7 @@
           18,
           1
         ],
-        "line-opacity": 0.72
+        "line-opacity": 0.76
       }
     },
     {
@@ -5818,7 +5658,7 @@
         "line-cap": "round"
       },
       "paint": {
-        "line-color": "#df4460",
+        "line-color": "#25ca96",
         "line-width": [
           "interpolate",
           [
@@ -5859,12 +5699,12 @@
               "route"
             ],
             "tram",
-            "#0139d6",
+            "#768781",
             "subway",
-            "#703712",
+            "#741b62",
             "bus",
-            "#d3c5fc",
-            "#0b307e"
+            "#abafac",
+            "#074208"
           ]
         ],
         "line-width": [
@@ -5920,7 +5760,7 @@
         ]
       },
       "paint": {
-        "fill-color": "#1f0d6c",
+        "fill-color": "#970cd0",
         "fill-opacity": 0.1
       }
     },
@@ -5953,7 +5793,7 @@
         ]
       },
       "paint": {
-        "line-color": "#782a8d",
+        "line-color": "#7aa2b3",
         "line-width": 2,
         "line-dasharray": [
           2,
@@ -6000,7 +5840,7 @@
         ]
       },
       "paint": {
-        "line-color": "#1f0d6c",
+        "line-color": "#970cd0",
         "line-opacity": 0.3,
         "line-width": [
           "interpolate",
@@ -6056,7 +5896,7 @@
         ]
       },
       "paint": {
-        "fill-color": "#880725",
+        "fill-color": "#1f1411",
         "fill-opacity": 0.5
       }
     },
@@ -6089,7 +5929,7 @@
         ]
       },
       "paint": {
-        "line-color": "#411680",
+        "line-color": "#d0feac",
         "line-width": 2
       }
     },
@@ -6098,7 +5938,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -6140,7 +5980,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c37806",
+        "line-color": "#5206a0",
         "line-width": [
           "interpolate",
           [
@@ -6149,8 +5989,8 @@
           [
             "zoom"
           ],
-          15,
-          3.9,
+          14,
+          2.8,
           16,
           5.0,
           18,
@@ -6167,7 +6007,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -6209,7 +6049,7 @@
         ]
       },
       "paint": {
-        "line-color": "#625f85",
+        "line-color": "#c4663b",
         "line-width": [
           "interpolate",
           [
@@ -6218,8 +6058,10 @@
           [
             "zoom"
           ],
-          16,
-          7.0,
+          14,
+          4.27,
+          15,
+          5.0,
           18,
           12.0
         ],
@@ -6276,7 +6118,7 @@
         ]
       },
       "paint": {
-        "line-color": "#aa1dae",
+        "line-color": "#d9e2aa",
         "line-width": [
           "interpolate",
           [
@@ -6345,7 +6187,7 @@
         ]
       },
       "paint": {
-        "line-color": "#4dbf4f",
+        "line-color": "#b31d63",
         "line-width": [
           "interpolate",
           [
@@ -6416,7 +6258,7 @@
         ]
       },
       "paint": {
-        "line-color": "#f8e3e7",
+        "line-color": "#ba85b1",
         "line-width": [
           "interpolate",
           [
@@ -6487,7 +6329,7 @@
         ]
       },
       "paint": {
-        "line-color": "#1b7901",
+        "line-color": "#7be8e9",
         "line-width": [
           "interpolate",
           [
@@ -6514,7 +6356,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -6556,7 +6398,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e22351",
+        "line-color": "#b69bd6",
         "line-width": [
           "interpolate",
           [
@@ -6565,8 +6407,8 @@
           [
             "zoom"
           ],
-          13,
-          2.87,
+          14,
+          4.93,
           15,
           6.0,
           18,
@@ -6625,7 +6467,7 @@
         ]
       },
       "paint": {
-        "line-color": "#a9deb3",
+        "line-color": "#1b1716",
         "line-width": [
           "interpolate",
           [
@@ -6694,7 +6536,7 @@
         ]
       },
       "paint": {
-        "line-color": "#df625e",
+        "line-color": "#653978",
         "line-width": [
           "interpolate",
           [
@@ -6763,7 +6605,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e93869",
+        "line-color": "#128247",
         "line-width": [
           "interpolate",
           [
@@ -6790,7 +6632,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -6832,7 +6674,7 @@
         ]
       },
       "paint": {
-        "line-color": "#0fc542",
+        "line-color": "#24f071",
         "line-width": [
           "interpolate",
           [
@@ -6841,8 +6683,8 @@
           [
             "zoom"
           ],
-          11,
-          1.8,
+          12,
+          2.4,
           13,
           3.0,
           15,
@@ -6903,7 +6745,7 @@
         ]
       },
       "paint": {
-        "line-color": "#1b17d3",
+        "line-color": "#cb46ff",
         "line-width": [
           "interpolate",
           [
@@ -6932,7 +6774,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -6974,7 +6816,7 @@
         ]
       },
       "paint": {
-        "line-color": "#9a41e4",
+        "line-color": "#250f4d",
         "line-width": [
           "interpolate",
           [
@@ -6983,8 +6825,8 @@
           [
             "zoom"
           ],
-          10,
-          2.2,
+          12,
+          3.07,
           13,
           3.5,
           15,
@@ -7045,7 +6887,7 @@
         ]
       },
       "paint": {
-        "line-color": "#b638c1",
+        "line-color": "#9ac8ee",
         "line-width": [
           "interpolate",
           [
@@ -7116,7 +6958,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c83daa",
+        "line-color": "#a8a4ed",
         "line-width": [
           "interpolate",
           [
@@ -7187,7 +7029,7 @@
         ]
       },
       "paint": {
-        "line-color": "#6eb137",
+        "line-color": "#979aca",
         "line-width": [
           "interpolate",
           [
@@ -7214,7 +7056,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -7256,7 +7098,7 @@
         ]
       },
       "paint": {
-        "line-color": "#b5c2d2",
+        "line-color": "#dbdae4",
         "line-width": [
           "interpolate",
           [
@@ -7265,8 +7107,8 @@
           [
             "zoom"
           ],
-          15,
-          1.9,
+          14,
+          0.8,
           16,
           3.0,
           18,
@@ -7279,7 +7121,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -7321,7 +7163,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e2ba91",
+        "line-color": "#98e8c9",
         "line-width": [
           "interpolate",
           [
@@ -7330,8 +7172,10 @@
           [
             "zoom"
           ],
-          16,
-          5.0,
+          14,
+          2.27,
+          15,
+          3.0,
           18,
           9.0
         ]
@@ -7384,7 +7228,7 @@
         ]
       },
       "paint": {
-        "line-color": "#f0dded",
+        "line-color": "#a29390",
         "line-width": [
           "interpolate",
           [
@@ -7449,7 +7293,7 @@
         ]
       },
       "paint": {
-        "line-color": "#d5d1b4",
+        "line-color": "#0be968",
         "line-width": [
           "interpolate",
           [
@@ -7516,7 +7360,7 @@
         ]
       },
       "paint": {
-        "line-color": "#fa829e",
+        "line-color": "#1fa582",
         "line-width": [
           "interpolate",
           [
@@ -7583,7 +7427,7 @@
         ]
       },
       "paint": {
-        "line-color": "#b669ec",
+        "line-color": "#8194fc",
         "line-width": [
           "interpolate",
           [
@@ -7606,7 +7450,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -7648,7 +7492,7 @@
         ]
       },
       "paint": {
-        "line-color": "#47630b",
+        "line-color": "#a8c0dc",
         "line-width": [
           "interpolate",
           [
@@ -7657,8 +7501,8 @@
           [
             "zoom"
           ],
-          13,
-          1.87,
+          14,
+          2.93,
           15,
           4.0,
           18,
@@ -7713,7 +7557,7 @@
         ]
       },
       "paint": {
-        "line-color": "#9f5b01",
+        "line-color": "#f9c990",
         "line-width": [
           "interpolate",
           [
@@ -7778,7 +7622,7 @@
         ]
       },
       "paint": {
-        "line-color": "#acbae8",
+        "line-color": "#a486ce",
         "line-width": [
           "interpolate",
           [
@@ -7843,7 +7687,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c82187",
+        "line-color": "#acc2d2",
         "line-width": [
           "interpolate",
           [
@@ -7866,7 +7710,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -7908,7 +7752,7 @@
         ]
       },
       "paint": {
-        "line-color": "#b669ec",
+        "line-color": "#e7fae0",
         "line-width": [
           "interpolate",
           [
@@ -7917,8 +7761,8 @@
           [
             "zoom"
           ],
-          11,
-          0.8,
+          12,
+          1.4,
           13,
           2.0,
           15,
@@ -7975,7 +7819,7 @@
         ]
       },
       "paint": {
-        "line-color": "#47630b",
+        "line-color": "#e7fcac",
         "line-width": [
           "interpolate",
           [
@@ -8000,7 +7844,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -8042,7 +7886,7 @@
         ]
       },
       "paint": {
-        "line-color": "#8cadac",
+        "line-color": "#ee8efe",
         "line-width": [
           "interpolate",
           [
@@ -8051,8 +7895,8 @@
           [
             "zoom"
           ],
-          10,
-          1.2,
+          12,
+          2.07,
           13,
           2.5,
           15,
@@ -8109,7 +7953,7 @@
         ]
       },
       "paint": {
-        "line-color": "#acbae8",
+        "line-color": "#a6eea0",
         "line-width": [
           "interpolate",
           [
@@ -8176,7 +8020,7 @@
         ]
       },
       "paint": {
-        "line-color": "#ca9da5",
+        "line-color": "#aafd85",
         "line-width": [
           "interpolate",
           [
@@ -8201,7 +8045,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -8267,7 +8111,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c37806",
+        "line-color": "#5206a0",
         "line-width": [
           "interpolate",
           [
@@ -8276,8 +8120,8 @@
           [
             "zoom"
           ],
-          15,
-          3.9,
+          14,
+          2.8,
           16,
           5.0,
           18,
@@ -8290,7 +8134,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -8356,7 +8200,7 @@
         ]
       },
       "paint": {
-        "line-color": "#625f85",
+        "line-color": "#c4663b",
         "line-width": [
           "interpolate",
           [
@@ -8365,8 +8209,10 @@
           [
             "zoom"
           ],
-          16,
-          7.0,
+          14,
+          4.27,
+          15,
+          5.0,
           18,
           12.0
         ]
@@ -8443,7 +8289,7 @@
         ]
       },
       "paint": {
-        "line-color": "#aa1dae",
+        "line-color": "#d9e2aa",
         "line-width": [
           "interpolate",
           [
@@ -8532,7 +8378,7 @@
         ]
       },
       "paint": {
-        "line-color": "#4dbf4f",
+        "line-color": "#b31d63",
         "line-width": [
           "interpolate",
           [
@@ -8623,7 +8469,7 @@
         ]
       },
       "paint": {
-        "line-color": "#f8e3e7",
+        "line-color": "#ba85b1",
         "line-width": [
           "interpolate",
           [
@@ -8714,7 +8560,7 @@
         ]
       },
       "paint": {
-        "line-color": "#1b7901",
+        "line-color": "#7be8e9",
         "line-width": [
           "interpolate",
           [
@@ -8737,7 +8583,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -8803,7 +8649,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e22351",
+        "line-color": "#b69bd6",
         "line-width": [
           "interpolate",
           [
@@ -8812,8 +8658,8 @@
           [
             "zoom"
           ],
-          13,
-          2.87,
+          14,
+          4.93,
           15,
           6.0,
           18,
@@ -8892,7 +8738,7 @@
         ]
       },
       "paint": {
-        "line-color": "#a9deb3",
+        "line-color": "#1b1716",
         "line-width": [
           "interpolate",
           [
@@ -8981,7 +8827,7 @@
         ]
       },
       "paint": {
-        "line-color": "#df625e",
+        "line-color": "#653978",
         "line-width": [
           "interpolate",
           [
@@ -9070,7 +8916,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e93869",
+        "line-color": "#128247",
         "line-width": [
           "interpolate",
           [
@@ -9093,7 +8939,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -9159,7 +9005,7 @@
         ]
       },
       "paint": {
-        "line-color": "#0fc542",
+        "line-color": "#24f071",
         "line-width": [
           "interpolate",
           [
@@ -9168,8 +9014,8 @@
           [
             "zoom"
           ],
-          11,
-          1.8,
+          12,
+          2.4,
           13,
           3.0,
           15,
@@ -9250,7 +9096,7 @@
         ]
       },
       "paint": {
-        "line-color": "#1b17d3",
+        "line-color": "#cb46ff",
         "line-width": [
           "interpolate",
           [
@@ -9275,7 +9121,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -9341,7 +9187,7 @@
         ]
       },
       "paint": {
-        "line-color": "#9a41e4",
+        "line-color": "#250f4d",
         "line-width": [
           "interpolate",
           [
@@ -9350,8 +9196,8 @@
           [
             "zoom"
           ],
-          10,
-          2.2,
+          12,
+          3.07,
           13,
           3.5,
           15,
@@ -9432,7 +9278,7 @@
         ]
       },
       "paint": {
-        "line-color": "#b638c1",
+        "line-color": "#9ac8ee",
         "line-width": [
           "interpolate",
           [
@@ -9523,7 +9369,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c83daa",
+        "line-color": "#a8a4ed",
         "line-width": [
           "interpolate",
           [
@@ -9614,7 +9460,7 @@
         ]
       },
       "paint": {
-        "line-color": "#59d9e8",
+        "line-color": "#2f3695",
         "line-width": [
           "interpolate",
           [
@@ -9634,7 +9480,7 @@
           3,
           2
         ],
-        "line-opacity": 0.39
+        "line-opacity": 0.72
       }
     },
     {
@@ -9642,7 +9488,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -9708,7 +9554,7 @@
         ]
       },
       "paint": {
-        "line-color": "#6b85a4",
+        "line-color": "#b7b4c9",
         "line-width": [
           "interpolate",
           [
@@ -9717,14 +9563,14 @@
           [
             "zoom"
           ],
-          15,
-          1.9,
+          14,
+          0.8,
           16,
           3.0,
           18,
           7.0
         ],
-        "line-opacity": 0.38
+        "line-opacity": 0.62
       }
     },
     {
@@ -9732,7 +9578,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -9798,7 +9644,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c67623",
+        "line-color": "#31d093",
         "line-width": [
           "interpolate",
           [
@@ -9807,12 +9653,14 @@
           [
             "zoom"
           ],
-          16,
-          5.0,
+          14,
+          2.27,
+          15,
+          3.0,
           18,
           9.0
         ],
-        "line-opacity": 0.93
+        "line-opacity": 0.49
       }
     },
     {
@@ -9886,7 +9734,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e0bbdb",
+        "line-color": "#f837b6",
         "line-width": [
           "interpolate",
           [
@@ -9902,7 +9750,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.74
+        "line-opacity": 0.17
       }
     },
     {
@@ -9976,7 +9824,7 @@
         ]
       },
       "paint": {
-        "line-color": "#aba368",
+        "line-color": "#a1bff8",
         "line-width": [
           "interpolate",
           [
@@ -9994,7 +9842,7 @@
           18,
           14.0
         ],
-        "line-opacity": 0.92
+        "line-opacity": 0.82
       }
     },
     {
@@ -10068,7 +9916,7 @@
         ]
       },
       "paint": {
-        "line-color": "#f4043e",
+        "line-color": "#5d77ea",
         "line-width": [
           "interpolate",
           [
@@ -10086,7 +9934,7 @@
           18,
           14.0
         ],
-        "line-opacity": 0.2
+        "line-opacity": 0.97
       }
     },
     {
@@ -10160,7 +10008,7 @@
         ]
       },
       "paint": {
-        "line-color": "#fb55a8",
+        "line-color": "#0328f8",
         "line-width": [
           "interpolate",
           [
@@ -10176,7 +10024,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.95
+        "line-opacity": 0.19
       }
     },
     {
@@ -10184,7 +10032,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -10250,7 +10098,7 @@
         ]
       },
       "paint": {
-        "line-color": "#399de3",
+        "line-color": "#5282b8",
         "line-width": [
           "interpolate",
           [
@@ -10259,14 +10107,14 @@
           [
             "zoom"
           ],
-          13,
-          1.87,
+          14,
+          2.93,
           15,
           4.0,
           18,
           12.0
         ],
-        "line-opacity": 0.5
+        "line-opacity": 0.71
       }
     },
     {
@@ -10340,7 +10188,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c31ba6",
+        "line-color": "#f39320",
         "line-width": [
           "interpolate",
           [
@@ -10356,7 +10204,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.73
+        "line-opacity": 0.87
       }
     },
     {
@@ -10430,7 +10278,7 @@
         ]
       },
       "paint": {
-        "line-color": "#35db15",
+        "line-color": "#4a0c9d",
         "line-width": [
           "interpolate",
           [
@@ -10446,7 +10294,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.46
+        "line-opacity": 0.9
       }
     },
     {
@@ -10520,7 +10368,7 @@
         ]
       },
       "paint": {
-        "line-color": "#93e538",
+        "line-color": "#5886a5",
         "line-width": [
           "interpolate",
           [
@@ -10536,7 +10384,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.19
+        "line-opacity": 0.24
       }
     },
     {
@@ -10544,7 +10392,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -10610,7 +10458,7 @@
         ]
       },
       "paint": {
-        "line-color": "#3b604f",
+        "line-color": "#cff6c2",
         "line-width": [
           "interpolate",
           [
@@ -10619,8 +10467,8 @@
           [
             "zoom"
           ],
-          11,
-          0.8,
+          12,
+          1.4,
           13,
           2.0,
           15,
@@ -10628,7 +10476,7 @@
           18,
           16.0
         ],
-        "line-opacity": 0.98
+        "line-opacity": 0.74
       }
     },
     {
@@ -10702,7 +10550,7 @@
         ]
       },
       "paint": {
-        "line-color": "#3326c0",
+        "line-color": "#cffa58",
         "line-width": [
           "interpolate",
           [
@@ -10720,7 +10568,7 @@
           18,
           18.0
         ],
-        "line-opacity": 0.39
+        "line-opacity": 0.87
       }
     },
     {
@@ -10728,7 +10576,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -10794,7 +10642,7 @@
         ]
       },
       "paint": {
-        "line-color": "#195b5a",
+        "line-color": "#de1cfc",
         "line-width": [
           "interpolate",
           [
@@ -10803,8 +10651,8 @@
           [
             "zoom"
           ],
-          10,
-          1.2,
+          12,
+          2.07,
           13,
           2.5,
           15,
@@ -10812,7 +10660,7 @@
           18,
           20.0
         ],
-        "line-opacity": 0.79
+        "line-opacity": 0.71
       }
     },
     {
@@ -10886,7 +10734,7 @@
         ]
       },
       "paint": {
-        "line-color": "#d255e3",
+        "line-color": "#4dde41",
         "line-width": [
           "interpolate",
           [
@@ -10904,7 +10752,7 @@
           18,
           22.0
         ],
-        "line-opacity": 0.24
+        "line-opacity": 0.38
       }
     },
     {
@@ -10978,7 +10826,7 @@
         ]
       },
       "paint": {
-        "line-color": "#953b4b",
+        "line-color": "#54fb0b",
         "line-width": [
           "interpolate",
           [
@@ -10996,7 +10844,7 @@
           18,
           22.0
         ],
-        "line-opacity": 0.33
+        "line-opacity": 0.36
       }
     },
     {
@@ -11004,7 +10852,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "match",
         [
@@ -11033,7 +10881,7 @@
         ]
       },
       "paint": {
-        "line-color": "#f9b5b1",
+        "line-color": "#301ab9",
         "line-width": [
           "interpolate",
           [
@@ -11042,8 +10890,8 @@
           [
             "zoom"
           ],
-          16,
-          1.47,
+          14,
+          0.93,
           18,
           2
         ],
@@ -11058,7 +10906,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -11121,7 +10969,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11130,8 +10978,8 @@
           [
             "zoom"
           ],
-          15,
-          5.1,
+          14,
+          4.0,
           16,
           6.2,
           18,
@@ -11144,7 +10992,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -11207,7 +11055,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11216,8 +11064,10 @@
           [
             "zoom"
           ],
-          16,
-          8.2,
+          14,
+          5.47,
+          15,
+          6.2,
           18,
           13.8
         ]
@@ -11291,7 +11141,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11377,7 +11227,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11465,7 +11315,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11553,7 +11403,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11576,7 +11426,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -11639,7 +11489,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11648,8 +11498,8 @@
           [
             "zoom"
           ],
-          13,
-          3.47,
+          14,
+          6.13,
           15,
           7.2,
           18,
@@ -11725,7 +11575,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11811,7 +11661,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11897,7 +11747,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11920,7 +11770,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -11983,7 +11833,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -11992,8 +11842,8 @@
           [
             "zoom"
           ],
-          11,
-          2.4,
+          12,
+          3.0,
           13,
           3.6,
           15,
@@ -12071,7 +11921,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -12096,7 +11946,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -12159,7 +12009,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -12168,8 +12018,8 @@
           [
             "zoom"
           ],
-          10,
-          2.8,
+          12,
+          3.67,
           13,
           4.1,
           15,
@@ -12247,7 +12097,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -12335,7 +12185,7 @@
         ]
       },
       "paint": {
-        "line-color": "#5d6a81",
+        "line-color": "#09abb7",
         "line-width": [
           "interpolate",
           [
@@ -12423,7 +12273,7 @@
         ]
       },
       "paint": {
-        "line-color": "#59d9e8",
+        "line-color": "#2f3695",
         "line-width": [
           "interpolate",
           [
@@ -12443,7 +12293,7 @@
           3,
           2
         ],
-        "line-opacity": 0.39
+        "line-opacity": 0.72
       }
     },
     {
@@ -12451,7 +12301,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 15,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -12514,7 +12364,7 @@
         ]
       },
       "paint": {
-        "line-color": "#6b85a4",
+        "line-color": "#b7b4c9",
         "line-width": [
           "interpolate",
           [
@@ -12523,14 +12373,14 @@
           [
             "zoom"
           ],
-          15,
-          1.9,
+          14,
+          0.8,
           16,
           3.0,
           18,
           7.0
         ],
-        "line-opacity": 0.38
+        "line-opacity": 0.62
       }
     },
     {
@@ -12538,7 +12388,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 16,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -12601,7 +12451,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c67623",
+        "line-color": "#31d093",
         "line-width": [
           "interpolate",
           [
@@ -12610,12 +12460,14 @@
           [
             "zoom"
           ],
-          16,
-          5.0,
+          14,
+          2.27,
+          15,
+          3.0,
           18,
           9.0
         ],
-        "line-opacity": 0.93
+        "line-opacity": 0.49
       }
     },
     {
@@ -12686,7 +12538,7 @@
         ]
       },
       "paint": {
-        "line-color": "#e0bbdb",
+        "line-color": "#f837b6",
         "line-width": [
           "interpolate",
           [
@@ -12702,7 +12554,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.74
+        "line-opacity": 0.17
       }
     },
     {
@@ -12773,7 +12625,7 @@
         ]
       },
       "paint": {
-        "line-color": "#aba368",
+        "line-color": "#a1bff8",
         "line-width": [
           "interpolate",
           [
@@ -12791,7 +12643,7 @@
           18,
           14.0
         ],
-        "line-opacity": 0.92
+        "line-opacity": 0.82
       }
     },
     {
@@ -12862,7 +12714,7 @@
         ]
       },
       "paint": {
-        "line-color": "#f4043e",
+        "line-color": "#5d77ea",
         "line-width": [
           "interpolate",
           [
@@ -12880,7 +12732,7 @@
           18,
           14.0
         ],
-        "line-opacity": 0.2
+        "line-opacity": 0.97
       }
     },
     {
@@ -12951,7 +12803,7 @@
         ]
       },
       "paint": {
-        "line-color": "#fb55a8",
+        "line-color": "#0328f8",
         "line-width": [
           "interpolate",
           [
@@ -12967,7 +12819,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.95
+        "line-opacity": 0.19
       }
     },
     {
@@ -12975,7 +12827,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -13038,7 +12890,7 @@
         ]
       },
       "paint": {
-        "line-color": "#399de3",
+        "line-color": "#5282b8",
         "line-width": [
           "interpolate",
           [
@@ -13047,14 +12899,14 @@
           [
             "zoom"
           ],
-          13,
-          1.87,
+          14,
+          2.93,
           15,
           4.0,
           18,
           12.0
         ],
-        "line-opacity": 0.5
+        "line-opacity": 0.71
       }
     },
     {
@@ -13125,7 +12977,7 @@
         ]
       },
       "paint": {
-        "line-color": "#c31ba6",
+        "line-color": "#f39320",
         "line-width": [
           "interpolate",
           [
@@ -13141,7 +12993,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.73
+        "line-opacity": 0.87
       }
     },
     {
@@ -13212,7 +13064,7 @@
         ]
       },
       "paint": {
-        "line-color": "#35db15",
+        "line-color": "#4a0c9d",
         "line-width": [
           "interpolate",
           [
@@ -13228,7 +13080,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.46
+        "line-opacity": 0.9
       }
     },
     {
@@ -13299,7 +13151,7 @@
         ]
       },
       "paint": {
-        "line-color": "#93e538",
+        "line-color": "#5886a5",
         "line-width": [
           "interpolate",
           [
@@ -13315,7 +13167,7 @@
           18,
           12.0
         ],
-        "line-opacity": 0.19
+        "line-opacity": 0.24
       }
     },
     {
@@ -13323,7 +13175,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 11,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -13386,7 +13238,7 @@
         ]
       },
       "paint": {
-        "line-color": "#3b604f",
+        "line-color": "#cff6c2",
         "line-width": [
           "interpolate",
           [
@@ -13395,8 +13247,8 @@
           [
             "zoom"
           ],
-          11,
-          0.8,
+          12,
+          1.4,
           13,
           2.0,
           15,
@@ -13404,7 +13256,7 @@
           18,
           16.0
         ],
-        "line-opacity": 0.98
+        "line-opacity": 0.74
       }
     },
     {
@@ -13475,7 +13327,7 @@
         ]
       },
       "paint": {
-        "line-color": "#3326c0",
+        "line-color": "#cffa58",
         "line-width": [
           "interpolate",
           [
@@ -13493,7 +13345,7 @@
           18,
           18.0
         ],
-        "line-opacity": 0.39
+        "line-opacity": 0.87
       }
     },
     {
@@ -13501,7 +13353,7 @@
       "type": "line",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 10,
+      "minzoom": 12,
       "filter": [
         "all",
         [
@@ -13564,7 +13416,7 @@
         ]
       },
       "paint": {
-        "line-color": "#195b5a",
+        "line-color": "#de1cfc",
         "line-width": [
           "interpolate",
           [
@@ -13573,8 +13425,8 @@
           [
             "zoom"
           ],
-          10,
-          1.2,
+          12,
+          2.07,
           13,
           2.5,
           15,
@@ -13582,7 +13434,7 @@
           18,
           20.0
         ],
-        "line-opacity": 0.79
+        "line-opacity": 0.71
       }
     },
     {
@@ -13653,7 +13505,7 @@
         ]
       },
       "paint": {
-        "line-color": "#d255e3",
+        "line-color": "#4dde41",
         "line-width": [
           "interpolate",
           [
@@ -13671,7 +13523,7 @@
           18,
           22.0
         ],
-        "line-opacity": 0.24
+        "line-opacity": 0.38
       }
     },
     {
@@ -13742,7 +13594,7 @@
         ]
       },
       "paint": {
-        "line-color": "#953b4b",
+        "line-color": "#54fb0b",
         "line-width": [
           "interpolate",
           [
@@ -13760,7 +13612,7 @@
           18,
           22.0
         ],
-        "line-opacity": 0.33
+        "line-opacity": 0.36
       }
     },
     {
@@ -13768,7 +13620,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 15,
+      "minzoom": 16,
       "filter": [
         "==",
         [
@@ -13782,7 +13634,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#475ce4",
+        "line-color": "#999",
         "line-width": [
           "interpolate",
           [
@@ -13791,7 +13643,7 @@
           [
             "zoom"
           ],
-          15,
+          16,
           1.2,
           18,
           6
@@ -13803,7 +13655,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 15,
+      "minzoom": 16,
       "filter": [
         "==",
         [
@@ -13817,7 +13669,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#7b3a74",
+        "line-color": "#89f942",
         "line-width": [
           "interpolate",
           [
@@ -13826,7 +13678,7 @@
           [
             "zoom"
           ],
-          15,
+          16,
           0.8,
           18,
           4
@@ -13852,7 +13704,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#59318f",
+        "line-color": "#37958c",
         "line-opacity": 0.4,
         "line-width": [
           "interpolate",
@@ -14040,8 +13892,8 @@
               ]
             ]
           ],
-          "#3440ef",
-          "#3f6c94"
+          "#2dfc22",
+          "#5ef5e4"
         ],
         "line-width": [
           "interpolate",
@@ -14274,8 +14126,8 @@
               ]
             ]
           ],
-          "#3440ef",
-          "#3f6c94"
+          "#2dfc22",
+          "#5ef5e4"
         ],
         "line-width": [
           "interpolate",
@@ -14525,8 +14377,8 @@
               ]
             ]
           ],
-          "#3440ef",
-          "#3f6c94"
+          "#2dfc22",
+          "#5ef5e4"
         ],
         "line-width": [
           "interpolate",
@@ -14587,7 +14439,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 17,
+      "minzoom": 15,
       "filter": [
         "==",
         [
@@ -14601,7 +14453,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "#e8fd24",
+        "line-color": "#1c6040",
         "line-opacity": 0.4,
         "line-width": [
           "interpolate",
@@ -14611,7 +14463,9 @@
           [
             "zoom"
           ],
-          17,
+          15,
+          3.0,
+          16,
           3.3,
           18,
           3.3,
@@ -14625,7 +14479,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 17,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -14787,8 +14641,8 @@
               ]
             ]
           ],
-          "#3440ef",
-          "#6bd13e"
+          "#2dfc22",
+          "#3dd9be"
         ],
         "line-width": [
           "interpolate",
@@ -14798,7 +14652,11 @@
           [
             "zoom"
           ],
-          17,
+          14,
+          0.7,
+          15,
+          1.0,
+          16,
           1.3,
           18,
           1.3,
@@ -14849,7 +14707,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 17,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -15017,8 +14875,8 @@
               ]
             ]
           ],
-          "#3440ef",
-          "#6bd13e"
+          "#2dfc22",
+          "#3dd9be"
         ],
         "line-width": [
           "interpolate",
@@ -15028,7 +14886,11 @@
           [
             "zoom"
           ],
-          17,
+          14,
+          0.7,
+          15,
+          1.0,
+          16,
           1.3,
           18,
           1.3,
@@ -15063,7 +14925,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 17,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -15264,8 +15126,8 @@
               ]
             ]
           ],
-          "#3440ef",
-          "#6bd13e"
+          "#2dfc22",
+          "#3dd9be"
         ],
         "line-width": [
           "interpolate",
@@ -15275,7 +15137,11 @@
           [
             "zoom"
           ],
-          17,
+          14,
+          0.7,
+          15,
+          1.0,
+          16,
           1.3,
           18,
           1.3,
@@ -15322,7 +15188,7 @@
       "type": "line",
       "source": "pedestrian",
       "source-layer": "pedestrian",
-      "minzoom": 14,
+      "minzoom": 17,
       "filter": [
         "==",
         [
@@ -15332,7 +15198,7 @@
         "steps"
       ],
       "paint": {
-        "line-color": "#1918f1",
+        "line-color": "#58abb7",
         "line-width": [
           "interpolate",
           [
@@ -15357,9 +15223,9 @@
       "type": "line",
       "source": "cycleway",
       "source-layer": "cycleway",
-      "minzoom": 12,
+      "minzoom": 15,
       "paint": {
-        "line-color": "#251740",
+        "line-color": "#a6b8b0",
         "line-width": [
           "interpolate",
           [
@@ -15368,7 +15234,7 @@
           [
             "zoom"
           ],
-          12,
+          15,
           0.8,
           18,
           2
@@ -15386,7 +15252,7 @@
       "source-layer": "boundaries",
       "minzoom": 13,
       "paint": {
-        "line-color": "#201262",
+        "line-color": "#1aa6a1",
         "line-width": 1,
         "line-dasharray": [
           5,
@@ -15420,9 +15286,303 @@
         ]
       ],
       "paint": {
-        "line-color": "#0a9076",
+        "line-color": "#ea3e30",
         "line-width": 1.5,
         "line-opacity": 0.8
+      }
+    },
+    {
+      "id": "buildings-3d",
+      "type": "fill-extrusion",
+      "source": "buildings",
+      "source-layer": "buildings",
+      "minzoom": 13,
+      "layout": {
+        "visibility": "none"
+      },
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "lod"
+          ],
+          "detail"
+        ],
+        [
+          "!=",
+          [
+            "get",
+            "covered_by_parts"
+          ],
+          "yes"
+        ]
+      ],
+      "paint": {
+        "fill-extrusion-color": [
+          "case",
+          [
+            "==",
+            [
+              "get",
+              "building"
+            ],
+            "roof"
+          ],
+          "#4039ce",
+          [
+            "to-color",
+            [
+              "get",
+              "building:colour"
+            ],
+            [
+              "match",
+              [
+                "get",
+                "building:material"
+              ],
+              "bluestone",
+              "#3e5d3d",
+              "brick",
+              "#5fbad3",
+              "cement_block",
+              "#2352d2",
+              "concrete",
+              "#784b08",
+              "glass",
+              "#ff35a1",
+              "limestone",
+              "#69a2b8",
+              "metal",
+              "#2af162",
+              "plaster",
+              "#98d81a",
+              "sandstone",
+              "#b923a2",
+              "stone",
+              "#d1b959",
+              "wood",
+              "#61fd78",
+              "#a9757e"
+            ],
+            "#a9757e"
+          ]
+        ],
+        "fill-extrusion-base": [
+          "case",
+          [
+            "all",
+            [
+              "==",
+              [
+                "get",
+                "building"
+              ],
+              "roof"
+            ],
+            [
+              "!",
+              [
+                "any",
+                [
+                  "has",
+                  "height"
+                ],
+                [
+                  "has",
+                  "min_height"
+                ],
+                [
+                  "has",
+                  "building:levels"
+                ],
+                [
+                  "has",
+                  "building:min_level"
+                ]
+              ]
+            ]
+          ],
+          7.2,
+          [
+            "case",
+            [
+              "has",
+              "min_height"
+            ],
+            [
+              "to-number",
+              [
+                "get",
+                "min_height"
+              ],
+              0
+            ],
+            [
+              "has",
+              "building:min_level"
+            ],
+            [
+              "*",
+              [
+                "to-number",
+                [
+                  "get",
+                  "building:min_level"
+                ],
+                0
+              ],
+              3
+            ],
+            0
+          ]
+        ],
+        "fill-extrusion-height": [
+          "case",
+          [
+            "all",
+            [
+              "==",
+              [
+                "get",
+                "building"
+              ],
+              "roof"
+            ],
+            [
+              "!",
+              [
+                "any",
+                [
+                  "has",
+                  "height"
+                ],
+                [
+                  "has",
+                  "min_height"
+                ],
+                [
+                  "has",
+                  "building:levels"
+                ],
+                [
+                  "has",
+                  "building:min_level"
+                ]
+              ]
+            ]
+          ],
+          7.5,
+          [
+            "max",
+            [
+              "case",
+              [
+                "has",
+                "height"
+              ],
+              [
+                "to-number",
+                [
+                  "get",
+                  "height"
+                ],
+                6
+              ],
+              [
+                "has",
+                "building:levels"
+              ],
+              [
+                "*",
+                [
+                  "to-number",
+                  [
+                    "get",
+                    "building:levels"
+                  ],
+                  2
+                ],
+                3
+              ],
+              [
+                "+",
+                [
+                  "case",
+                  [
+                    "has",
+                    "min_height"
+                  ],
+                  [
+                    "to-number",
+                    [
+                      "get",
+                      "min_height"
+                    ],
+                    0
+                  ],
+                  [
+                    "has",
+                    "building:min_level"
+                  ],
+                  [
+                    "*",
+                    [
+                      "to-number",
+                      [
+                        "get",
+                        "building:min_level"
+                      ],
+                      0
+                    ],
+                    3
+                  ],
+                  0
+                ],
+                7.5
+              ]
+            ],
+            [
+              "+",
+              [
+                "case",
+                [
+                  "has",
+                  "min_height"
+                ],
+                [
+                  "to-number",
+                  [
+                    "get",
+                    "min_height"
+                  ],
+                  0
+                ],
+                [
+                  "has",
+                  "building:min_level"
+                ],
+                [
+                  "*",
+                  [
+                    "to-number",
+                    [
+                      "get",
+                      "building:min_level"
+                    ],
+                    0
+                  ],
+                  3
+                ],
+                0
+              ],
+              1
+            ]
+          ]
+        ],
+        "fill-extrusion-opacity": 0.75
       }
     },
     {
@@ -15583,8 +15743,8 @@
         "text-allow-overlap": false
       },
       "paint": {
-        "text-color": "#23a3bc",
-        "text-halo-color": "rgba(157,193,107,0.16)",
+        "text-color": "#61b833",
+        "text-halo-color": "rgba(159,120,56,0.75)",
         "text-halo-width": 1.2
       }
     },
@@ -15613,9 +15773,9 @@
             "get",
             "colour:text"
           ],
-          "#345a1b"
+          "#33d668"
         ],
-        "text-halo-color": "rgba(88,12,156,0.9)",
+        "text-halo-color": "rgba(140,121,229,0.36)",
         "text-halo-width": 1.5
       }
     },
@@ -15624,7 +15784,7 @@
       "type": "symbol",
       "source": "roads",
       "source-layer": "roads",
-      "minzoom": 14,
+      "minzoom": 15,
       "filter": [
         "match",
         [
@@ -15660,7 +15820,7 @@
           [
             "zoom"
           ],
-          14,
+          15,
           10,
           18,
           13
@@ -15669,8 +15829,8 @@
         "text-max-angle": 30
       },
       "paint": {
-        "text-color": "#01314d",
-        "text-halo-color": "rgba(76,63,27,0.01)",
+        "text-color": "#8921b4",
+        "text-halo-color": "rgba(240,209,64,0.23)",
         "text-halo-width": 1.5
       }
     },
@@ -15727,9 +15887,9 @@
         "text-ignore-placement": true
       },
       "paint": {
-        "text-color": "#fc89ba",
+        "text-color": "#1c3d6a",
         "text-opacity": 0.7,
-        "text-halo-color": "rgba(231,96,79,0.87)",
+        "text-halo-color": "rgba(105,97,207,0.04)",
         "text-halo-width": 1
       }
     },
@@ -15786,9 +15946,9 @@
         "text-ignore-placement": true
       },
       "paint": {
-        "text-color": "#35c373",
+        "text-color": "#8f516e",
         "text-opacity": 0.95,
-        "text-halo-color": "#251740",
+        "text-halo-color": "#a6b8b0",
         "text-halo-width": 1.5
       }
     },
@@ -15797,7 +15957,7 @@
       "type": "symbol",
       "source": "leisure",
       "source-layer": "leisure",
-      "minzoom": 18,
+      "minzoom": 14,
       "filter": [
         "all",
         [
@@ -15875,7 +16035,7 @@
           [
             "zoom"
           ],
-          18,
+          14,
           [
             "*",
             [
@@ -15895,19 +16055,19 @@
                   "sport_render"
                 ],
                 "basketball",
-                101,
+                153,
                 "boules",
-                88,
+                137,
                 "soccer",
-                62,
+                86,
                 "tennis",
-                157,
-                80
+                120,
+                168
               ]
             ],
-            0.0244
+            0.001525
           ],
-          19,
+          15,
           [
             "*",
             [
@@ -15927,17 +16087,17 @@
                   "sport_render"
                 ],
                 "basketball",
-                101,
+                153,
                 "boules",
-                88,
+                137,
                 "soccer",
-                62,
+                86,
                 "tennis",
-                157,
-                80
+                120,
+                168
               ]
             ],
-            0.04884
+            0.003053
           ]
         ],
         "icon-allow-overlap": true,
@@ -15953,9 +16113,9 @@
           [
             "zoom"
           ],
-          18,
+          14,
           0.7,
-          19,
+          15,
           0.95
         ]
       }
@@ -15980,8 +16140,8 @@
           18,
           4
         ],
-        "circle-color": "#dba5d8",
-        "circle-stroke-color": "#e7d150",
+        "circle-color": "#bb7f8a",
+        "circle-stroke-color": "#63de7c",
         "circle-stroke-width": 0.8,
         "circle-opacity": 0.85
       }
@@ -15991,7 +16151,7 @@
       "type": "symbol",
       "source": "poi",
       "source-layer": "poi",
-      "minzoom": 15,
+      "minzoom": 17,
       "filter": [
         "any",
         [
@@ -16156,7 +16316,7 @@
           [
             "zoom"
           ],
-          15,
+          17,
           0.7,
           18,
           1.0
@@ -16178,7 +16338,7 @@
             "zoom"
           ],
           "",
-          18,
+          17,
           [
             "get",
             "name"
@@ -16220,8 +16380,8 @@
       },
       "paint": {
         "icon-opacity": 0.9,
-        "text-color": "#dba5d8",
-        "text-halo-color": "rgba(254,180,78,0.34)",
+        "text-color": "#bb7f8a",
+        "text-halo-color": "rgba(173,81,88,0.84)",
         "text-halo-width": 1.2
       }
     },
@@ -16230,7 +16390,7 @@
       "type": "symbol",
       "source": "leisure",
       "source-layer": "leisure",
-      "minzoom": 15,
+      "minzoom": 17,
       "filter": [
         "!=",
         [
@@ -16321,7 +16481,7 @@
           [
             "zoom"
           ],
-          15,
+          17,
           0.7,
           18,
           1.0
@@ -16334,7 +16494,7 @@
             "zoom"
           ],
           "",
-          18,
+          17,
           [
             "get",
             "name"
@@ -16353,8 +16513,8 @@
       },
       "paint": {
         "icon-opacity": 0.9,
-        "text-color": "#dba5d8",
-        "text-halo-color": "rgba(254,180,78,0.34)",
+        "text-color": "#bb7f8a",
+        "text-halo-color": "rgba(173,81,88,0.84)",
         "text-halo-width": 1.2
       }
     },
